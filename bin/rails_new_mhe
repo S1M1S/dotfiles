@@ -1,0 +1,37 @@
+#!/bin/bash
+
+rails new "$1" --database=mysql --skip-turbolinks --skip-test
+cd "$1"
+echo "gem 'passenger', '>= 5.0.25', require: 'phusion_passenger/rack_handler'" >> Gemfile
+bundle add foreman --group=development
+yarn add postcss postcss-scss postcss-normalize postcss-import postcss-for postcss-nested postcss-utilities postcss-preset-env
+cat > Procfile << EOF
+web:      bundle exec rails s -b 0.0.0.0 -p 3000
+dev:      bundle exec ./bin/webpack-dev-server
+EOF
+cat > postcss.config.js << EOF
+module.exports = {
+	parser: "postcss-scss",
+	plugins: {
+		"postcss-normalize": {},
+		"postcss-import": {},
+		"postcss-for": {},
+		"postcss-nested": {},
+		"postcss-utilities": {},
+		"postcss-flexbugs-fixes": {},
+		"postcss-preset-env": { stage: 0 },
+		// "cssnano": {}
+	}
+}
+EOF
+cat > bin/precompile-assets << EOF
+#!/bin/bash
+rm -rv "./public/packs"
+export RAILS_ENV=production
+export RACK_ENV=production
+export NODE_ENV=production
+bundle exec rake assets:precompile
+bundle exec ./bin/webpack
+EOF
+yarn
+bundle
