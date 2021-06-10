@@ -1,0 +1,5 @@
+[rails]
+layout = "5c16,426x76,0,0{103x76,0,0,11,209x76,104,0,23,112x76,314,0[112x38,314,0,24,112x37,314,39,25]}"
+session_name = "rails"
+number_of_panes = 4
+commands = ["", "sleep 1; vim -S *.session", "rails c", "tail -f log/development.log"]
