@@ -1,3 +1,0 @@
-# This file is created by ibus-daemon, please do not modify it
-IBUS_ADDRESS=unix:abstract=/tmp/ibus/dbus-hmnCeVPF,guid=cec1bc0e1cd74936edeaa6105e1a307f
-IBUS_DAEMON_PID=3113
