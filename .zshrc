@@ -89,7 +89,7 @@ zplug "plugins/rails",      from:oh-my-zsh
 zplug "plugins/bg-notify",  from:oh-my-zsh
 
 # Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
+if ! zplug check; then
     printf "Install? [y/N]: "
     if read -q; then
         echo; zplug install
@@ -97,7 +97,7 @@ if ! zplug check --verbose; then
 fi
 
 # Then, source plugins and add commands to $PATH
-zplug load --verbose
+zplug load
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 setopt INC_APPEND_HISTORY
