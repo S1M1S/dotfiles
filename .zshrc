@@ -93,10 +93,10 @@ zplug "plugins/bg-notify",  from:oh-my-zsh
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
+  printf "Install? [y/N]: "
+  if read -q; then
+    echo; zplug install
+  fi
 fi
 
 # Then, source plugins and add commands to $PATH
@@ -126,11 +126,8 @@ setopt INC_APPEND_HISTORY
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-# Lines configured by zsh-newuser-install
+alias ll="ls -al"
+
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
