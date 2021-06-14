@@ -1,13 +1,25 @@
 #!/bin/bash
+DF="$HOME/dotfiles"
 
 rm -r $HOME/.oh-my-zsh
 rm -rf $HOME/.vim
+rm -r $HOME/bin
 rm $HOME/.vimrc
 rm $HOME/.zshrc
-rm -r $HOME/bin
+rm $HOME/.tmux.conf
 
-ln -s $HOME/dotfiles/.oh-my-zsh $HOME/.oh-my-zsh
-ln -s $HOME/dotfiles/.vim $HOME/.vim
-ln -s $HOME/dotfiles/.vimrc $HOME/.vimrc
-ln -s $HOME/dotfiles/.zshrc $HOME/.zshrc
-ln -s $HOME/dotfiles/bin $HOME/bin
+ln -s $DF/.oh-my-zsh $HOME/.oh-my-zsh
+ln -s $DF/.vim $HOME/.vim
+ln -s $DF/bin $HOME/bin
+ln -s $DF/.vimrc $HOME/.vimrc
+ln -s $DF/.zshrc $HOME/.zshrc
+ln -s $DF/.tmux.conf $HOME/.tmux.conf
+
+# setup kitty
+cd ~/.config
+mkdir kitty &> /dev/null
+cd kitty
+rm kitty.conf &> /dev/null
+ln -s "$DF/kitty/kitty.conf" kitty.conf
+
+cd ~
