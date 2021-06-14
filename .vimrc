@@ -206,7 +206,7 @@ inoremap <c-x><c-f> <plug>(fzf-complete-path)
 inoremap <c-x><c-l> <plug>(fzf-complete-line)
 
 " Color scheme
-silent colo seoul256
+colo seoul256
 let g:seoul256_srgb = 1
 let g:airline_theme='seoul256'
 
