@@ -8,15 +8,14 @@ fi
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$PATH
 
-# Path to your oh-my-zsh installation.
-export ZSH="/home/samri/.oh-my-zsh"
+# export editor so that it's picked up by all my devices
+export EDITOR="vim"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="ar-round"
-ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -55,7 +54,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Uncomment the following line to display red dots whilst waiting for completion.
 # Caution: this setting can cause issues with multiline prompts (zsh 5.7.1 and newer seem to work)
 # See https://github.com/ohmyzsh/ohmyzsh/issues/5765
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -74,15 +73,34 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-completions zsh-syntax-highlighting bgnotify)
+
+export ZPLUG_HOME="$HOME/.zplug"
+if ! [ -d "$ZPLUG_HOME" ]; then
+  git clone https://github.com/zplug/zplug $ZPLUG_HOME
+fi
+source $ZPLUG_HOME/init.zsh
+
+zplug "romkatv/powerlevel10k", as:theme, depth:1
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "plugins/git",        from:oh-my-zsh
+zplug "plugins/rails",      from:oh-my-zsh
+zplug "plugins/bg-notify",  from:oh-my-zsh
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+# Then, source plugins and add commands to $PATH
+zplug load --verbose
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 setopt INC_APPEND_HISTORY
-source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
