@@ -8,13 +8,12 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # Aliases for FZF
-alias fzf="fd -td -E games -E smb-resolve -E vendor . | fzf"
 alias fzfcd="cd \$(fzf)"
 alias fzfpp="fzf --preview 'bat --style=numbers --color=always --line-range :100 {}'"
 alias vimfz="vim \$(fzfpp)"
 
 #Aliases for Arch
-alias pacbrowse="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
+alias pacbrowse="pacman -Qeq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
 
 #Instant aliases
 alias gaa="git add ." 

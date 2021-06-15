@@ -15,10 +15,14 @@ export PATH="$HOME/bin:$HOME/.rbenv/bin:$PATH"
 export EDITOR="vim"
 
 # start up cargo
-. "$HOME/.cargo/env"
+if [ -f "$HOME/.cargo/env" ]; then
+  source "$HOME/.cargo/env"
+fi
 
 # start up rbenv
-eval "$(rbenv init -)"
+if command -v rbenv; then
+  eval "$(rbenv init -)"
+fi
 
 # source custom aliases
 source ~/dotfiles/.zsh_aliases
