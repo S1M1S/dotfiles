@@ -1,15 +1,38 @@
 #!/bin/bash
 DF="$HOME/dotfiles"
 
+refresh() {
+  if [[ "$BASH_SUBSHELL" == "0" ]]; then
+    printf '%s\n' "Must run in current context to refresh. Try '. ali refresh'." >&2
+    exit 1
+  fi
+
+  source "$DF/.zsh_aliases"
+}
+
 if [[ "$1" == "add" ]]; then
   echo "alias $2" >> "$DF/.zsh_aliases"
-  source "$DF/.zsh_aliases"
+  refresh
+
+  exit 0
 fi
 
 if [[ "$1" == "ed" || "$1" == "edit" ]]; then
   $EDITOR "$DF/.zsh_aliases"
+
+  exit 0
 fi
 
-if [[ "$1" == "refresh" ]]; then
-  source "$DF/.zsh_aliases"
+if [[ "$1" == "refresh" || "$1" == "ref" ]]; then
+  refresh
+  echo "Freshed up!"
+
+  exit 0
 fi
+
+echo "USAGE:"
+echo ". ali add ALIAS"
+echo "  ali edit       ||   ali ed"
+echo ". ali refresh    || . ali ref"
+
+exit 0
