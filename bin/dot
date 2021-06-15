@@ -1,0 +1,32 @@
+#!/bin/bash
+DF="dotfiles"
+
+clink() {
+  echo "cleaning up: $1"
+  rm -rf "$1" &> /dev/null
+  ln -s "$DF/$1" $1
+}
+
+# dot link
+if [[ "$1" == "link" ]]; then
+  cd "$HOME"
+
+  clink ".vim"
+  clink ".vimrc"
+  clink ".zshrc"
+  clink ".tmux.conf"
+  clink "bin"
+
+  # setup kitty
+  cd ~/.config
+  mkdir kitty &> /dev/null
+  cd kitty
+  rm kitty.conf &> /dev/null
+  ln -s "$DF/.config/kitty/kitty.conf" kitty.conf
+fi
+
+# dot update
+if [[ "$1" == "update" ]]; then
+  cd "$HOME/dotfiles"
+  git pull
+fi
