@@ -18,4 +18,4 @@ alias pacbrowse="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --
 
 #Instant aliases
 alias gaa="git add ." 
-alias gcm="git commit -m "
+alias gc="git commit"
