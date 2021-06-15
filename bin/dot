@@ -1,5 +1,5 @@
 #!/bin/bash
-DF="dotfiles"
+DF="$HOME/dotfiles"
 
 clink() {
   echo "cleaning up: $1"
@@ -18,15 +18,17 @@ if [[ "$1" == "link" ]]; then
   clink "bin"
 
   # setup kitty
-  cd ~/.config
-  mkdir kitty &> /dev/null
+  cd "$HOME/.config"
+  if ! [[ -d "kitty" ]]; then
+    mkdir kitty &> /dev/null
+  fi
   cd kitty
   rm kitty.conf &> /dev/null
-  ln -s "$DF/.config/kitty/kitty.conf" kitty.conf
+  ln -s "$DF/.config/kitty/kitty.conf" ./kitty.conf
 fi
 
 # dot update
 if [[ "$1" == "update" ]]; then
-  cd "$HOME/dotfiles"
+  cd "$DF"
   git pull
 fi
