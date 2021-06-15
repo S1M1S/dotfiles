@@ -189,7 +189,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mattn/emmet-vim'
-Plug 'edkolev/tmuxline.vim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 " List ends here. Plugins become visible to Vim after this call.
