@@ -75,6 +75,7 @@ let g:netrw_altv      = 1
 
 command! Bd  silent! execute "bp|bd#"
 command! Bda silent! execute "%bd|e#|bd#"
+cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " ================ Mapping ======================
 
