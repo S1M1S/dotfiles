@@ -1,0 +1,15 @@
+#!/bin/bash
+DF="$HOME/dotfiles"
+
+if [[ "$1" == "add" ]]; then
+  echo "alias $2" >> "$DF/.zsh_aliases"
+  source "$DF/.zsh_aliases"
+fi
+
+if [[ "$1" == "ed" || "$1" == "edit" ]]; then
+  $EDITOR "$DF/.zsh_aliases"
+fi
+
+if [[ "$1" == "refresh" ]]; then
+  source "$DF/.zsh_aliases"
+fi

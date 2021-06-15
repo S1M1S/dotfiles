@@ -17,3 +17,4 @@ alias vimfz="vim \$(fzfpp)"
 alias pacbrowse="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
 
 #Instant aliases
+alias gaa="git add ." 
