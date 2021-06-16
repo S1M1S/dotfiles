@@ -1,6 +1,10 @@
 # Add color to common commands
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
+if [[ "$SHELL" == "/bin/bash" ]]; then
+  alias ls='ls --color=auto'
+  alias grep='grep --color=auto'
+elif [[ "$SHELL" == "/bin/zsh" ]]; then
+  alias ls='ls -G'
+fi
 
 # Aliases for ls
 alias ll='ls -alF'

@@ -20,7 +20,7 @@ if [ -f "$HOME/.cargo/env" ]; then
 fi
 
 # start up rbenv
-if command -v rbenv; then
+if command -v rbenv &> /dev/null; then
   eval "$(rbenv init -)"
 fi
 
