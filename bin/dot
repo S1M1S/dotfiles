@@ -7,7 +7,6 @@ clink() {
   ln -s "$DF/$1" $1
 }
 
-# dot link
 if [[ "$1" == "link" ]]; then
   cd "$HOME"
 
@@ -25,10 +24,12 @@ if [[ "$1" == "link" ]]; then
   cd kitty
   rm kitty.conf &> /dev/null
   ln -s "$DF/.config/kitty/kitty.conf" ./kitty.conf
-fi
-
-# dot update
-if [[ "$1" == "update" ]]; then
+elif [[ "$1" == "update" || "$1" == "up" ]]; then
   cd "$DF"
   git pull
+else
+  echo "USAGE: "
+  echo "dot link    -> make symlinks in home directory"
+  echo "dot update  -> run git pull on the dotfile directory"
 fi
+
