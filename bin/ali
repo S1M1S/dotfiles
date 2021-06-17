@@ -8,10 +8,12 @@ refresh() {
   fi
 
   source "$DF/.zsh_aliases"
+  echo "Freshed up!"
 }
 
 if [[ "$1" == "add" ]]; then
   echo "alias $2" >> "$DF/.zsh_aliases"
+  echo "Added new alias: $2"
   refresh
 
 elif [[ "$1" == "ed" || "$1" == "edit" ]]; then
@@ -19,7 +21,6 @@ elif [[ "$1" == "ed" || "$1" == "edit" ]]; then
 
 elif [[ "$1" == "refresh" || "$1" == "ref" ]]; then
   refresh
-  echo "Freshed up!"
 
 else
   echo "USAGE:"
