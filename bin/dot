@@ -1,34 +1,52 @@
 #!/bin/bash
 DF="$HOME/dotfiles"
 
-clink() {
-  echo "cleaning up: $1"
-  rm -rf "$1" &> /dev/null
-  ln -s "$DF/$1" $1
+function clink {
+  echo "linking up: $1"
+
+  SRC="$DF/$1"
+  DEST="$HOME/$1"
+
+  rm -rf "$DEST" &> /dev/null
+  ln -s "$SRC" "$DEST"
+}
+
+function configlink {
+  echo "linking up: $1"
+
+  SRC="$1/$2"
+  DEST_DIR="$HOME/.config/$1"
+  DEST="$DEST_DIR/$2"
+
+  if ! [[ -d "$DEST_DIR" ]]; then
+    mkdir kitty > /dev/null
+  fi
+  rm "$DEST" > /dev/null
+
+  ln -s "$SRC" "$DEST"
 }
 
 if [[ "$1" == "link" ]]; then
-  cd "$HOME"
+  # dot link
 
-  clink ".vim"
-  clink ".vimrc"
-  clink ".zshrc"
-  clink ".tmux.conf"
-  clink "bin"
+  LINKS=(".vim" ".vimrc" ".zshrc" ".tmux.conf" "bin")
+  for l in $LINKS[@]
+  do
+    clink "$l"
+  done
 
-  # setup kitty
-  cd "$HOME/.config"
-  if ! [[ -d "kitty" ]]; then
-    mkdir kitty &> /dev/null
-  fi
-  cd kitty
-  rm kitty.conf &> /dev/null
-  ln -s "$DF/.config/kitty/kitty.conf" ./kitty.conf
+  configlink "kitty" "kitty.conf"
+
 elif [[ "$1" == "update" || "$1" == "up" ]]; then
+  # dot update
+
   cd "$DF"
   git pull
   . ali refresh
+
 else
+  # dot
+
   echo "USAGE: "
   echo "dot link    -> make symlinks in home directory"
   echo "dot update  -> run git pull on the dotfile directory"
