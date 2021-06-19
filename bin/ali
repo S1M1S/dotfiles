@@ -18,6 +18,7 @@ if [[ "$1" == "add" ]]; then
 
 elif [[ "$1" == "ed" || "$1" == "edit" ]]; then
   $EDITOR "$DF/.zsh_aliases"
+  refresh
 
 elif [[ "$1" == "refresh" || "$1" == "ref" ]]; then
   refresh
