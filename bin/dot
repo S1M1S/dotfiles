@@ -40,8 +40,7 @@ if [[ "$1" == "link" ]]; then
 elif [[ "$1" == "update" || "$1" == "up" ]]; then
   # dot update
 
-  cd "$DF"
-  git pull
+  git -C "$DF" pull
   . ali refresh
 
 else
