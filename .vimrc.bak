@@ -1,23 +1,49 @@
-" ================ General =====================
+if !has('nvim')
+scriptencoding utf-8
+set encoding=utf-8
+
+" Use Vim settings, rather then Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+set nocompatible
+
+" TODO: this may not be in the correct place. It is intended to allow overriding <Leader>.
+" source ~/.vimrc.before if it exists.
+if filereadable(expand("~/.vimrc.before"))
+  source ~/.vimrc.before
+endif
+
+" ================ General Config ====================
+
+set relativenumber              "Line numbers are good
+set backspace=indent,eol,start  "Allow backspace in insert mode
+set history=1000                "Store lots of :cmdline history
+set showcmd                     "Show incomplete cmds down the bottom
+set showmode                    "Show current mode down the bottom
+set gcr=a:blinkon0              "Disable cursor blink
+set visualbell                  "No sounds
+set autoread                    "Reload files changed outside vim
+set mouse=a                     "Allow mouse in all modes
 
 " More natural defaults for opening splits
 set splitbelow
 set splitright
 
-" set line numbering
-set number
-set relativenumber
+" This makes vim act like all other editors, buffers can
+" exist in the background without being in a window.
+" http://items.sjbach.com/319/configuring-vim-right
+set hidden
 
-" Turn on syntax highlighting
+"turn on syntax highlighting
 syntax on
 
-" No messy swapfiles
+" Change leader to a comma because the backslash is too far away
+" That means all \x commands turn into ,x
+" The mapleader has to be set before vundle starts loading all
+" the plugins.
+
 set noswapfile
 set nobackup
 set nowb
-
-" Get the mouse working
-set mouse=a
 
 " ================ Persistent Undo ==================
 " Keep undo history across sessions, by storing in file.
@@ -28,6 +54,27 @@ if has('persistent_undo') && isdirectory(expand('~').'/.vim/backups')
   set undofile
 endif
 
+" ================ Indentation ======================
+
+set autoindent
+set smartindent
+set smarttab
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+
+" ================ Setup Netrw ======================
+
+let g:netrw_banner    = 0
+let g:netrw_liststyle = 3
+    let g:netrw_winsize   = 2
+let g:netrw_preview   = 1
+let g:netrw_altv      = 1
+
+"
+
+let mapleader=","
+
 " ================ Commands =====================
 
 command! Bd  silent! execute "bp|bd#"
@@ -36,9 +83,6 @@ command! Reload silent! execute "source $MYVIMRC"
 cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " ================ Mapping ======================
-
-" Set mapleader
-let mapleader=","
 
 " Auto indent pasted text
 nnoremap p p=`]<C-o>
@@ -62,22 +106,8 @@ nnoremap <leader>cc :w<CR>:!cargo check<CR>
 nnoremap <leader>cr :w<CR>:!cargo run<CR>
 nnoremap <leader>ct :w<CR>:!cargo test<CR>
 
-nnoremap <silent> <CR> :nohlsearch<CR><CR>
-
-" IDK why I put this here but oh well
 filetype plugin on
 filetype indent on
-filetype plugin indent on
-
-" On pressing tab, insert 2 spaces
-set expandtab
-
-" show existing tab with 2 spaces width
-set tabstop=2
-set softtabstop=2
-
-" when indenting with '>', use 2 spaces width
-set shiftwidth=2
 
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
@@ -85,9 +115,48 @@ set list listchars=tab:\ \ ,trail:·
 set nowrap       "Don't wrap lines
 set linebreak    "Wrap lines at convenient points
 
+" ================ Folds ============================
+
+set foldmethod=indent   "fold based on indent
+set foldnestmax=3       "deepest fold is 3 levels
+set nofoldenable        "dont fold by default
+
+" ================ Completion =======================
+
+set wildmode=list:longest
+set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
+set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+set wildignore+=*vim/backups*
+set wildignore+=*sass-cache*
+set wildignore+=*DS_Store*
+set wildignore+=vendor/rails/**
+set wildignore+=vendor/cache/**
+set wildignore+=*.gem
+set wildignore+=log/**
+set wildignore+=tmp/**
+set wildignore+=*.png,*.jpg,*.gif
+
 " ================ Rusty Tags =======================
 
 autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
+
+" ================ Scrolling ========================
+
+set scrolloff=8         "Start scrolling when we're 8 lines away from margins
+set sidescrolloff=15
+set sidescroll=1
+
+" ================ Search ===========================
+
+set incsearch       " Find the next match as we type the search
+set nohlsearch      " Do not highlight searches by default
+set ignorecase      " Ignore case when searching...
+set smartcase       " ...unless we type a capital
+
+" ================ Security ==========================
+
+set modelines=0
+set nomodeline
 
 " ================ Custom Settings ========================
 
@@ -144,6 +213,7 @@ let g:deoplete#enable_at_startup = 1
 call plug#end()
 
 " Configure fzf
+
 " Bigger preview window
 let g:fzf_preview_window = ['right:60%', 'ctrl-/']
 
@@ -151,16 +221,6 @@ let g:fzf_preview_window = ['right:60%', 'ctrl-/']
 inoremap <c-x><c-k> <plug>(fzf-complete-word)
 inoremap <c-x><c-f> <plug>(fzf-complete-path)
 inoremap <c-x><c-l> <plug>(fzf-complete-line)
-
-" Tab completion for deoplete
-function! s:check_back_space() abort "{{{
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ deoplete#manual_complete()
 
 " Color scheme
 colo seoul256
@@ -170,3 +230,9 @@ let g:airline_theme='seoul256'
 " Configure Airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+
+" Configure Goyo+Limelight
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+let g:goyo_width=100
+nnoremap <leader>gy :Goyo<CR>
