@@ -12,7 +12,7 @@ fi
 export PATH="$HOME/bin:$HOME/.rbenv/bin:$PATH"
 
 # export editor so that it's picked up by all my devices
-export EDITOR="vim"
+export EDITOR="nvim"
 
 # start up cargo
 if [ -f "$HOME/.cargo/env" ]; then
