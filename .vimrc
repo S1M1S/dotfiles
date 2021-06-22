@@ -33,7 +33,11 @@ endif
 command! Bd  silent! execute "bp|bd#"
 command! Bda silent! execute "%bd|e#|bd#"
 command! Reload silent! execute "source $MYVIMRC"
-cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+if !has('nvim')
+  cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+else
+  cnoremap w!! SudaWrite
+endif
 
 " ================ Mapping ======================
 

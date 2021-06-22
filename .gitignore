@@ -1,2 +1,4 @@
 **/plugged/
 .netrwhist
+tags\.lock
+tags\.temp
