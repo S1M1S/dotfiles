@@ -41,8 +41,8 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 let mapleader=","
 
 " Auto indent pasted text
-nnoremap p p=`]<C-o>
-nnoremap P P=`]<C-o>
+" nnoremap p p=`]<C-o>
+" nnoremap P P=`]<C-o>
 
 " Move between buffers like tabs
 nnoremap gb :bn<CR>
@@ -52,7 +52,8 @@ nnoremap gB :bp<CR>
 nnoremap <C-p> :GFiles<CR>
 
 " No escape
-inoremap qq <Esc>
+" inoremap qq <Esc>
+inoremap jk <Esc>
 
 " vv to generate new vertical split
 nnoremap <silent> vv <C-w>v
@@ -85,6 +86,9 @@ set list listchars=tab:\ \ ,trail:·
 set nowrap       "Don't wrap lines
 set linebreak    "Wrap lines at convenient points
 
+" if the vim window is resized, automatically adjust splits
+au VimResized * wincmd =
+
 " ================ Rusty Tags =======================
 
 autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
@@ -114,11 +118,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-rails'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'cespare/vim-toml'
+Plug 'tpope/vim-ragtag'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'
-Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
@@ -126,10 +128,15 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'mattn/emmet-vim'
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'ryanoasis/vim-devicons'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'cespare/vim-toml'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'mattn/emmet-vim'
 Plug 'dense-analysis/ale'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'lambdalisue/suda.vim'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
