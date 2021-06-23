@@ -19,7 +19,7 @@ function configlink {
   DEST="$DEST_DIR/$2"
 
   if ! [[ -d "$DEST_DIR" ]]; then
-    mkdir kitty > /dev/null
+    mkdir "$1" > /dev/null
   fi
   rm "$DEST" > /dev/null
 
@@ -36,6 +36,7 @@ if [[ "$1" == "link" ]]; then
   done
 
   configlink "kitty" "kitty.conf"
+  configlink "nvim" "init.vim"
 
 elif [[ "$1" == "update" || "$1" == "up" ]]; then
   # dot update
