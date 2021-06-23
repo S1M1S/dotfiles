@@ -6,6 +6,9 @@ elif [[ "$SHELL" == "/bin/zsh" ]]; then
   alias ls='ls -G'
 fi
 
+# Aliases for sshing
+alias starbound='mosh starbound'
+
 # Aliases for ls
 alias ll='ls -alF'
 alias la='ls -A'
