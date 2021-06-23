@@ -1,6 +1,9 @@
 #!/bin/bash
 DF="$HOME/dotfiles"
 
+CONF_DIR="$HOME/.config"
+DF_CONF_DIR="$DF/.config"
+
 function clink {
   echo "linking up: $1"
 
@@ -14,14 +17,14 @@ function clink {
 function configlink {
   echo "linking up: $1"
 
-  SRC="$1/$2"
-  DEST_DIR="$HOME/.config/$1"
+  SRC="$DF_CONF_DIR/$1/$2"
+  DEST_DIR="$CONF_DIR/$1"
   DEST="$DEST_DIR/$2"
 
   if ! [[ -d "$DEST_DIR" ]]; then
-    mkdir "$1" > /dev/null
+    mkdir "$DEST_DIR" &> /dev/null
   fi
-  rm "$DEST" > /dev/null
+  rm "$DEST" &> /dev/null
 
   ln -s "$SRC" "$DEST"
 }
