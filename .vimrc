@@ -140,6 +140,7 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'mattn/emmet-vim'
 Plug 'dense-analysis/ale'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'codehearts/mascara-vim'
 Plug 'lambdalisue/suda.vim'
 
 if has('nvim')
@@ -177,6 +178,8 @@ inoremap <silent><expr> <TAB>
 colo seoul256
 let g:seoul256_srgb = 1
 let g:airline_theme='seoul256'
+set t_ZH=[3m
+set t_ZR=[23m
 
 " Configure Airline
 let g:airline_powerline_fonts = 1
