@@ -178,8 +178,13 @@ inoremap <silent><expr> <TAB>
 colo seoul256
 let g:seoul256_srgb = 1
 let g:airline_theme='seoul256'
-set t_ZH=[3m
-set t_ZR=[23m
+
+" Setup italics for VictorMono
+highlight Comment cterm=italic
+highlight Identifier cterm=italic
+highlight Type cterm=italic
+highlight htmlItalic cterm=italic
+highlight markdownItalic cterm=italic
 
 " Configure Airline
 let g:airline_powerline_fonts = 1
