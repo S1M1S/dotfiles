@@ -139,7 +139,6 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'mattn/emmet-vim'
 Plug 'dense-analysis/ale'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'codehearts/mascara-vim'
 Plug 'lambdalisue/suda.vim'
 
 if has('nvim')
