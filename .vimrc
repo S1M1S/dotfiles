@@ -61,12 +61,16 @@ inoremap jk <Esc>
 " vv to generate new vertical split
 nnoremap <silent> vv <C-w>v
 
+" press enter to remove highlighting
+nnoremap <silent> <CR> :nohlsearch<CR><CR>
+
 " Rust checking and running
 nnoremap <leader>cc :w<CR>:!cargo check<CR>
 nnoremap <leader>cr :w<CR>:!cargo run<CR>
 nnoremap <leader>ct :w<CR>:!cargo test<CR>
 
-nnoremap <silent> <CR> :nohlsearch<CR><CR>
+" Yank entire file into system clipboard
+nnoremap <leader>ya gg"*yG<C-o>
 
 " IDK why I put this here but oh well
 filetype plugin on
