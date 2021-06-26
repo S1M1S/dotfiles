@@ -107,7 +107,6 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-ragtag'
 
-Plug 'ryanoasis/vim-devicons'
 Plug 'christoomey/vim-tmux-navigator'
 
 " Color scheme
@@ -115,6 +114,7 @@ if !has ('nvim')
   " Plug 'junegunn/seoul256.vim'
   " Plug 'vim-airline/vim-airline'
   " Plug 'vim-airline/vim-airline-themes'
+  Plug 'ryanoasis/vim-devicons'
 
   colo seoul256
   let g:seoul256_srgb = 1

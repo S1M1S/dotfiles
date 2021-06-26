@@ -18,6 +18,8 @@ call plug#begin(stdpath('data') . '/plugged')
 " Cosmetics
 Plug 'shaunsingh/seoul256.nvim'
 Plug 'hoob3rt/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'romgrk/barbar.nvim'
 
 " Allow write readonly
 Plug 'lambdalisue/suda.vim'
@@ -39,9 +41,9 @@ Plug 'hrsh7th/nvim-compe'
 let g:compe = {}
 let g:compe.enabled = v:true
 let g:compe.source = {
+      \ 'nvim_lsp': v:true,
       \ 'buffer': v:true,
       \ 'spell': v:true,
-      \ 'nvim_lsp': v:true,
       \ }
 set pumblend=10
 
@@ -50,11 +52,11 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
-nnoremap <C-p> <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>n <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+nnoremap <C-p>      <cmd>lua require('telescope.builtin').git_files()<cr>
+nnoremap <leader>pp <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>pg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>pb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>ph <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 source ~/.vimrc
 
