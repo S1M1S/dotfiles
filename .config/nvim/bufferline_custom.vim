@@ -137,7 +137,10 @@ let bufferline.clickable = v:true
 let bufferline.icons = v:true
 " Sets the icon's highlight group.
 " If false, will use nvim-web-devicons colors
-let bufferline.icon_custom_colors = v:false
+let bufferline.icon_custom_colors = v:true
+
+let bufferline.icon_separator_active = '│ '
+let bufferline.icon_separator_inactive = '│ '
 
 let bufferline.letters =
   \ 'aoeuidhtnsAOEUIDHTNS'

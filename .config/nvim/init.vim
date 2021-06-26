@@ -20,7 +20,7 @@ Plug 'shaunsingh/seoul256.nvim'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
-let g:nvim_tree_width = 40
+let g:nvim_tree_width = 39
 
 " Allow write readonly
 Plug 'lambdalisue/suda.vim'

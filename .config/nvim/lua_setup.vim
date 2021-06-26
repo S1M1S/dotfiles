@@ -62,6 +62,7 @@ vim.g.seoul256_italic_comments = true
 vim.g.seoul256_italic_keywords = true
 vim.g.seoul256_italic_functions = true
 vim.g.seoul256_disable_background = true
+vim.g.seoul256_italic_variables = true
 require("seoul256").set()
 
 require("lualine").setup {

@@ -80,7 +80,6 @@ nnoremap <leader>pg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>pb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>ph <cmd>lua require('telescope.builtin').help_tags()<cr>
 
-
 " Easily write
 nnoremap <leader>w :w<CR>
 
@@ -103,6 +102,11 @@ nnoremap <leader>ct :w<CR>:!cargo test<CR>
 
 " Yank entire file into system clipboard
 nnoremap <leader>ya gg"*yG<C-o>
+
+" Show highlighting under cursor
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " ================ Rusty Tags =======================
 
@@ -127,24 +131,17 @@ Plug 'christoomey/vim-tmux-navigator'
 
 " Color scheme
 if !has ('nvim')
-  " Plug 'junegunn/seoul256.vim'
-  " Plug 'vim-airline/vim-airline'
-  " Plug 'vim-airline/vim-airline-themes'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
   Plug 'ryanoasis/vim-devicons'
-
-  colo seoul256
+  Plug 'junegunn/seoul256.vim'
   let g:seoul256_srgb = 1
   let g:airline_theme='seoul256'
   hi Normal guibg=NONE ctermbg=NONE
+
+  colo seoul256
 
   " Configure Airline
   let g:airline_powerline_fonts = 1
   let g:airline#extensions#tabline#enabled = 1
 endif
-
-" Setup italics for VictorMono
-highlight Comment         cterm=italic
-highlight Identifier      cterm=italic
-highlight Type            cterm=italic
-highlight htmlItalic      cterm=italic
-highlight markdownItalic  cterm=italic
