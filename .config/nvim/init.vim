@@ -19,8 +19,8 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'shaunsingh/seoul256.nvim'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'romgrk/barbar.nvim'
-let g:nvim_tree_width = 39
+Plug 'akinsho/nvim-bufferline.lua'
+let g:nvim_tree_width = 40
 
 " Allow write readonly
 Plug 'lambdalisue/suda.vim'
@@ -47,7 +47,7 @@ let g:compe.source = {
       \ 'buffer': v:true,
       \ 'spell': v:true,
       \ }
-set pumblend=10
+set pumblend=15
 
 " Set up project searching with telescope
 Plug 'nvim-lua/popup.nvim'
@@ -65,6 +65,8 @@ source ~/.vimrc
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
+" Needed for bufferline
+set termguicolors
+
 " Put a bunch of lua setup after the plug end call
 source ~/dotfiles/.config/nvim/lua_setup.vim
-source ~/dotfiles/.config/nvim/bufferline_custom.vim

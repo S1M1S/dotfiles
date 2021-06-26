@@ -64,14 +64,16 @@ endif
 " Set mapleader
 let mapleader=","
 
-" Set up barbar shortcuts
-nnoremap <silent> <A-,> <CMD>BufferPrevious<CR>
-nnoremap <silent> <A-.> <CMD>BufferNext<CR>
-nnoremap <silent> <A-<> :BufferMovePrevious<CR>
-nnoremap <silent> <A->> :BufferMoveNext<CR>
-nnoremap <silent> <A-c> <CMD>BufferClose<CR>
-nnoremap <silent> <leader>bo <CMD>BufferOrderByDirectory<CR>
-nnoremap <silent> <leader>s  <CMD>BufferPick<CR>
+" Set up bufferline shortcuts
+nnoremap <silent> <A-,> :BufferLineCyclePrev<CR>
+nnoremap <silent> <A-.> :BufferLineCycleNext<CR>
+nnoremap <silent> <A-<> :BufferLineMovePrev<CR>
+nnoremap <silent> <A->> :BufferLineMoveNext<CR>
+nnoremap <silent> <A-s> :BufferLineSortByExtension<CR>
+nnoremap <silent> <A-c>c     :BufferClose<CR>
+nnoremap <silent> <A-c>l     :BufferLineCloseRight<CR>
+nnoremap <silent> <A-c>h     :BufferLineCloseLeft<CR>
+nnoremap <silent> <leader>s  :BufferLinePick<CR>
 
 " Set up telescope shortcuts
 nnoremap <C-p>      <cmd>lua require('telescope.builtin').git_files()<cr>
@@ -79,6 +81,10 @@ nnoremap <leader>pp <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>pg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>pb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>ph <cmd>lua require('telescope.builtin').help_tags()<cr>
+
+" Set up nvim-tree shortcuts
+nnoremap <leader>t :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
 
 " Easily write
 nnoremap <leader>w :w<CR>

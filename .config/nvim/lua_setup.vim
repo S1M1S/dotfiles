@@ -12,7 +12,6 @@ local check_back_space = function()
     return false
   end
 end
-
 -- Use (s-)tab to:
 --- move to prev/next item in completion menuone
 --- jump to prev/next snippet's placeholder
@@ -27,7 +26,6 @@ _G.tab_complete = function()
     return vim.fn['compe#complete']()
   end
 end
-
 _G.s_tab_complete = function()
   if vim.fn.pumvisible() == 1 then
     return t "<C-p>"
@@ -38,7 +36,6 @@ _G.s_tab_complete = function()
     return t "<S-Tab>"
   end
 end
-
 vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
@@ -52,16 +49,14 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 require("lspconfig").html.setup {
   capabilities = capabilities
 }
-
-vim.lsp.set_log_level("debug")
 require("lspconfig").solargraph.setup{
   capabilities = capabilities,
 }
 
+--Cosmetics
 vim.g.seoul256_italic_comments = true
 vim.g.seoul256_italic_keywords = true
 vim.g.seoul256_italic_functions = true
-vim.g.seoul256_disable_background = true
 vim.g.seoul256_italic_variables = true
 require("seoul256").set()
 
@@ -75,24 +70,13 @@ require'nvim-web-devicons'.setup {
   default = true;
 }
 
-local tree = {}
-tree.open = function ()
-  require'nvim-tree'.find_file(true)
-  require'bufferline.state'.set_offset(40, 'FileTree')
-end
-tree.close = function ()
-  require'nvim-tree'.close()
-  require'bufferline.state'.set_offset(0)
-end
-tree.closed = true
-_G.tree_toggle = function()
-  if tree.closed == true then
-    tree.open()
-    tree.closed = false
-  else
-    tree.close()
-    tree.closed = true
-  end
-end
-vim.api.nvim_set_keymap("n", "<leader>t", "v:lua tree_toggle()<CR>", {noremap = true})
+require("bufferline").setup{
+  options = {
+    diagnostics = "nvim_lsp",
+    offsets = {{filetype = "NvimTree", text = "File Explorer", highlight = "Directory"}},
+    separator_style = "thin",
+    sort_by = "extension",
+  }
+}
+
 EOF
