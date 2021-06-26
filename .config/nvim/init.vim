@@ -21,6 +21,11 @@ Plug 'hoob3rt/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 
+" Set up barbar shortcuts
+nnoremap <leader>bd  :BufferClose<CR>
+nnoremap <leader>bo  :BufferOrderByDirectory<CR>
+nnoremap <leader>bs  :BufferPick<CR>
+
 " Allow write readonly
 Plug 'lambdalisue/suda.vim'
 cnoremap w!! SudaWrite

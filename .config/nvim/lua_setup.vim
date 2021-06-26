@@ -56,7 +56,6 @@ require("lspconfig").html.setup {
 vim.lsp.set_log_level("debug")
 require("lspconfig").solargraph.setup{
   capabilities = capabilities,
-  cmd = { "~/.rbenv/versions/3.0.1/bin/solargraph", "stdio" }
 }
 
 vim.g.seoul256_italic_comments = true
