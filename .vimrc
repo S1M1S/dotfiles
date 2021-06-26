@@ -64,18 +64,34 @@ endif
 " Set mapleader
 let mapleader=","
 
-" Move between buffers like tabs
-nnoremap gb :bn<CR>
-nnoremap gB :bp<CR>
+" Set up barbar shortcuts
+nnoremap <silent> <A-,> <CMD>BufferPrevious<CR>
+nnoremap <silent> <A-.> <CMD>BufferNext<CR>
+nnoremap <silent> <A-<> :BufferMovePrevious<CR>
+nnoremap <silent> <A->> :BufferMoveNext<CR>
+nnoremap <silent> <A-c> <CMD>BufferClose<CR>
+nnoremap <silent> <leader>bo <CMD>BufferOrderByDirectory<CR>
+nnoremap <silent> <leader>s  <CMD>BufferPick<CR>
+
+" Set up telescope shortcuts
+nnoremap <C-p>      <cmd>lua require('telescope.builtin').git_files()<cr>
+nnoremap <leader>pp <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>pg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>pb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>ph <cmd>lua require('telescope.builtin').help_tags()<cr>
+
 
 " Easily write
-nnoremap <leader>w :w
+nnoremap <leader>w :w<CR>
 
 " No escape
 inoremap jk <Esc>
 
 " vv to generate new vertical split
 nnoremap <silent> <leader>vv <C-w>v
+
+" Ctrl+w to create a new tab page
+nnoremap <silent> <C-w>n <CMD>tabnew<CR>
 
 " press enter to remove highlighting
 nnoremap <silent> <CR> :nohlsearch<CR><CR>

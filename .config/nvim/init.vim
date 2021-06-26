@@ -20,11 +20,7 @@ Plug 'shaunsingh/seoul256.nvim'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
-
-" Set up barbar shortcuts
-nnoremap <leader>bd  :BufferClose<CR>
-nnoremap <leader>bo  :BufferOrderByDirectory<CR>
-nnoremap <leader>bs  :BufferPick<CR>
+let g:nvim_tree_width = 40
 
 " Allow write readonly
 Plug 'lambdalisue/suda.vim'
@@ -42,10 +38,11 @@ Plug 'rafamadriz/friendly-snippets'
 " Have to set this in order for tab completion to work
 set completeopt=menuone,noselect
 Plug 'hrsh7th/nvim-compe'
-" Plug 'tzachar/compe-tabnine', { 'do': './install.sh' }
+Plug 'tzachar/compe-tabnine', { 'do': './install.sh' }
 let g:compe = {}
 let g:compe.enabled = v:true
 let g:compe.source = {
+      \ 'tabnine': v:true,
       \ 'nvim_lsp': v:true,
       \ 'buffer': v:true,
       \ 'spell': v:true,
@@ -57,11 +54,11 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
-nnoremap <C-p>      <cmd>lua require('telescope.builtin').git_files()<cr>
-nnoremap <leader>pp <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>pg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>pb <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>ph <cmd>lua require('telescope.builtin').help_tags()<cr>
+" Project tree
+Plug 'kyazdani42/nvim-tree.lua'
+
+" Misc, handy for development
+Plug 'famiu/nvim-reload'
 
 source ~/.vimrc
 
@@ -69,4 +66,5 @@ source ~/.vimrc
 call plug#end()
 
 " Put a bunch of lua setup after the plug end call
-source ~/.config/nvim/lua_setup.vim
+source ~/dotfiles/.config/nvim/lua_setup.vim
+source ~/dotfiles/.config/nvim/bufferline_custom.vim
