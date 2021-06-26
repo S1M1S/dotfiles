@@ -40,7 +40,6 @@ if [[ "$1" == "link" ]]; then
 
   configlink "kitty" "kitty.conf"
   configlink "nvim" "init.vim"
-  configlink "nvim" "lua_setup.vim"
 
 elif [[ "$1" == "update" || "$1" == "up" ]]; then
   # dot update
