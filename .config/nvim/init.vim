@@ -15,10 +15,6 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 " Plugins will be downloaded under the specified directory.
 call plug#begin(stdpath('data') . '/plugged')
 
-" Plug 'nelstrom/vim-textobj-rubyblock'
-" Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-" Plug 'dense-analysis/ale'
-
 " Cosmetics
 Plug 'shaunsingh/seoul256.nvim'
 Plug 'hoob3rt/lualine.nvim'
@@ -47,11 +43,18 @@ let g:compe.source = {
       \ 'spell': v:true,
       \ 'nvim_lsp': v:true,
       \ }
+set pumblend=10
 
 " Set up project searching with telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+
+nnoremap <C-p> <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>n <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 source ~/.vimrc
 
