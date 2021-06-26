@@ -42,9 +42,10 @@ Plug 'tzachar/compe-tabnine', { 'do': './install.sh' }
 let g:compe = {}
 let g:compe.enabled = v:true
 let g:compe.source = {
-      \ 'tabnine': v:true,
       \ 'nvim_lsp': v:true,
+      \ 'vim-vsnip': v:true,
       \ 'buffer': v:true,
+      \ 'tabnine': v:true,
       \ 'spell': v:true,
       \ }
 set pumblend=15
@@ -70,3 +71,4 @@ set termguicolors
 
 " Put a bunch of lua setup after the plug end call
 source ~/dotfiles/.config/nvim/lua_setup.vim
+source ~/dotfiles/.config/nvim/lsp.vim

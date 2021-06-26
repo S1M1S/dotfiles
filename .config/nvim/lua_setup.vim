@@ -41,17 +41,6 @@ vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
---Setup for Neovim LSP
---Enable (broadcasting) snippet capability for completion
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-require("lspconfig").html.setup {
-  capabilities = capabilities
-}
-require("lspconfig").solargraph.setup{
-  capabilities = capabilities,
-}
 
 --Cosmetics
 vim.g.seoul256_italic_comments = true
