@@ -1,9 +1,25 @@
-lua << EOF
+require'compe'.setup {
+  enabled = true,
+  autocomplete = true,
+  min_length = 1,
+  preselect = 'enable',
+  max_abbr_width = 100,
+  max_kind_width = 100,
+  max_menu_width = 100,
+  documentation = true,
+
+  source = {
+    path = true,
+    buffer = true,
+    nvim_lsp = true,
+    nvim_lua = true,
+    vsnip = true,
+  },
+}
 -- set up tab completion for nvim-compe
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
-
 local check_back_space = function()
   local col = vim.fn.col('.') - 1
   if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
@@ -40,7 +56,8 @@ vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-
+vim.api.nvim_set_keymap("s", "<CR>",    "v:compe#confirm('<CR>')", {expr = true, silent = true})
+vim.api.nvim_set_keymap("s", "<leader>c",    "v:compe#close('<leader>c')", {expr = true, silent = true})
 
 --Cosmetics
 vim.g.seoul256_italic_comments = true
@@ -59,7 +76,7 @@ require'nvim-web-devicons'.setup {
   default = true;
 }
 
-require("bufferline").setup{
+require("bufferline").setup {
   options = {
     diagnostics = "nvim_lsp",
     offsets = {{filetype = "NvimTree", text = "File Explorer", highlight = "Directory"}},
@@ -68,4 +85,6 @@ require("bufferline").setup{
   }
 }
 
-EOF
+require("telescope").setup {
+  winblend = 15
+}

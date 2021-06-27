@@ -1,4 +1,4 @@
-set runtimepath^=~/.vim runtimepath+=~/.vim/after
+set runtimepath^=~/.vim runtimepath+=~/dotfiles/.config/nvim
 let &packpath = &runtimepath
 
 " Install vim-plug if not found
@@ -31,24 +31,13 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Set up snippets!
+Plug 'rafamadriz/friendly-snippets'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
-Plug 'rafamadriz/friendly-snippets'
-
+Plug 'hrsh7th/nvim-compe'
+set pumblend=25
 " Have to set this in order for tab completion to work
 set completeopt=menuone,noselect
-Plug 'hrsh7th/nvim-compe'
-Plug 'tzachar/compe-tabnine', { 'do': './install.sh' }
-let g:compe = {}
-let g:compe.enabled = v:true
-let g:compe.source = {
-      \ 'nvim_lsp': v:true,
-      \ 'vim-vsnip': v:true,
-      \ 'buffer': v:true,
-      \ 'tabnine': v:true,
-      \ 'spell': v:true,
-      \ }
-set pumblend=15
 
 " Set up project searching with telescope
 Plug 'nvim-lua/popup.nvim'
@@ -70,5 +59,5 @@ call plug#end()
 set termguicolors
 
 " Put a bunch of lua setup after the plug end call
-source ~/dotfiles/.config/nvim/lua_setup.vim
+lua require('setup')
 source ~/dotfiles/.config/nvim/lsp.vim

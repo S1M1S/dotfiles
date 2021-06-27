@@ -5,13 +5,20 @@ local nvim_lsp = require('lspconfig')
 --Enable (broadcasting) snippet capability for completion
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    'documentation',
+    'detail',
+    'additionalTextEdits',
+  }
+}
 
 require("lspconfig").html.setup {
   capabilities = capabilities,
+  filetypes = { "html", "erb" },
 }
 require("lspconfig").solargraph.setup{
   capabilities = capabilities,
-  filetypes = { "html", "erb" },
 }
 
 -- Use an on_attach function to only map the following keys 
