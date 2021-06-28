@@ -52,12 +52,12 @@ _G.s_tab_complete = function()
     return t "<S-Tab>"
   end
 end
-vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<CR>",    "v:compe#confirm('<CR>')", {expr = true, silent = true})
-vim.api.nvim_set_keymap("s", "<leader>c",    "v:compe#close('<leader>c')", {expr = true, silent = true})
+vim.api.nvim_set_keymap("i", "<Tab>",     "v:lua.tab_complete()",       {expr = true})
+vim.api.nvim_set_keymap("s", "<Tab>",     "v:lua.tab_complete()",       {expr = true})
+vim.api.nvim_set_keymap("i", "<S-Tab>",   "v:lua.s_tab_complete()",     {expr = true})
+vim.api.nvim_set_keymap("s", "<S-Tab>",   "v:lua.s_tab_complete()",     {expr = true})
+vim.api.nvim_set_keymap("i", "<CR>",      "compe#confirm('<CR>')",      {expr = true, silent = true})
+vim.api.nvim_set_keymap("i", "<leader>c", "compe#close('<leader>c')",   {expr = true, silent = true})
 
 --Cosmetics
 vim.g.seoul256_italic_comments = true

@@ -28,6 +28,7 @@ cnoremap w!! SudaWrite
 
 " Parsing
 Plug 'neovim/nvim-lspconfig'
+Plug 'ray-x/lsp_signature.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Set up snippets!
@@ -38,6 +39,9 @@ Plug 'hrsh7th/nvim-compe'
 set pumblend=25
 " Have to set this in order for tab completion to work
 set completeopt=menuone,noselect
+" allow HTML snippets in .html.erb
+let g:vsnip_filetypes = {}
+let g:vsnip_filetypes.eruby = ['html']
 
 " Set up project searching with telescope
 Plug 'nvim-lua/popup.nvim'

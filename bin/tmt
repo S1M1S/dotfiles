@@ -1,0 +1,6 @@
+WEBDEV="$HOME/smb/webdev"
+
+if [[ "$1" == "colab" ]]; then
+  echo "Taking you to: $WEBDEV/colab"
+  cd "$WEBDEV/colab"
+fi
