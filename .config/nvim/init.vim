@@ -24,6 +24,9 @@ Plug 'tpope/vim-ragtag'
 " Tmux
 Plug 'christoomey/vim-tmux-navigator'
 
+" Emmet for <C-y>, emmeting
+Plug 'mattn/emmet-vim'
+
 " Cosmetics
 Plug 'shaunsingh/seoul256.nvim'
 Plug 'hoob3rt/lualine.nvim'
@@ -146,6 +149,7 @@ nnoremap <leader>r :NvimTreeRefresh<CR>
 
 " Easily write
 nnoremap <leader>w :w<CR>
+nnoremap <leader>s :mks!<CR>
 
 " No escape
 inoremap jk <Esc>
