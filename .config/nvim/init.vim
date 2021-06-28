@@ -63,8 +63,6 @@ Plug 'kyazdani42/nvim-tree.lua'
 " Misc, handy for development
 Plug 'famiu/nvim-reload'
 
-source ~/.vimrc
-
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
@@ -130,7 +128,7 @@ nnoremap <silent> <A-.> :BufferLineCycleNext<CR>
 nnoremap <silent> <A-<> :BufferLineMovePrev<CR>
 nnoremap <silent> <A->> :BufferLineMoveNext<CR>
 nnoremap <silent> <A-s> :BufferLineSortByExtension<CR>
-nnoremap <silent> <A-c>c     :BufferClose<CR>
+nnoremap <silent> <A-c>c     :bp\|bd %<CR>
 nnoremap <silent> <A-c>l     :BufferLineCloseRight<CR>
 nnoremap <silent> <A-c>h     :BufferLineCloseLeft<CR>
 nnoremap <silent> <leader>s  :BufferLinePick<CR>
@@ -153,7 +151,7 @@ nnoremap <leader>w :w<CR>
 inoremap jk <Esc>
 
 " vv to generate new vertical split
-nnoremap <silent> <leader>vv <C-w>v
+nnoremap <silent> vv <C-w>v
 
 " Ctrl+w to create a new tab page
 nnoremap <silent> <C-w>n <CMD>tabnew<CR>
