@@ -131,7 +131,7 @@ nnoremap <silent> <A-.> :BufferLineCycleNext<CR>
 nnoremap <silent> <A-<> :BufferLineMovePrev<CR>
 nnoremap <silent> <A->> :BufferLineMoveNext<CR>
 nnoremap <silent> <A-s> :BufferLineSortByExtension<CR>
-nnoremap <silent> <A-c>c     :bp\|bd %<CR>
+nnoremap <silent> <A-c>c     :bp\|bd #<CR>
 nnoremap <silent> <A-c>l     :BufferLineCloseRight<CR>
 nnoremap <silent> <A-c>h     :BufferLineCloseLeft<CR>
 nnoremap <silent> <leader>s  :BufferLinePick<CR>
