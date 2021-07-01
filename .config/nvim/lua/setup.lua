@@ -1,4 +1,4 @@
-require'compe'.setup {
+require('compe').setup {
   enabled = true,
   autocomplete = true,
   min_length = 1,
@@ -9,13 +9,20 @@ require'compe'.setup {
   documentation = true,
 
   source = {
-    path = true,
+    vsnip = true,
     buffer = true,
     nvim_lsp = true,
-    nvim_lua = true,
-    vsnip = true,
+    spell = true,
+    path = true,
   },
 }
+
+require('nvim-autopairs').setup()
+require("nvim-autopairs.completion.compe").setup({
+  map_cr = true, --  map <CR> on insert mode
+  map_complete = true -- it will auto insert `(` after select function or method item
+})
+
 -- set up tab completion for nvim-compe
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
@@ -56,14 +63,13 @@ vim.api.nvim_set_keymap("i", "<Tab>",     "v:lua.tab_complete()",       {expr = 
 vim.api.nvim_set_keymap("s", "<Tab>",     "v:lua.tab_complete()",       {expr = true})
 vim.api.nvim_set_keymap("i", "<S-Tab>",   "v:lua.s_tab_complete()",     {expr = true})
 vim.api.nvim_set_keymap("s", "<S-Tab>",   "v:lua.s_tab_complete()",     {expr = true})
-vim.api.nvim_set_keymap("i", "<CR>",      "compe#confirm('<CR>')",      {expr = true, silent = true})
+-- vim.api.nvim_set_keymap("i", "<CR>",      "compe#confirm('<CR>')",      {expr = true, silent = true})
 vim.api.nvim_set_keymap("i", "<leader>c", "compe#close('<leader>c')",   {expr = true, silent = true})
 
 --Cosmetics
 vim.g.seoul256_italic_comments = true
 vim.g.seoul256_italic_keywords = true
 vim.g.seoul256_italic_functions = true
-vim.g.seoul256_italic_variables = true
 require("seoul256").set()
 
 require("lualine").setup {
@@ -72,7 +78,7 @@ require("lualine").setup {
   }
 }
 
-require'nvim-web-devicons'.setup {
+require('nvim-web-devicons').setup {
   default = true;
 }
 
@@ -85,6 +91,12 @@ require("bufferline").setup {
   }
 }
 
-require("telescope").setup {
-  winblend = 15
+require("telescope").setup{
+  defaults = {
+    winblend = 10
+  }
+}
+
+require('shade').setup{
+  overlay_opacity = 70,
 }

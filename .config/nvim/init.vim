@@ -32,6 +32,7 @@ Plug 'shaunsingh/seoul256.nvim'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'akinsho/nvim-bufferline.lua'
+Plug 'sunjon/shade.nvim'
 let g:nvim_tree_width = 40
 
 " Allow write readonly
@@ -48,6 +49,8 @@ Plug 'rafamadriz/friendly-snippets'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'hrsh7th/nvim-compe'
+Plug 'tzachar/compe-tabnine', { 'do': './install.sh' }
+Plug 'windwp/nvim-autopairs'
 set pumblend=25
 " Have to set this in order for tab completion to work
 set completeopt=menuone,noselect
@@ -60,6 +63,9 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
+" Racing around docs
+Plug 'ggandor/lightspeed.nvim'
+
 " Project tree
 Plug 'kyazdani42/nvim-tree.lua'
 
@@ -70,6 +76,9 @@ Plug 'famiu/nvim-reload'
 call plug#end()
 
 " ================ General =====================
+
+" Catch typos
+set spell spelllang=en_au,en_us
 
 " More natural defaults for opening splits
 set splitbelow
@@ -104,7 +113,7 @@ set shiftwidth=2
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
 
-" Handle linewrapping
+" Handle line wrapping
 set nowrap       "Don't wrap lines
 set linebreak    "Wrap lines at convenient points
 
@@ -150,6 +159,9 @@ nnoremap <leader>r :NvimTreeRefresh<CR>
 " Easily write
 nnoremap <leader>w :w<CR>
 nnoremap <leader>s :mks!<CR>
+
+" Turn spell checking on and off
+nnoremap <silent> <F8> :set spell!<CR>
 
 " No escape
 inoremap jk <Esc>
