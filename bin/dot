@@ -32,7 +32,7 @@ function configlink {
 if [[ "$1" == "link" ]]; then
   # dot link
 
-  LINKS=(".vim" ".vimrc" ".zshrc" ".tmux.conf" "bin")
+  LINKS=(".vim" ".vimrc" ".zshrc" ".tmux.conf")
   for l in $LINKS[@]
   do
     clink "$l"

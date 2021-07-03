@@ -9,11 +9,10 @@ require('compe').setup {
   documentation = true,
 
   source = {
-    vsnip = true,
-    buffer = true,
     nvim_lsp = true,
-    spell = true,
     path = true,
+    buffer = true,
+    vsnip = true,
   },
 }
 
