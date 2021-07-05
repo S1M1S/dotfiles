@@ -50,7 +50,6 @@ Plug 'rafamadriz/friendly-snippets'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'hrsh7th/nvim-compe'
-Plug 'tzachar/compe-tabnine', { 'do': './install.sh' }
 Plug 'windwp/nvim-autopairs'
 set pumblend=25
 " Have to set this in order for tab completion to work
