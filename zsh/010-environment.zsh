@@ -19,7 +19,7 @@ export ZSHRC_CONFIG="$DOTFILES/zsh"
 export ZSHRC_CONFIG_ALIASES="$ZSH_CONFIG/aliases.zsh"
 
 # source iterm shell integration if we're using iterm2
-if [ "$TERM" = "xterm-256color"]; then
+if [ "$TERM" = "xterm-256color" ]; then
   test -e "$DF_LOCAL/iterm2.zsh" && source "$DF_LOCAL/iterm2.zsh"
 fi
 
