@@ -1,5 +1,25 @@
 # Fix incorrect locale on SSH
 export LANG=en_AU.UTF-8
+export DOTFILES="$HOME/dotfiles"
+
+# source local variables
+locals=(~/dotfiles/local/*.zsh(N))
+if (($#sources != 0)); then
+  for file in $locals; do
+    source "$file"
+  done
+fi
+
+# source environment variables
+sources=(~/profile.d/*.sh(N))
+if (($#sources != 0)); then
+  for file in $sources; do
+    source "$file"
+  done
+fi
+
+# source custom aliases
+source ~/dotfiles/zsh/aliases.zsh
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -30,16 +50,6 @@ fi
 # start up nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-# source environment variables
-if [ -d "$HOME/profile.d" ]; then
-  for file in ~/profile.d/*; do
-    source "$file"
-  done
-fi
-
-# source custom aliases
-source ~/dotfiles/.zsh_aliases
 
 #Oh My ZSH stuff
 HISTFILE=~/.histfile
