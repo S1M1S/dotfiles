@@ -1,3 +1,4 @@
 **
-!.gitignore
-!README*
+!/.gitignore
+!/iterm2.zsh
+!/README*

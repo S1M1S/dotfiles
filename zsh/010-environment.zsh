@@ -1,5 +1,9 @@
 # easily locate the dotfiles folder
 export DOTFILES="$HOME/dotfiles"
+export DF_CONFIG="$DOTFILES/.config"
+export DF_LOCAL="$DOTFILES/local"
+
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # set up paths
 export PATH="$HOME/bin:$PATH"
@@ -13,6 +17,11 @@ export EDITOR="nvim"
 export ZSHRC="$DOTFILES/.zshrc"
 export ZSHRC_CONFIG="$DOTFILES/zsh"
 export ZSHRC_CONFIG_ALIASES="$ZSH_CONFIG/aliases.zsh"
+
+# source iterm shell integration if we're using iterm2
+if [ "$TERM" = "xterm-256color"]; then
+  test -e "$DF_LOCAL/iterm2.zsh" && source "$DF_LOCAL/iterm2.zsh"
+fi
 
 # start up cargo
 if [ -f "$HOME/.cargo/env" ]; then
@@ -28,4 +37,3 @@ fi
 # start up nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
