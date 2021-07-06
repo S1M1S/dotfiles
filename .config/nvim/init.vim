@@ -124,6 +124,9 @@ set list listchars=tab:\ \ ,trail:·
 set nowrap       "Don't wrap lines
 set linebreak    "Wrap lines at convenient points
 
+" Set scroll offset
+set scrolloff=5
+
 " if the vim window is resized, automatically adjust splits
 au VimResized * wincmd =
 
