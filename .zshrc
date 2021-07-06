@@ -24,6 +24,13 @@ if command -v rbenv &> /dev/null; then
   eval "$(rbenv init -)"
 fi
 
+# source environment variables
+if [ -d "$HOME/profile.d" ]; then
+  for file in ~/profile.d/*; do
+    source "$file"
+  done
+fi
+
 # source custom aliases
 source ~/dotfiles/.zsh_aliases
 
@@ -50,6 +57,10 @@ zplug "zsh-users/zsh-syntax-highlighting"
 zplug "plugins/git",        from:oh-my-zsh
 zplug "plugins/rails",      from:oh-my-zsh
 zplug "plugins/bg-notify",  from:oh-my-zsh
+
+# Better vi mode for zsh
+zplug "jeffreytse/zsh-vi-mode"
+ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check; then
