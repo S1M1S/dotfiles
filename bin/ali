@@ -7,7 +7,7 @@ refresh() {
     exit 1
   fi
 
-  source "$DF/.zsh_aliases"
+  source "$ZSHRC"
   echo "Freshed up!"
 }
 
@@ -17,7 +17,7 @@ if [[ "$1" == "add" ]]; then
   refresh
 
 elif [[ "$1" == "ed" || "$1" == "edit" ]]; then
-  $EDITOR "$DF/.zsh_aliases"
+  $EDITOR "$ZSH_CONFIG_ALIASES"
   refresh
 
 elif [[ "$1" == "refresh" || "$1" == "ref" ]]; then

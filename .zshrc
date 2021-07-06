@@ -1,11 +1,10 @@
 # Fix incorrect locale on SSH
 export LANG=en_AU.UTF-8
-export DOTFILES="$HOME/dotfiles"
 
 # source local variables
-locals=(~/dotfiles/local/*.zsh(N))
+sources=(~/dotfiles/local/*.zsh(N))
 if (($#sources != 0)); then
-  for file in $locals; do
+  for file in $sources; do
     source "$file"
   done
 fi
@@ -18,8 +17,13 @@ if (($#sources != 0)); then
   done
 fi
 
-# source custom aliases
-source ~/dotfiles/zsh/aliases.zsh
+# source zsh settings
+sources=(~/dotfiles/zsh/*.zsh(N))
+if (($#sources != 0)); then
+  for file in $sources; do
+    source "$file"
+  done
+fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -27,29 +31,6 @@ source ~/dotfiles/zsh/aliases.zsh
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-# If you come from bash you might have to change your $PATH.
-export PATH="$HOME/bin:$PATH"
-export PATH="$HOME/dotfiles/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-
-# export editor so that it's picked up by all my devices
-export EDITOR="nvim"
-
-# start up cargo
-if [ -f "$HOME/.cargo/env" ]; then
-  source "$HOME/.cargo/env"
-fi
-
-# start up rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-if command -v rbenv &> /dev/null; then
-  eval "$(rbenv init -)"
-fi
-
-# start up nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 #Oh My ZSH stuff
 HISTFILE=~/.histfile
