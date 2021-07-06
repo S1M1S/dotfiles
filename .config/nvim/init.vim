@@ -28,9 +28,16 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'mattn/emmet-vim'
 
 " Cosmetics
-Plug 'shaunsingh/seoul256.nvim'
-Plug 'hoob3rt/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
+Plug 'bluz71/vim-nightfly-guicolors'
+" Plug 'hoob3rt/lualine.nvim'
+Plug 'bluz71/vim-moonfly-statusline'
+let g:nightflyCursorColor = 1
+let g:moonflyIgnoreDefaultColors = 1
+let g:moonflyWithNvimLspIndicator = 1
+let g:moonflyWithNerdIcon = 1
+let g:moonflyWithGitBranchCharacter = 1
+
 Plug 'akinsho/nvim-bufferline.lua'
 Plug 'sunjon/shade.nvim'
 let g:nvim_tree_width = 40
@@ -190,6 +197,9 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 
 " Needed for bufferline
 set termguicolors
+
+" Set nightfly as colorscheme
+colo nightfly
 
 " Put a bunch of lua setup after the plug end call
 lua require('setup')
