@@ -9,7 +9,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-export PATH="$HOME/bin:$HOME/dotfiles/bin:$HOME/.local/bin:$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/dotfiles/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # export editor so that it's picked up by all my devices
 export EDITOR="nvim"
@@ -20,9 +22,14 @@ if [ -f "$HOME/.cargo/env" ]; then
 fi
 
 # start up rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
 if command -v rbenv &> /dev/null; then
   eval "$(rbenv init -)"
 fi
+
+# start up nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # source environment variables
 if [ -d "$HOME/profile.d" ]; then
