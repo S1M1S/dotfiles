@@ -7,8 +7,9 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 # set up paths
 export PATH="$HOME/bin:$PATH"
-export PATH="$HOME/dotfiles/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/dotfiles/bin:$PATH"
 
 # export editor so that it's picked up by all my devices
 export EDITOR="nvim"
@@ -20,7 +21,7 @@ export ZSHRC_CONFIG_ALIASES="$ZSH_CONFIG/aliases.zsh"
 
 # source iterm shell integration if we're using iterm2
 if [ "$TERM" = "xterm-256color" ]; then
-  test -e "$DF_LOCAL/iterm2.zsh" && source "$DF_LOCAL/iterm2.zsh"
+  test -e "$DF_CONFIG/.iterm2/iterm2.zsh" && source "$DF_CONFIG/.iterm2/iterm2.zsh"
 fi
 
 # start up cargo

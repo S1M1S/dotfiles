@@ -167,6 +167,7 @@ if [[ -o interactive ]]; then
     printf "\033]1337;ShellIntegrationVersion=12;shell=zsh\007"
   fi
 fi
+
 alias imgcat=${DF_CONFIG}/.iterm2/imgcat
 alias imgls=${DF_CONFIG}/.iterm2/imgls
 alias it2api=${DF_CONFIG}/.iterm2/it2api
