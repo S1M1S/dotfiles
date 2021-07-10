@@ -5,15 +5,11 @@
     color: #eee;
     border-radius: 30px;
 }
-
-window {
-	/*font-weight: bold;*/
-}
 window#waybar {
     background: transparent;
 }
 
-/*-----module groups----*/
+/*----module groups----*/
 .modules-right {
     background-color: rgba(0,43,51,0.85);
     margin: 4px;
@@ -27,9 +23,10 @@ window#waybar {
     background-color: rgba(0,119,179,0.4);
     margin: 4px;
 }
-/*-----modules indv----*/
+
+/*----modules individual----*/
 #workspaces button {
-    padding: 0 7px;
+    padding: 0 5px;
     background-color: rgba(0,0,0,0);
 }
 #workspaces button.focused {
