@@ -1,24 +1,21 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
-
 ### Variables
 #
-# Logo key. Use Mod1 for Alt.
-set $mod Ctrl
+# Ctrl key. Use Mod1 for Alt.
+set $mod Mod1 
+
 # Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
+
 # Your preferred terminal emulator
 set $term kitty
+
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu bemenu-run --fn "VictorMono Nerd Font 14" | xargs swaymsg exec --
 
 ### Output configuration
 #
@@ -69,10 +66,10 @@ input "type:keyboard" {
 # Basics:
 #
     # Start a terminal
-    bindsym $mod+Shift+t exec $term
+    bindsym $mod+t exec $term
 
     # Kill focused window
-    bindsym Alt+F4 kill
+    bindsym $mod+F4 kill
 
     # Start your launcher
     bindsym mod4+d exec $menu
@@ -85,24 +82,24 @@ input "type:keyboard" {
     floating_modifier $mod normal
 
     # Reload the configuration file
-    bindsym $mod+Shift+F5 reload
+    bindsym $mod+F5 reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym Alt+Shift+F4 exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+F4 exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 #
 # Moving around:
 #
     # Move your focus around
-    bindsym Mod1+$left focus left
-    bindsym Mod1+$down focus down
-    bindsym Mod1+$up focus up
-    bindsym Mod1+$right focus right
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
 
     # Ditto, with arrow keys
-    bindsym Mod1+Left move left
-    bindsym Mod1+Down move down
-    bindsym Mod1+Up move up
-    bindsym Mod1+Right move right
+    bindsym $mod+Left move left
+    bindsym $mod+Down move down
+    bindsym $mod+Up move up
+    bindsym $mod+Right move right
 #
 # Workspaces:
 #
