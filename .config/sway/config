@@ -85,7 +85,7 @@ input "type:keyboard" {
     bindsym $mod+F5 reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+F4 exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+F4 exec swaynag -t warning -m 'Do you really want to exit sway?' -b 'Yes, exit sway' 'swaymsg exit'
 #
 # Moving around:
 #
@@ -95,7 +95,6 @@ input "type:keyboard" {
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
 
-    # Ditto, with arrow keys
     bindsym $mod+Left move left
     bindsym $mod+Down move down
     bindsym $mod+Up move up
@@ -200,12 +199,6 @@ bar {
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
 }
 
 include ~/.config/sway/config.d/*
