@@ -17,14 +17,10 @@ function clink {
 function configlink {
   echo "linking up: $1"
 
-  SRC="$DF_CONF_DIR/$1/$2"
-  DEST_DIR="$CONF_DIR/$1"
-  DEST="$DEST_DIR/$2"
+  SRC="$DF_CONF_DIR/$1"
+  DEST="$CONF_DIR/$1"
 
-  if ! [[ -d "$DEST_DIR" ]]; then
-    mkdir "$DEST_DIR" &> /dev/null
-  fi
-  rm "$DEST" &> /dev/null
+  rm -r "$DEST" &> /dev/null
 
   ln -s "$SRC" "$DEST"
 }
@@ -32,14 +28,14 @@ function configlink {
 if [[ "$1" == "link" ]]; then
   # dot link
 
-  LINKS=(".vim" ".vimrc" ".zshrc" ".tmux.conf")
-  for l in $LINKS[@]
-  do
+  links=(".zshrc" ".tmux.conf")
+  for l in ${links[@]}; do
     clink "$l"
   done
 
-  configlink "kitty" "kitty.conf"
-  configlink "nvim" "init.vim"
+  configlink "kitty"
+  configlink "nvim"
+  configlink "sway"
 
 elif [[ "$1" == "update" || "$1" == "up" ]]; then
   # dot update
