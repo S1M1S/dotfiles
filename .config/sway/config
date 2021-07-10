@@ -15,7 +15,7 @@ set $term kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu bemenu-run --fn "VictorMono Nerd Font 14" | xargs swaymsg exec --
+set $menu bemenu-run --fn "sans-serif 12" | xargs swaymsg exec --
 
 ### Output configuration
 #
@@ -72,7 +72,7 @@ input "type:keyboard" {
     bindsym $mod+F4 kill
 
     # Start your launcher
-    bindsym mod4+d exec $menu
+    bindsym $mod+d exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
