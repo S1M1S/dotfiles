@@ -36,14 +36,15 @@
     "format-wifi": "{essid} ",
     "format-disconnected": "", 
     "max-length": 50,
-    "on-click": "kitty -e 'nmtui'"
+    "on-click": "kitty -e 'iwctl'"
   },
   "bluetooth": {
     "format": "{icon}",
     "format-icons": {
       "enabled": "",
       "disabled": ""
-    }
+    },
+    "on-click": "kitty -e 'bluetoothctl'"
   },
   "custom/alsa": {
     "exec": "amixer get Master | sed -n 's/.*\\[off\\].*/✗/p; s/.*\\[\\(.*\\%\\)\\].*/\\1 /p'",
