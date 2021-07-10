@@ -33,6 +33,7 @@ if [[ "$1" == "link" ]]; then
     clink "$l"
   done
 
+  configlink "fontconfig"
   configlink "kitty"
   configlink "nvim"
   configlink "sway"
