@@ -1,0 +1,94 @@
+* {
+    border: none;
+    font-family: VictorMono Nerd Font;
+    font-size: 14px;
+    color: #eee;
+    border-radius: 30px;
+}
+
+window {
+	/*font-weight: bold;*/
+}
+window#waybar {
+    background: transparent;
+}
+
+/*-----module groups----*/
+.modules-right {
+    background-color: rgba(0,43,51,0.85);
+    margin: 4px;
+    padding-right: 5px;
+}
+.modules-center {
+    background-color: rgba(0,43,51,0.85);
+    margin: 4px;
+}
+.modules-left {
+    background-color: rgba(0,119,179,0.6);
+    margin: 4px;
+}
+/*-----modules indv----*/
+#workspaces button {
+    padding: 0 7px;
+    background-color: rgba(0,0,0,0);
+}
+#workspaces button:hover {
+    background-color: rgba(0,43,43,0.85);
+}
+
+#workspaces button.focused {
+    background-color: rgba(0,43,51,0.85);
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#network,
+#pulseaudio,
+#custom-media,
+#tray,
+#mode,
+#custom-power,
+#idle_inhibitor {
+    padding: 0 10px;
+}
+#mode {
+    color: #cc3436;
+    font-weight: bold;
+}
+#idle_inhibitor {
+    padding: 0 16px 0 0;
+}
+#temperature {
+    padding-left: 0;
+}
+#battery {
+    padding: 0 20px 0 0;
+}
+#custom-power {
+    background-color: rgb(0,90,130);
+    border-radius: 50%;
+    margin: 3px 0;
+    padding: 3px 10px 3px 6px;
+}
+/*-----Indicators----*/
+#idle_inhibitor.activated {
+    color: #2dcc36;
+}
+#pulseaudio.muted {
+    color: #cc3436;
+}
+#battery.charging {
+    color: #2dcc36;
+}
+#battery.warning:not(.charging) {
+	color: #e6e600;
+}
+#battery.critical:not(.charging) {
+    color: #cc3436;
+}
+#temperature.critical {
+    color: #cc3436;
+}

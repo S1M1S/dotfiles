@@ -37,6 +37,7 @@ if [[ "$1" == "link" ]]; then
   configlink "kitty"
   configlink "nvim"
   configlink "sway"
+  configlink "waybar"
 
 elif [[ "$1" == "update" || "$1" == "up" ]]; then
   # dot update
