@@ -45,7 +45,7 @@ output * bg ~/dotfiles/.config/sway/assets/background.png fill
 #
 # Example configuration:
 #
-input "2821:34050:Asus_TouchPad" {
+input "type:touchpad" {
     dwt enabled
     tap enabled
     natural_scroll enabled

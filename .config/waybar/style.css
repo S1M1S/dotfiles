@@ -1,6 +1,6 @@
 * {
     border: none;
-    font-family: VictorMono Nerd Font;
+    font-family: Roboto, monospace;
     font-size: 14px;
     color: #eee;
     border-radius: 30px;
@@ -17,14 +17,14 @@ window#waybar {
 .modules-right {
     background-color: rgba(0,43,51,0.85);
     margin: 4px;
-    padding-right: 5px;
+    padding-right: 1px;
 }
 .modules-center {
     background-color: rgba(0,43,51,0.85);
     margin: 4px;
 }
 .modules-left {
-    background-color: rgba(0,119,179,0.6);
+    background-color: rgba(0,119,179,0.4);
     margin: 4px;
 }
 /*-----modules indv----*/
@@ -32,10 +32,6 @@ window#waybar {
     padding: 0 7px;
     background-color: rgba(0,0,0,0);
 }
-#workspaces button:hover {
-    background-color: rgba(0,43,43,0.85);
-}
-
 #workspaces button.focused {
     background-color: rgba(0,43,51,0.85);
 }
@@ -46,13 +42,13 @@ window#waybar {
 #memory,
 #temperature,
 #network,
-#pulseaudio,
-#custom-media,
+#bluetooth,
 #tray,
 #mode,
+#custom-alsa,
 #custom-power,
 #idle_inhibitor {
-    padding: 0 10px;
+    padding: 0 8px;
 }
 #mode {
     color: #cc3436;
@@ -61,24 +57,21 @@ window#waybar {
 #idle_inhibitor {
     padding: 0 16px 0 0;
 }
-#temperature {
-    padding-left: 0;
-}
 #battery {
-    padding: 0 20px 0 0;
+    padding-right: 20px;
+}
+#network {
+  padding: 0 10px 0 4px;
 }
 #custom-power {
     background-color: rgb(0,90,130);
     border-radius: 50%;
-    margin: 3px 0;
+    margin: 1px;
     padding: 3px 10px 3px 6px;
 }
 /*-----Indicators----*/
 #idle_inhibitor.activated {
     color: #2dcc36;
-}
-#pulseaudio.muted {
-    color: #cc3436;
 }
 #battery.charging {
     color: #2dcc36;

@@ -1,107 +1,90 @@
 {
-    "modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
-    "modules-center": ["clock", "idle_inhibitor"],
-    "modules-right": ["network", "pulseaudio", "temperature", "battery", "tray", "custom/power"],
-    // Modules configuration
-    // "sway/workspaces": {
-    //     "disable-scroll": true,
-    //     "all-outputs": true,
-    //     "format": "{name}: {icon}",
-    //     "format-icons": {
-    //         "1": "",
-    //         "2": "",
-    //         "3": "",
-    //         "4": "",
-    //         "5": "",
-    //         "urgent": "",
-    //         "focused": "",
-    //         "default": ""
-    //     }
-    // },
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
+  "modules-left": ["sway/workspaces", "sway/mode"],
+  "modules-center": ["clock", "idle_inhibitor"],
+  "modules-right": ["cpu", "memory", "temperature", "network", "bluetooth", "custom/alsa", "tray", "battery", "custom/power"],
+  // Modules configuration
+  // "sway/workspaces": {
+  //     "disable-scroll": true,
+  //     "all-outputs": true,
+  //     "format": "{name}: {icon}",
+  //     "format-icons": {
+  //         "1": "",
+  //         "2": "",
+  //         "3": "",
+  //         "4": "",
+  //         "5": "",
+  //         "urgent": "",
+  //         "focused": "",
+  //         "default": ""
+  //     }
+  // },
+  "sway/mode": {
+    "format": "<span style=\"italic\">{}</span>"
+  },
+  "clock": {
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format-alt": "{:%Y-%m-%d}"
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
+  },
+  "network": {
+    "format-wifi": "{essid} ",
+    "format-disconnected": "", 
+    "max-length": 50,
+    "on-click": "kitty -e 'nmtui'"
+  },
+  "bluetooth": {
+    "format": "{icon}",
+    "format-icons": {
+      "enabled": "",
+      "disabled": ""
+    }
+  },
+  "custom/alsa": {
+    "exec": "amixer get Master | sed -n 's/.*\\[off\\].*/✗/p; s/.*\\[\\(.*\\%\\)\\].*/\\1 /p'",
+    "on-click": "amixer set Master toggle; pkill -x -RTMIN+11 waybar",
+    "on-scroll-up": "amixer set Master 1+; pkill -x -RTMIN+11 waybar",
+    "on-scroll-down": "amixer set Master 1-; pkill -x -RTMIN+11 waybar",
+    "signal": 11,
+    "interval": 10,
+    "tooltip": false
+  },
+  "tray": {
+    "icon-size": 15,
+    "spacing": 10
+  },
+  "cpu": {
+    "format": "{usage}% "
+  },
+  "memory": {
+    "format": "{}% "
+  },
+  "temperature": {
+    "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+    "critical-threshold": 82,
+    "format-critical": "{temperatureC}°C {icon}",
+    "format": "{temperatureC}°C {icon}",
+    "format-icons": [""]
+  },
+  "battery": {
+    "states": {
+      "warning": 20,
+      "critical": 10
     },
-    "network": {
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-disconnected": "", 
-        "max-length": 50,
-        "on-click": "kitty -e 'nmtui'"
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
-    },
-    "tray": {
-        "icon-size": 15,
-        "spacing": 10
-    },
-    "clock": {
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
-    },
-    "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false
-    },
-    "memory": {
-        "format": "{}% "
-    },
-    "temperature": {
-        "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
-        "critical-threshold": 82,
-        "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": [""]
-    },
-    "battery": {
-        "states": {
-            // "good": 95,
-            "warning": 20,
-            "critical": 10
-        },
-        "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-        "format-full": "",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} ",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": "0% {icon} ",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol"
-    },
-    "custom/media": {
-        "format": "{icon} {}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-    },
-
-	"custom/power": {
-		"format": "",
-		"on-click": "swaynag -t warning -m 'Power Menu Options' -b 'Logout' 'swaymsg exit' -b 'Restart' 'shutdown -r now' -b 'Shutdown'  'shutdown -h now' --background=#005566 --button-background=#009999 --button-border=#002b33 --border-bottom=#002b33"
-	}
+    "format": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
+    "format-alt": "{time} {icon}",
+    "format-full": "",
+    "format-icons": ["", "", "", "", ""]
+  },
+  "custom/power": {
+    "format": "",
+    "on-click": "swaynag -t warning -m 'Power Menu Options' -b 'Logout' 'swaymsg exit' -b 'Restart' 'shutdown -r now' -b 'Shutdown'  'shutdown -h now'"
+  }
 }
