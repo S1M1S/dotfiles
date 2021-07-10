@@ -34,6 +34,7 @@ if [[ "$1" == "link" ]]; then
   done
 
   configlink "fontconfig"
+  configlink "gammastep"
   configlink "goneovim"
   configlink "kitty"
   configlink "nvim"
