@@ -45,6 +45,27 @@ function get_ruby {
   rbenv global "$V3"
 }
 
+function get_neovim {
+  # TODO: install neovim here
+
+  if command -v yay &> /dev/null; then
+    yay -S --needed --noconfirm wl-clipboard
+    yay -S --needed --noconfirm python
+    yay -S --needed --noconfirm python-pip
+  fi
+
+  echo "Installing Ruby provider..."
+  gem install neovim
+
+  echo "Installing Python provider..."
+  sudo pip install pynvim
+
+  echo "Installing Node.js provider..."
+  npm install -g neovim
+}
+
 if [[ $1 = "ruby" ]]; then
   get_ruby
+elif [[ $1 = "neovim" ]]; then
+  get_neovim
 fi
