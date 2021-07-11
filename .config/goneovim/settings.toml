@@ -1,3 +1,4 @@
+
 ## Goneovim settings.toml
 ## All of the following commented configuration items have default values.
 
@@ -19,7 +20,7 @@
 # ReversingScrollDirection = false
 
 ## Specifies the amount of scrolling by the mouse wheel. The default value is 1.
-# LineToScroll = 1
+LineToScroll = 3
 
 ## This option makes the whole GUI window in semi-transparent.
 ## This setting also implicitly enables the Drawborder setting
@@ -38,11 +39,11 @@ Transparent = 0.9
 ## In MacOS, 
 # FontFamily = "Monaco"
 ## In Linux
-FontFamily = "VictorMono Nerd Font"
+FontFamily = "Roboto Condensed Black"
 ## In Windows
 # FontFamily = "Windows"
 ## Fontsize is
-FontSize = 14
+FontSize = 18
 ## linespace is
 # Linespace = 6
 
@@ -51,10 +52,10 @@ FontSize = 14
 ## You can change the behavior of the GUI by changing the following boolean values.
 ## If you prefer the traditional Vim UI, set it to false for all.
 ## Also, `ExtMessages` is still experimental at this time and we don't recommend setting it to true if you want stability.
-ExtCmdline   = true
-ExtPopupmenu = true
+# ExtCmdline   = false
+# ExtPopupmenu = false
 ExtTabline   = true
-ExtMessages  = true
+# ExtMessages  = false
 
 ## Goneovim has a cached rendering feature enabled to speed up the process.
 ## If you want to disable it, set it to false
@@ -78,30 +79,30 @@ ExtMessages  = true
 
 ## Draw borders on the GUI side instead of the vertical border and status line that nvim draws.
 DrawWindowSeparator = true
-# WindowSeparatorTheme = "dark"
+WindowSeparatorTheme = "dark"
 # WindowSeparatorColor = "#2222ff"
 # WindowSeparatorGradient = false
 
 ## Draw built-in indent guide
 ## Enabling this setting will have a slight impact on performance.
-IndentGuide = true
+# IndentGuide = false
 # IndentGuideIgnoreFtList = ["md"]
 # OptionsToUseGuideWidth = "tabstop"
 
 ## Animates the scrolling behavior of Neovim when the scroll command is entered.
 SmoothScroll = true
 ## Disables horizontal scrolling for smooth scrolling with the touchpad.
-DisableHorizontalScroll = false
+# DisableHorizontalScroll = true
 
 ## Draw border on a float window
-DrawBorderForFloatWindow = true
+# DrawBorderForFloatWindow = false
 
 ## Draw shadow under a float window
-DrawShadowForFloatWindow = true
+# DrawShadowForFloatWindow = true
 
 ## Enable desktop notification settings for nvim messages.
 ## This option works only if `ExtMessages` is enabled.
-DesktopNotifications = true
+# DesktopNotifications = false
 
 # Display the effect when clicked
 # ClickEffect = false
@@ -143,7 +144,7 @@ DesktopNotifications = true
 
 [Cursor]
 ## Specifies whether the smooth cursor feature is enabled or disabled by a boolean value.
-SmoothMove = true
+# SmoothMove = false
 
 ## Specifies the duration of the animation at the smooth cursor. Default is 55ms.
 ## Note that Goneovim uses the specified value as a base value and makes slight adjustments depending on the distance.
@@ -185,8 +186,8 @@ SmoothMove = true
 # TerminalModeColor = "#778899"
 
 ## Statusline components
-Left = [ "mode", "filepath", "filename" ]
-Right = [ "message", "git", "filetype", "fileformat", "fileencoding", "curpos", "lint" ]
+# Left = [ "mode", "filepath", "filename" ]
+# Right = [ "message", "git", "filetype", "fileformat", "fileencoding", "curpos", "lint" ]
 
 
 ## Configure externalized tabline UI.
@@ -205,10 +206,10 @@ ShowIcon = true
 ##   info:   more information about the item, can be displayed in a preview window
 ## The following options specify whether to display a dedicated column in the popupmenu
 ## to display the long text displayed in the `info` part.
-ShowDetail = true
+# ShowDetail = true
  
 ## total number to display item
-Total = 20
+# Total = 20
  
 ## width of `menu` column
 # MenuWidth = 400
@@ -232,7 +233,7 @@ Total = 20
 ## To view the minimap, launch an additional nvim instance;
 ## setting Disable to true will not launch this additional nvim instance
 ## and will completely disable the minimap feature.
-Disable = false
+# Disable = false
 
 ## Specifies whether to show the minimap or not.
 Visible = true
@@ -243,7 +244,7 @@ Visible = true
 
 ## Configure the markdown preview feature
 [Markdown]
-Disable = false
+# Disable = false
 
 ## Specifying code highlighting styles
 # CodeHlStyle = "github"
@@ -251,13 +252,13 @@ Disable = false
 
 [SideBar]
 ## Specifies whether to show the external sidebar or not.
-Visible = true
+# Visible = false
 
 ## Specify the sidebar width
-Width = 200
+# Width = 200
 
 ## Specify whether or not to draw a shadow under the sidebar.
-DropShadow = true
+# DropShadow = false
 
 ## Specify the color to use when selecting items in the sidebar or palette in hexadecimal format
 # AccentColor = "#5596ea"
