@@ -35,11 +35,13 @@ function get_ruby {
 
   . ali refresh
 
-  V3="$(rbenv install --list > /dev/null | grep '^3')"
-  V2_7="$(rbenv install --list > /dev/null | grep '^2\.7')"
+  V3="$(rbenv install --list &> /dev/null | grep '^3')"
+  V2_7="$(rbenv install --list &> /dev/null | grep '^2\.7')"
 
   rbenv install "$V2_7" -s
   rbenv install "$V3" -s
+
+  echo "Setting global ruby to $V3"
   rbenv global "$V3"
 }
 
