@@ -65,30 +65,18 @@ vim.api.nvim_set_keymap("s", "<S-Tab>",   "v:lua.s_tab_complete()",     {expr = 
 -- vim.api.nvim_set_keymap("i", "<CR>",      "compe#confirm('<CR>')",      {expr = true, silent = true})
 vim.api.nvim_set_keymap("i", "<leader>c", "compe#close('<leader>c')",   {expr = true, silent = true})
 
---Cosmetics
--- vim.g.seoul256_italic_comments = true
--- vim.g.seoul256_italic_keywords = true
--- vim.g.seoul256_italic_functions = true
--- require("seoul256").set()
-
--- require("lualine").setup {
---   options = {
---     options = {theme = "seoul256"}
---   }
--- }
-
 require('nvim-web-devicons').setup {
   default = true;
 }
 
-require("bufferline").setup {
-  options = {
-    diagnostics = "nvim_lsp",
-    offsets = {{filetype = "NvimTree", text = "File Explorer", highlight = "Directory"}},
-    separator_style = "thin",
-    sort_by = "extension",
-  }
-}
+-- require("bufferline").setup {
+--   options = {
+--     diagnostics = "nvim_lsp",
+--     offsets = {{filetype = "NvimTree", text = "File Explorer", highlight = "Directory"}},
+--     separator_style = "thin",
+--     sort_by = "extension",
+--   }
+-- }
 
 require("telescope").setup{
   defaults = {

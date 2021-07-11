@@ -27,15 +27,18 @@ Plug 'mattn/emmet-vim'
 " Cosmetics
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'S1M1S/vim-totoro-tc'
-Plug 'bluz71/vim-moonfly-statusline'
-let g:nightflyCursorColor = 1
-let g:moonflyIgnoreDefaultColors = 1
-let g:moonflyWithNvimLspIndicator = 1
-let g:moonflyWithNerdIcon = 1
-let g:moonflyWithGitBranchCharacter = 1
 
-Plug 'akinsho/nvim-bufferline.lua'
-" Plug 'sunjon/shade.nvim'
+Plug 'vim-airline/vim-airline'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+
+" Plug 'bluz71/vim-moonfly-statusline'
+" let g:moonflyIgnoreDefaultColors = 1
+" let g:moonflyWithNvimLspIndicator = 1
+" let g:moonflyWithNerdIcon = 1
+" let g:moonflyWithGitBranchCharacter = 1
+
+" Plug 'akinsho/nvim-bufferline.lua'
 
 " Allow write readonly
 Plug 'lambdalisue/suda.vim'
@@ -45,7 +48,6 @@ cnoremap w!! SudaWrite
 Plug 'cespare/vim-toml'
 Plug 'neovim/nvim-lspconfig'
 Plug 'kabouzeid/nvim-lspinstall'
-" Plug 'ray-x/lsp_signature.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Set up snippets!
