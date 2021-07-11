@@ -19,17 +19,14 @@ Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-ragtag'
-
-" Tmux
-Plug 'christoomey/vim-tmux-navigator'
+Plug 'tpope/vim-unimpaired'
 
 " Emmet for <C-y>, emmeting
 Plug 'mattn/emmet-vim'
 
 " Cosmetics
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'bluz71/vim-nightfly-guicolors'
-" Plug 'hoob3rt/lualine.nvim'
+Plug 'S1M1S/vim-totoro-tc'
 Plug 'bluz71/vim-moonfly-statusline'
 let g:nightflyCursorColor = 1
 let g:moonflyIgnoreDefaultColors = 1
@@ -38,17 +35,17 @@ let g:moonflyWithNerdIcon = 1
 let g:moonflyWithGitBranchCharacter = 1
 
 Plug 'akinsho/nvim-bufferline.lua'
-Plug 'sunjon/shade.nvim'
-let g:nvim_tree_width = 40
+" Plug 'sunjon/shade.nvim'
 
 " Allow write readonly
 Plug 'lambdalisue/suda.vim'
 cnoremap w!! SudaWrite
 
 " Parsing
+Plug 'cespare/vim-toml'
 Plug 'neovim/nvim-lspconfig'
 Plug 'kabouzeid/nvim-lspinstall'
-Plug 'ray-x/lsp_signature.nvim'
+" Plug 'ray-x/lsp_signature.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Set up snippets!
@@ -72,9 +69,10 @@ Plug 'ggandor/lightspeed.nvim'
 
 " Project tree
 Plug 'kyazdani42/nvim-tree.lua'
+let g:nvim_tree_width = 40
 
 " Misc, handy for development
-Plug 'famiu/nvim-reload'
+" Plug 'famiu/nvim-reload'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()

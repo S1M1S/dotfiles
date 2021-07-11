@@ -46,8 +46,6 @@ require'lspinstall'.post_install_hook = function ()
   vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
 end
 
-require('lsp_signature').on_attach()
-
 -- Use an on_attach function to only map the following keys 
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -62,10 +60,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>lD', ':lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', '<leader>lk', ':lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', '<leader>li', ':lua vim.lsp.buf.implementation()<CR>', opts)
-  -- buf_set_keymap('n', '<C-k>', ':lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', '<leader>lr', ':lua vim.lsp.buf.rename()<CR>', opts)
-  -- buf_set_keymap('n', '<space>ca', ':lua vim.lsp.buf.code_action()<CR>', opts)
-  -- buf_set_keymap('n', '<leader>le', ':lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '<leader>lx', ':lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   buf_set_keymap('n', '[d', ':lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', ':lua vim.lsp.diagnostic.goto_next()<CR>', opts)

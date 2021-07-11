@@ -9,7 +9,7 @@ require('compe').setup {
   documentation = true,
 
   source = {
-    nvim_lsp = true,
+    -- nvim_lsp = true,
     path = true,
     buffer = true,
     vsnip = true,
@@ -96,6 +96,6 @@ require("telescope").setup{
   }
 }
 
-require('shade').setup{
-  overlay_opacity = 70,
-}
+-- require('shade').setup{
+--   overlay_opacity = 70,
+-- }

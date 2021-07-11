@@ -57,7 +57,7 @@ set scrolloff=5
 " if the vim window is resized, automatically adjust splits
 au VimResized * wincmd =
 
-" Prettier pop up menus
+" Transparent pop up menus
 set pumblend=25
 
 " Have to set this in order for tab completion to work
@@ -67,6 +67,12 @@ set completeopt=menuone,noselect
 
 " Set mapleader
 let mapleader=","
+
+" Set up movement shortcuts
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
 
 " Set up bufferline shortcuts
 nnoremap <silent> <A-,> :BufferLineCyclePrev<CR>
@@ -122,13 +128,12 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-" Needed for bufferline
-set termguicolors
-
 " Put a bunch of lua setup after the plug end call
 source ~/dotfiles/.config/nvim/plugins.vim
 lua require('setup')
 source ~/dotfiles/.config/nvim/lsp.vim
 
-" Set nightfly as colorscheme
-colo nightfly
+set termguicolors
+colo totoro
+
+set guifont=VictorMono\ Nerd\ Font:h16
