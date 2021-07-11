@@ -143,6 +143,9 @@ input "type:keyboard" {
     # Make the current focus fullscreen
     bindsym F11 fullscreen
 
+    # Toggle the waybar
+    bindsym $mod+F12 exec pkill waybar || waybar
+
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+Shift+space floating toggle
 
