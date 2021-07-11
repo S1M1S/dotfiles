@@ -4,7 +4,7 @@ DF="$HOME/dotfiles"
 CONF_DIR="$HOME/.config"
 DF_CONF_DIR="$DF/.config"
 
-function clink {
+function folder_link {
   echo "linking up: $1"
 
   SRC="$DF/$1"
@@ -14,7 +14,7 @@ function clink {
   ln -s "$SRC" "$DEST"
 }
 
-function configlink {
+function config_link {
   echo "linking up: $1"
 
   SRC="$DF_CONF_DIR/$1"
@@ -25,33 +25,40 @@ function configlink {
   ln -s "$SRC" "$DEST"
 }
 
-if [[ "$1" == "link" ]]; then
-  # dot link
-
-  links=(".zshrc" ".tmux.conf")
+function link_all {
+  links=(.zshrc .tmux.conf)
   for l in ${links[@]}; do
-    clink "$l"
+    folder_link "$l"
   done
 
-  configlink "fontconfig"
-  configlink "gammastep"
-  configlink "goneovim"
-  configlink "kitty"
-  configlink "nvim"
-  configlink "sway"
-  configlink "waybar"
+  links=(fontconfig gammastep goneovim kitty nvim sway waybar)
+  for l in ${links[@]}; do
+    config_link "$l"
+  done
+}
 
-elif [[ "$1" == "update" || "$1" == "up" ]]; then
+if [[ $1 == "link" ]]; then
+  # dot link
+
+  link_all
+elif [[ $1 == "get" ]]; then
+  # dot get $2
+
+  . dot_get $2
+elif [[ $1 == "update" || $1 == "up" ]]; then
   # dot update
 
   git -C "$DF" pull
-  . ali refresh
-
 else
   # dot
 
   echo "USAGE: "
   echo "dot link    -> make symlinks in home directory"
   echo "dot update  -> run git pull on the dotfile directory"
+
+  NO_REFRESH=1
 fi
 
+if ! [[ $NO_REFRESH = 1 ]]; then
+  . ali refresh
+fi

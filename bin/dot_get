@@ -1,0 +1,44 @@
+#!/bin/bash
+
+function get_ruby {
+  # set up rbenv and ruby-build
+  RUBY_VERSION="3.0.2"
+
+  echo "Checking rbenv install..."
+  RBENV_DIR="$HOME/.rbenv"
+  # but if we already have rbenv, then use that directory
+  rbenv root &> /dev/null && RBENV_DIR="$(rbenv root)"
+  if command -v rbenv &> /dev/null; then
+    echo "rbenv is already installed. Updating..."
+    git -C "$RBENV_DIR" pull
+  else
+    echo "rbenv not installed. Getting..."
+    RBENV_GIT="https://github.com/rbenv/rbenv.git"
+
+    git clone "$RBENV_GIT" "$RBENV_DIR"
+
+    echo "Attempting to compile dynamic bash extension..."
+    (cd "$RBENV_DIR" && src/configure && make -C src)
+  fi
+
+  echo "Checking ruby-build install..."
+  RBENV_PLUGIN_DIR="$RBENV_DIR/plugins"
+  RUBY_BUILD_DIR="$RBENV_PLUGIN_DIR/ruby-build"
+  if [[ -d "$RUBY_BUILD_DIR" ]]; then
+    echo "ruby-build is already installed. Updating..."
+    git -C "$RUBY_BUILD_DIR" pull
+  else
+    echo "ruby-build not installed. Getting..."
+    RUBY_BUILD_GIT="https://github.com/rbenv/ruby-build.git"
+    mkdir -p "$RBENV_PLUGIN_DIR"
+    git clone "$RUBY_BUILD_GIT" "$RUBY_BUILD_DIR"
+  fi
+
+  . ali refresh
+
+  rbenv install "$RUBY_VERSION" -s
+}
+
+if [[ $1 = "ruby" ]]; then
+  get_ruby
+fi
