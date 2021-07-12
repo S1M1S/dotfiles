@@ -83,7 +83,6 @@ nnoremap <silent> <A-s> :BufferLineSortByExtension<CR>
 nnoremap <silent> <A-c>c     :bp\|bd #<CR>
 nnoremap <silent> <A-c>l     :BufferLineCloseRight<CR>
 nnoremap <silent> <A-c>h     :BufferLineCloseLeft<CR>
-nnoremap <silent> <leader>s  :BufferLinePick<CR>
 
 " Set up telescope shortcuts
 nnoremap <C-p>      <cmd>lua require('telescope.builtin').git_files()<cr>
@@ -109,7 +108,7 @@ inoremap jk <Esc>
 " vv to generate new vertical split
 nnoremap <silent> vv <C-w>v
 
-" Ctrl+w to create a new tab page
+" Ctrl+w,n to create a new tab page
 nnoremap <silent> <C-w>n <CMD>tabnew<CR>
 
 " press enter to remove highlighting
@@ -129,11 +128,9 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " Put a bunch of lua setup after the plug end call
-source ~/dotfiles/.config/nvim/plugins.vim
-lua require('setup')
-source ~/dotfiles/.config/nvim/lsp.vim
+" source ~/dotfiles/.config/nvim/plugins.vim
+lua require('plugins')
 
 set termguicolors
-colo totoro
 
 set guifont=VictorMono\ Nerd\ Font:h16
