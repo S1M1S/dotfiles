@@ -55,13 +55,19 @@ function get_neovim {
   fi
 
   echo "Installing Ruby provider..."
-  gem install neovim
+  gem install neovim &
 
   echo "Installing Python provider..."
-  sudo pip install pynvim
+  sudo pip install pynvim &
 
   echo "Installing Node.js provider..."
-  npm install -g neovim
+  npm install -g neovim &
+
+  echo "Installing packer..."
+  git clone https://github.com/wbthomason/packer.nvim\
+   ~/.local/share/nvim/site/pack/packer/start/packer.nvim &
+
+  wait
 }
 
 if [[ $1 = "ruby" ]]; then
