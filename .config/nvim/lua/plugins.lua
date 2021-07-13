@@ -109,6 +109,6 @@ return require('packer').startup(function()
       requires = { 'kyazdani42/nvim-web-devicons' },
     },
     { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' } },
-    { 'projekt0n/github-nvim-theme', config = [[require('github-theme').setup()]] },
+    { 'projekt0n/github-nvim-theme', config = [[require('github-theme').setup({ themeStyle = "light" })]] },
   }
 end)

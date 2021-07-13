@@ -275,8 +275,8 @@ local vi_mode_colors = {
 }
 
 require('feline').setup({
-    default_bg = '#1F1F23',
-    default_fg = '#D0D0D0',
+    default_bg = '#EEEEEE',
+    default_fg = '#586069',
     colors = colors,
     separators = separators,
     components = components,
