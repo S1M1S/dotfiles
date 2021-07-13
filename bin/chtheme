@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+kitty @ set-colors -a -c ~/dotfiles/.config/kitty/themes/*$1*
