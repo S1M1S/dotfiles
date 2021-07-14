@@ -52,7 +52,6 @@ return require('packer').startup(function()
   use {
     'w0rp/ale',
     ft = {'sh', 'zsh', 'bash', 'html', 'markdown', 'vim', 'rb', 'js'},
-    cmd = 'ALEEnable',
     config = 'vim.cmd[[ALEEnable]]'
   }
 
@@ -96,9 +95,9 @@ return require('packer').startup(function()
   }
   use {
     'nvim-telescope/telescope-cheat.nvim',
-    requires = { 'tami5/sql.nvim', 'nvim-telescope/telescope.nvim' },
+    requires = { 'tami5/sql.nvim' },
     config = [[require('telescope').load_extension('cheat')]],
-    cmd = 'Telescope cheat',
+    after = 'telescope.nvim',
   }
 
   -- Cosmetics
