@@ -133,4 +133,4 @@ lua require('plugins')
 
 set termguicolors
 
-set guifont=VictorMono\ Nerd\ Font\ Mono:h18:b
+set guifont=VictorMono\ Nerd\ Font\ Mono:h24
