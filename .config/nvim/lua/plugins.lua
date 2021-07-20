@@ -51,7 +51,7 @@ return require('packer').startup(function()
   -- ALE for linting and fixing
   use {
     'w0rp/ale',
-    ft = {'sh', 'zsh', 'bash', 'html', 'markdown', 'vim', 'rb', 'js'},
+    ft = {'lua', 'sh', 'zsh', 'bash', 'html', 'markdown', 'vim', 'rb', 'js'},
     config = 'vim.cmd[[ALEEnable]]'
   }
 
