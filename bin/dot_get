@@ -74,4 +74,8 @@ if [[ $1 = "ruby" ]]; then
   get_ruby
 elif [[ $1 = "neovim" ]]; then
   get_neovim
+elif [[ $1 = colorls ]]; then
+  gem install colorls
+  rbenv rehash
+  rehash
 fi

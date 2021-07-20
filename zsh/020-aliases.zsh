@@ -10,19 +10,23 @@ fi
 alias starbound='mosh starbound'
 
 # Aliases for ls
-alias ll='ls -alF'
+alias ll='ls -al'
 alias la='ls -A'
 alias l='ls -CF'
+alias lc='colorls'
+
+# make sure you have the colorls gem
+source $(dirname $(gem which colorls))/tab_complete.sh
 
 # Aliases for FZF
 alias fzfcd="cd \$(fzf)"
 alias fzfpp="fzf --preview 'bat --style=numbers --color=always --line-range :100 {}'"
 alias vimfz="nvim \$(fzfpp)"
 
-#Aliases for Arch
+# Aliases for Arch
 alias pacbrowse="pacman -Qeq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
 
-#Instant aliases
+# Instant aliases
 alias gaa="git add ." 
 alias gc="git commit"
 alias gpush="git push"
