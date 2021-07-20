@@ -274,12 +274,24 @@ local vi_mode_colors = {
     NONE = 'yellow'
 }
 
-require('feline').setup({
-    default_bg = '#EEEEEE',
-    default_fg = '#586069',
-    colors = colors,
-    separators = separators,
-    components = components,
-    properties = properties,
-    vi_mode_colors = vi_mode_colors
-})
+return {
+  setup = function(theme)
+    bg = '#1f2428'
+    fg = '#d1d5da'
+
+    if theme == 'light' then
+      bg = '#efefef'
+      fg = '#586069'
+    end
+
+    require('feline').setup({
+      default_bg = bg,
+      default_fg = fg,
+      colors = colors,
+      separators = separators,
+      components = components,
+      properties = properties,
+      vi_mode_colors = vi_mode_colors
+    })
+  end
+}

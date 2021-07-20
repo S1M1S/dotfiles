@@ -104,7 +104,7 @@ return require('packer').startup(function()
   use {
     {
       'famiu/feline.nvim',
-      config = [[require('config/feline')]],
+      config = [[require('config/feline').setup()]],
       requires = { 'kyazdani42/nvim-web-devicons' },
     },
     { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' } },
