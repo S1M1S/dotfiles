@@ -44,7 +44,7 @@ return require('packer').startup(function()
     'tpope/vim-surround',
     'tpope/vim-unimpaired',
     { 'tpope/vim-ragtag', ft = { 'html', 'erb' } },
-    'tpope/vim-rails',
+    { 'tpope/vim-rails', config = [[require('config.rails')]] },
     { 'tpope/vim-bundler', cmd = { 'Bundle' } },
   }
 
@@ -107,7 +107,7 @@ return require('packer').startup(function()
       config = [[require('config/feline').setup()]],
       requires = { 'kyazdani42/nvim-web-devicons' },
     },
-    { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' } },
+    { 'kyazdani42/nvim-tree.lua', config = [[require('config.tree')]], requires = { 'kyazdani42/nvim-web-devicons' } },
     { 'projekt0n/github-nvim-theme', config = [[require('config.theme')]] },
   }
 end)
