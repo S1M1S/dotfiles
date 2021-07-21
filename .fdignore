@@ -1,0 +1,13 @@
+.cache/
+.cargo/
+.gem/
+.git/
+.local/share/
+.npm/
+.rbenv/
+.rustup/
+tmp/
+Adobe/
+Library/
+Lightroom Library.lrlibrary/
+Music/

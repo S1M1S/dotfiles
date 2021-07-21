@@ -1,30 +1,23 @@
-# Add color to common commands
-if [[ "$SHELL" == "/bin/bash" ]]; then
-  alias ls='ls --color=auto'
-  alias grep='grep --color=auto'
-elif [[ "$SHELL" == "/bin/zsh" ]]; then
-  alias ls='ls -G'
-fi
-
 # Aliases for sshing
 alias starbound='mosh starbound'
 
 # Aliases for ls
-alias ll='ls -al'
-alias la='ls -A'
-alias l='ls -CF'
-alias lc='colorls'
-
-# make sure you have the colorls gem
-source $(dirname $(gem which colorls))/tab_complete.sh
+if command -v lsd &> /dev/null; then
+  alias ls='lsd'
+  alias ll='lsd -al --date relative'
+  alias la='lsd -A'
+  alias l='lsd --tree --depth 2 --color always --icon always | less -R'
+  alias lf='fd -H | fzf --preview "bat --style=numbers --color=always --line-range :100 {}"'
+fi
 
 # Aliases for FZF
-alias fzfcd="cd \$(fzf)"
-alias fzfpp="fzf --preview 'bat --style=numbers --color=always --line-range :100 {}'"
-alias vimfz="nvim \$(fzfpp)"
+alias cf="cd \$(fd -H --type=d | fzf)"
+alias nvimf="nvim \$(lf)"
 
 # Aliases for Arch
-alias pacbrowse="pacman -Qeq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
+if command -v pacman &> /dev/null; then
+  alias pacbrowse="pacman -Qeq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
+fi
 
 # Instant aliases
 alias gaa="git add ." 
@@ -35,4 +28,3 @@ alias gs="git status"
 alias ali=". ali"
 alias dot=". dot"
 alias tmt=". tmt"
-alias vimdiff="nvim -d"
