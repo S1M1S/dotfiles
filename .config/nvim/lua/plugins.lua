@@ -35,7 +35,7 @@ return require('packer').startup(function()
   -- TPope plugins necessary for survival
   use {
     {'tpope/vim-abolish', cmd = {'S', 'Subvert', 'Abolish'}},
-    {'tpope/vim-commentary', cmd = {'Commentary'}},
+    {'tpope/vim-commentary', keys = 'gcc', cmd = {'Commentary'}},
     {'tpope/vim-dispatch', cmd = {'Dispatch', 'Make', 'Focus', 'Start'}},
     {'tpope/vim-endwise', ft = {'rb', 'erb', 'sh', 'zsh', 'lua', 'vim'}},
     {'tpope/vim-eunuch', cmd = {'Delete', 'Move', 'Rename', 'Chmod', 'Mkdir', 'Clocate', 'SudoWrite', 'SudoEdit'}},
@@ -51,7 +51,7 @@ return require('packer').startup(function()
   -- ALE for linting and fixing
   use {
     'w0rp/ale',
-    ft = {'lua', 'sh', 'zsh', 'bash', 'html', 'markdown', 'vim', 'rb', 'js'},
+    ft = {'lua', 'sh', 'zsh', 'bash', 'html', 'markdown', 'vim', 'ruby', 'javascript'},
     config = 'vim.cmd[[ALEEnable]]'
   }
 

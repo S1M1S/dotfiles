@@ -1,11 +1,11 @@
-local map = require('config.utils').map
 local t =   require('config.utils').t
+
 
 require('compe').setup {
   enabled = true,
   autocomplete = true,
   min_length = 1,
-  preselect = 'always',
+  preselect = 'enable',
   documentation = { border = 'single' },
   source = {
     path = true,
@@ -16,8 +16,37 @@ require('compe').setup {
   },
 }
 
-local opts = {noremap = true, silent = true, expr = true}
+-- tab navigation for for completion menu
+local check_back_space = function()
+    local col = vim.fn.col('.') - 1
+    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
+end
 
-map('i', '<c-space>', [[compe#complete()]],            opts)
-map('i', '<c-f>',     [[compe#scroll({'delta': +4})]], opts)
-map('i', '<c-d>',     [[compe#scroll({'delta': -4})]], opts)
+-- Use (s-)tab to:
+--- move to prev/next item in completion menuone
+--- jump to prev/next snippet's placeholder
+_G.tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-n>"
+  elseif vim.fn['vsnip#available'](1) == 1 then
+    return t "<Plug>(vsnip-expand-or-jump)"
+  elseif check_back_space() then
+    return t "<Tab>"
+  else
+    return vim.fn['compe#complete']()
+  end
+end
+_G.s_tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-p>"
+  elseif vim.fn['vsnip#jumpable'](-1) == 1 then
+    return t "<Plug>(vsnip-jump-prev)"
+  else
+    -- If <S-Tab> is not working in your terminal, change it to <C-h>
+    return t "<S-Tab>"
+  end
+end
+
+vim.api.nvim_set_keymap("i", "<c-space>", "compe#confirm()",        {expr = true, silent = true, noremap = true})
+vim.api.nvim_set_keymap("i", "<tab>",     "v:lua.tab_complete()",   {expr = true})
+vim.api.nvim_set_keymap("i", "<s-tab>",   "v:lua.s_tab_complete()", {expr = true})
