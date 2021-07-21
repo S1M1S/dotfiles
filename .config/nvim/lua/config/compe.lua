@@ -1,3 +1,4 @@
+local map = require('config.utils').map
 local t =   require('config.utils').t
 
 
@@ -47,6 +48,6 @@ _G.s_tab_complete = function()
   end
 end
 
-vim.api.nvim_set_keymap("i", "<c-space>", "compe#confirm()",        {expr = true, silent = true, noremap = true})
-vim.api.nvim_set_keymap("i", "<tab>",     "v:lua.tab_complete()",   {expr = true})
-vim.api.nvim_set_keymap("i", "<s-tab>",   "v:lua.s_tab_complete()", {expr = true})
+map('i', '<c-space>', 'compe#confirm()',        {expr = true, silent = true, noremap = true})
+map('i', '<tab>',     'v:lua.tab_complete()',   {expr = true})
+map('i', '<s-tab>',   'v:lua.s_tab_complete()', {expr = true})
