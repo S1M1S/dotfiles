@@ -66,7 +66,8 @@ set completeopt=menuone,noselect
 " ================ Mapping ======================
 
 " Set mapleader
-let mapleader=","
+let mapleader=" "
+let maplocalleader=","
 
 " Set up movement shortcuts
 nnoremap <C-h> <C-w>h
