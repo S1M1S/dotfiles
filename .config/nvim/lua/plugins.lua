@@ -82,7 +82,7 @@ return require('packer').startup(function()
       config = [[require('config.gitsigns')]],
       event = 'BufEnter',
     },
-    { 'TimUntersberger/neogit', cmd = 'Neogit', config = [[require('config.neogit')]] },
+    { 'TimUntersberger/neogit', keys = '<leader>g', cmd = 'Neogit', config = [[require('config.neogit')]] },
   }
 
   -- Search
