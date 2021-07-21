@@ -74,27 +74,6 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 
-" Set up bufferline shortcuts
-nnoremap <silent> <A-,> :BufferLineCyclePrev<CR>
-nnoremap <silent> <A-.> :BufferLineCycleNext<CR>
-nnoremap <silent> <A-<> :BufferLineMovePrev<CR>
-nnoremap <silent> <A->> :BufferLineMoveNext<CR>
-nnoremap <silent> <A-s> :BufferLineSortByExtension<CR>
-nnoremap <silent> <A-c>c     :bp\|bd #<CR>
-nnoremap <silent> <A-c>l     :BufferLineCloseRight<CR>
-nnoremap <silent> <A-c>h     :BufferLineCloseLeft<CR>
-
-" Set up telescope shortcuts
-nnoremap <C-p>      <cmd>lua require('telescope.builtin').git_files()<cr>
-nnoremap <leader>pp <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>pg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>pb <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>ph <cmd>lua require('telescope.builtin').help_tags()<cr>
-
-" Set up nvim-tree shortcuts
-nnoremap <leader>t :NvimTreeToggle<CR>
-nnoremap <leader>r :NvimTreeRefresh<CR>
-
 " Easily write
 nnoremap <leader>w :w<CR>
 nnoremap <leader>s :mks!<CR>
