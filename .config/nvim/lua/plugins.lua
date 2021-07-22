@@ -34,24 +34,24 @@ return require('packer').startup(function()
 
   -- TPope plugins necessary for survival
   use {
-    {'tpope/vim-abolish', cmd = {'S', 'Subvert', 'Abolish'}},
-    {'tpope/vim-commentary', keys = 'gcc', cmd = {'Commentary'}},
-    {'tpope/vim-dispatch', cmd = {'Dispatch', 'Make', 'Focus', 'Start'}},
-    {'tpope/vim-endwise', ft = {'rb', 'erb', 'sh', 'zsh', 'lua', 'vim'}},
-    {'tpope/vim-eunuch', cmd = {'Delete', 'Move', 'Rename', 'Chmod', 'Mkdir', 'Clocate', 'SudoWrite', 'SudoEdit'}},
-    {'tpope/vim-repeat', keys = '.'},
+    { 'tpope/vim-abolish', cmd = { 'S', 'Subvert', 'Abolish' } },
+    { 'tpope/vim-commentary', keys = 'gcc', cmd = { 'Commentary' } },
+    { 'tpope/vim-dispatch', cmd = { 'Dispatch', 'Make', 'Focus', 'Start' } },
+    { 'tpope/vim-endwise', ft = { 'rb', 'erb', 'sh', 'zsh', 'lua', 'vim' } },
+    { 'tpope/vim-eunuch', cmd = { 'Delete', 'Move', 'Rename', 'Chmod', 'Mkdir', 'Clocate', 'SudoWrite', 'SudoEdit' } },
+    { 'tpope/vim-repeat', keys = '.' },
     'tpope/vim-sensible',
     'tpope/vim-surround',
     'tpope/vim-unimpaired',
     { 'tpope/vim-ragtag', ft = { 'html', 'erb' } },
     { 'tpope/vim-rails', config = [[require('config.rails')]] },
-    { 'tpope/vim-bundler', cmd = { 'Bundle' } },
+    { 'tpope/vim-bundler' },
   }
 
   -- ALE for linting and fixing
   use {
     'w0rp/ale',
-    ft = {'lua', 'sh', 'zsh', 'bash', 'html', 'markdown', 'vim', 'ruby', 'javascript'},
+    ft = { 'lua', 'sh', 'zsh', 'bash', 'html', 'markdown', 'vim', 'ruby', 'javascript' },
     config = 'vim.cmd[[ALEEnable]]'
   }
 
@@ -64,12 +64,12 @@ return require('packer').startup(function()
     },
     run = ':TSUpdate'
   }
-  use {'cespare/vim-toml', ft = {'toml'}}
+  use { 'cespare/vim-toml', ft = { 'toml' } }
 
   -- LSP
   use {
     'neovim/nvim-lspconfig',
-    {'kabouzeid/nvim-lspinstall', config = [[require('config.lspinstall')]]},
+    { 'kabouzeid/nvim-lspinstall', config = [[require('config.lspinstall')]] },
     'onsails/lspkind-nvim'
   }
 
