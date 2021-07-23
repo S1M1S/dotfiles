@@ -1,57 +1,73 @@
-#!/bin/bash
-DF="$HOME/dotfiles"
+#!/bin/zsh
+DF=~/dotfiles
 
-CONF_DIR="$HOME/.config"
-DF_CONF_DIR="$DF/.config"
+CONF_DIR=~/.config
+DF_CONF_DIR=$DF/.config
 
-function folder_link {
+folder_link() {
   echo "linking up: $1"
 
-  SRC="$DF/$1"
-  DEST="$HOME/$1"
+  SRC=$DF/$1
+  DEST=$HOME/$1
 
-  rm -rf "$DEST" &> /dev/null
-  ln -s "$SRC" "$DEST"
+  rm -rf $DEST &>/dev/null
+  ln -s $SRC $DEST
 }
 
-function config_link {
+config_link() {
   echo "linking up: $1"
 
-  SRC="$DF_CONF_DIR/$1"
-  DEST="$CONF_DIR/$1"
+  SRC=$DF_CONF_DIR/$1
+  DEST=$CONF_DIR/$1
 
-  rm -r "$DEST" &> /dev/null
+  rm -r $DEST &>/dev/null
 
-  ln -s "$SRC" "$DEST"
+  ln -s $SRC $DEST
 }
 
-function link_all {
+link_all() {
   links=(.zshrc .tmux.conf .p10k.zsh .fdignore)
   for l in ${links[@]}; do
-    folder_link "$l"
+    folder_link $l
   done
 
   links=(fontconfig gammastep goneovim kitty nvim sway waybar)
   for l in ${links[@]}; do
-    config_link "$l"
+    config_link $l
   done
 }
 
-if [[ $1 == "link" ]]; then
-  # dot link
+up_repo() {
+  git -C $DF pull
+  . ali refresh
+}
+up_system() {
+  if command -v apt-get &>/dev/null; then
+    sudo apt-get update && sudo apt-get upgrade --assume-yes
+  fi
+  if command -v yay &>/dev/null; then
+    yay -Syu
+  fi
+  if command -v brew &>/dev/null; then
+    brew update && brew upgrade && brew cleanup
+  fi
+}
+up_all() {
+  setopt LOCAL_OPTIONS NO_NOTIFY NO_MONITOR
+  up_repo &
+  up_system &
+  wait
+}
 
+if [[ $1 == link ]]; then
   link_all
-elif [[ $1 == "get" ]]; then
-  # dot get $2
-
+elif [[ $1 == get ]]; then
   . dot_get $2
-elif [[ $1 == "update" || $1 == "up" ]]; then
-  # dot update
-
-  git -C "$DF" pull
+elif [[ $1 == update || $1 == up ]]; then
+  up_all
+  NO_REFRESH=1
 else
   # dot
-
   echo "USAGE: "
   echo "dot link    -> make symlinks in home directory"
   echo "dot update  -> run git pull on the dotfile directory"
