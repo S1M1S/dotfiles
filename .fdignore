@@ -3,9 +3,14 @@
 .gem/
 .git/
 .local/share/
+.nvm/
 .npm/
 .rbenv/
 .rustup/
+.bundle/
+.mozilla/
+.yarn/
+.zplug/
 tmp/
 Adobe/
 Library/
