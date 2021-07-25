@@ -3,7 +3,7 @@ set runtimepath+=~/dotfiles/.config/nvim
 " ================ General =====================
 
 " Catch typos
-set spell spelllang=en_au,en_us
+set spelllang=en_au,en_us
 
 " More natural defaults for opening splits
 set splitbelow
