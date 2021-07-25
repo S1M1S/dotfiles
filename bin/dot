@@ -5,8 +5,6 @@ CONF_DIR=~/.config
 DF_CONF_DIR=$DF/.config
 
 folder_link() {
-  echo "linking up: $1"
-
   SRC=$DF/$1
   DEST=$HOME/$1
 
@@ -15,8 +13,6 @@ folder_link() {
 }
 
 config_link() {
-  echo "linking up: $1"
-
   SRC=$DF_CONF_DIR/$1
   DEST=$CONF_DIR/$1
 
@@ -26,6 +22,7 @@ config_link() {
 }
 
 link_all() {
+  echo 'Making symlinks...'
   links=(.zshrc .tmux.conf .p10k.zsh .fdignore)
   for l in ${links[@]}; do
     folder_link $l
@@ -37,9 +34,24 @@ link_all() {
   done
 }
 
+remove_dangling() {
+  echo 'Removing dangling symlinks...'
+  symlinks="$(fd --full-path -a -d 1 -t l ~)"
+  a=("${(f)symlinks}")
+  for s in ${a[@]}; do
+    if ! [[ -e $s ]]; then
+      rm $s
+    fi
+  done
+}
+
 up_repo() {
   git -C $DF pull
   . ali refresh
+  echo 'Setting global gitignore...'
+  git config --global core.excludesfile $DF/.gitignore_global
+  link_all
+  remove_dangling
 }
 up_system() {
   if command -v apt-get &>/dev/null; then
@@ -53,7 +65,7 @@ up_system() {
   fi
 }
 up_all() {
-  setopt LOCAL_OPTIONS NO_NOTIFY NO_MONITOR
+  setopt LOCAL_OPTIONS NO_MONITOR
   up_repo &
   up_system &
   wait
@@ -65,6 +77,9 @@ elif [[ $1 == get ]]; then
   . dot_get $2
 elif [[ $1 == update || $1 == up ]]; then
   up_all
+  NO_REFRESH=1
+elif [[ $1 == clean ]]; then
+  remove_dangling
   NO_REFRESH=1
 else
   # dot
@@ -78,3 +93,5 @@ fi
 if ! [[ $NO_REFRESH = 1 ]]; then
   . ali refresh
 fi
+
+return 0
