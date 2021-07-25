@@ -13,7 +13,7 @@ local set_theme_from_sunshine = function(chan_id, data, name)
 end
 
 function get_time_and_set_theme(override)
-  if override ~= "" then
+  if override and override ~= "" then
     set_theme(override)
   elseif vim.fn.executable('sunshine') then
     vim.fn.jobstart('sunshine -s "@-30 150"', { on_stdout = set_theme_from_sunshine })
