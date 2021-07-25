@@ -110,7 +110,7 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 " Put a bunch of lua setup after the plug end call
 " source ~/dotfiles/.config/nvim/plugins.vim
 lua require('plugins')
-lua require('chtheme')
+lua require('mappings')
 
 set termguicolors
 
