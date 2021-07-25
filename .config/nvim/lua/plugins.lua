@@ -7,7 +7,7 @@ return require('packer').startup(function()
   -- Convenience plugins
   use {
     { 'mattn/emmet-vim', keys = {{ 'i', '<C-y>' }} }, -- Emmet
-    'rstacruz/vim-closer', -- Closes parenthesis
+    { 'rstacruz/vim-hyperstyle', ft = { 'css' } },
     { 'ggandor/lightspeed.nvim', -- Racing around docs with s and S
       keys = {
         { 'n', 's' },
@@ -51,7 +51,18 @@ return require('packer').startup(function()
   -- ALE for linting and fixing
   use {
     'w0rp/ale',
-    ft = { 'lua', 'sh', 'zsh', 'bash', 'html', 'markdown', 'vim', 'ruby', 'javascript' },
+    ft = {
+      'bash',
+      'html',
+      'javascript',
+      'json',
+      'lua',
+      'markdown',
+      'ruby',
+      'sh',
+      'vim',
+      'zsh',
+    },
     config = 'vim.cmd[[ALEEnable]]'
   }
 
