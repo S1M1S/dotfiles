@@ -4,7 +4,10 @@ if ! [ -d "$ZPLUG_HOME" ]; then
 fi
 source $ZPLUG_HOME/init.zsh
 
-zplug "romkatv/powerlevel10k", as:theme, depth:1
+if [[ $TERM != 'linux' ]]; then
+  # don't load pl10k if we're in a tty
+  zplug "romkatv/powerlevel10k", as:theme, depth:1
+fi
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting"
@@ -18,7 +21,7 @@ ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check; then
-  printf "Install? [y/N]: "
+  printf "Install Zsh plugins? [y/N]: "
   if read -q; then
     echo; zplug install
   fi
