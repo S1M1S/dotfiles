@@ -115,3 +115,6 @@ lua require('mappings')
 set termguicolors
 
 set guifont=JetBrainsMono\ Nerd\ Font\ Mono:h18
+let g:neovide_cursor_vfx_mode = "railgun"
+let g:neovide_window_floating_blur = 0
+let g:neovide_cursor_vfx_particle_density = 3

@@ -121,4 +121,12 @@ return require('packer').startup(function()
     { 'kyazdani42/nvim-tree.lua', config = [[require('config.tree')]], requires = { 'kyazdani42/nvim-web-devicons' } },
     { 'projekt0n/github-nvim-theme', config = [[require('config.theme')]] },
   }
+
+  -- Markdown
+  use {
+    'iamcco/markdown-preview.nvim',
+    ft = 'markdown',
+    run = 'cd app && yarn install',
+    config = [[require('config.markdown')]],
+  }
 end)
