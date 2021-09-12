@@ -57,7 +57,7 @@ up_repo() {
 
 up_system() {
   if command -v pkg &>/dev/null; then
-    pkg upgrade
+    pkg upgrade -y
   elif command -v apt-get &>/dev/null; then
     sudo apt-get update && sudo apt-get upgrade --assume-yes
   fi
