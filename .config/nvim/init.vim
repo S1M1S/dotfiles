@@ -3,7 +3,7 @@ set runtimepath+=~/dotfiles/.config/nvim
 " ================ General =====================
 
 " Catch typos
-set spell spelllang=en_au,en_us
+set spelllang=en_au,en_us
 
 " More natural defaults for opening splits
 set splitbelow
@@ -110,8 +110,11 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 " Put a bunch of lua setup after the plug end call
 " source ~/dotfiles/.config/nvim/plugins.vim
 lua require('plugins')
-lua require('chtheme')
+lua require('mappings')
 
 set termguicolors
 
 set guifont=JetBrainsMono\ Nerd\ Font\ Mono:h18
+let g:neovide_cursor_vfx_mode = "railgun"
+let g:neovide_window_floating_blur = 0
+let g:neovide_cursor_vfx_particle_density = 3

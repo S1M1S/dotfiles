@@ -1,6 +1,6 @@
-# this is way too slow on clementine, so skip it
+# this is only useful on mabel
 
-if ! [[ $MACHINE = "clementine" ]]; then
+if [[ $MACHINE = "mabel" ]]; then
   autoload -U add-zsh-hook
   load-nvmrc() {
     local node_version="$(nvm version)"
