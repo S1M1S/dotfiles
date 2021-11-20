@@ -63,7 +63,7 @@ up_system() {
   fi
 
   if command -v yay &>/dev/null; then
-    yay -Syu --answerclean no --answerdiff no --answeredit no --answerupgrade yes --noconfirm
+    informant read && yay -Syu --answerclean no --answerdiff no --answeredit no --answerupgrade yes --noconfirm
   fi
 
   if command -v brew &>/dev/null; then
