@@ -4,10 +4,6 @@ if ! [ -d "$ZPLUG_HOME" ]; then
 fi
 source $ZPLUG_HOME/init.zsh
 
-if [[ $TERM != 'linux' ]]; then
-  # don't load pl10k if we're in a tty
-  zplug "romkatv/powerlevel10k", as:theme, depth:1
-fi
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting"
