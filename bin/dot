@@ -17,14 +17,13 @@ config_link() {
   DEST=$CONF_DIR/$1
 
   rm -r $DEST &>/dev/null
-
   ln -s $SRC $DEST
 }
 
 link_all() {
   echo 'Making symlinks...'
 
-  links=(.zshrc .tmux.conf .p10k.zsh .fdignore)
+  links=(.zshrc .tmux.conf .hyper.js .fdignore)
   for l in ${links[@]}; do
     folder_link $l
   done
