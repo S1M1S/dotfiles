@@ -7,6 +7,10 @@ source $ZPLUG_HOME/init.zsh
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting"
+
+zplug "mafredri/zsh-async", from:github
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+
 zplug "plugins/git",        from:oh-my-zsh
 zplug "plugins/rails",      from:oh-my-zsh
 zplug "plugins/bg-notify",  from:oh-my-zsh

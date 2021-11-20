@@ -1,4 +1,6 @@
-local theme_setup_func = require('github-theme').setup
+local theme_setup_func = require('github-theme').setup({
+  transparent = true
+})
 local reset_func = require('feline').reset_highlights
 
 local set_theme = function(theme)
