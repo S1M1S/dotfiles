@@ -7,6 +7,10 @@ refresh() {
     exit 1
   fi
 
+  if ! [[ -v ZSHRC ]] ; then
+    echo "\$ZSHRC is not set. You will need to source your .zshrc in order to use this command."
+  fi
+
   source "$ZSHRC"
   echo "Freshed up!"
 }
