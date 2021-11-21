@@ -22,6 +22,9 @@ config_link() {
 
 link_all() {
   echo 'Making symlinks...'
+  if ! [[ -e ~/.config ]]; then
+    mkdir ~/.config
+  fi
 
   links=(.zshrc .tmux.conf .hyper.js .fdignore)
   for l in ${links[@]}; do
@@ -97,7 +100,7 @@ else
 fi
 
 if ! [[ $NO_REFRESH = 1 ]]; then
-  . ali refresh
+  . ~/dotfiles/bin/ali refresh
 fi
 
 return 0

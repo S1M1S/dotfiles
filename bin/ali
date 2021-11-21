@@ -7,6 +7,10 @@ refresh() {
     exit 1
   fi
 
+  if ! [[ -v ZSHRC ]]; then
+    ZSHRC="$DF/.zshrc"
+  fi
+
   source "$ZSHRC"
   echo "Freshed up!"
 }
