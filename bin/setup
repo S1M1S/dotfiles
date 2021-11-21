@@ -1,0 +1,5 @@
+#!/usr/bin/zsh
+cd ~
+~/dotfiles/bin/dot link
+git config --global user.email "samm0s@hotmail.com"
+git config --global user.name "Sam Ritchie"
