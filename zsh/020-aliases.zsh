@@ -1,5 +1,5 @@
-# Aliases for sshing
-alias starbound='mosh starbound'
+# easily run nvim as sudo
+alias sunvim="sudo -E nvim"
 
 # Aliases for ls
 if command -v lsd &> /dev/null; then
