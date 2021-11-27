@@ -10,9 +10,9 @@ zplug "zsh-users/zsh-completions"
 zplug "plugins/git",        from:oh-my-zsh
 zplug "plugins/rails",      from:oh-my-zsh
 zplug "plugins/bg-notify",  from:oh-my-zsh
+zplug "plugins/autojump",   from:oh-my-zsh
 
 zplug "arzzen/calc.plugin.zsh", from:github
-zplug "wting/autojump",         from:github
 zplug "zpm-zsh/colorize",       from:github
 
 # Better vi mode for zsh
