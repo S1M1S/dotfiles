@@ -78,11 +78,11 @@ return require('packer').startup(function()
   use { 'cespare/vim-toml', ft = { 'toml' } }
 
   -- LSP
-  use {
-    'neovim/nvim-lspconfig',
-    { 'kabouzeid/nvim-lspinstall', config = [[require('config.lspinstall')]] },
-    'onsails/lspkind-nvim'
-  }
+--  use {
+--    'neovim/nvim-lspconfig',
+--    { 'kabouzeid/nvim-lspinstall', config = [[require('config.lspinstall')]] },
+--    'onsails/lspkind-nvim'
+--  }
 
   -- Git
   use {
