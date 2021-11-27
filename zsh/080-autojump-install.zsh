@@ -1,10 +1,7 @@
-if ! command -v autojump &> /dev/null; then
-  cd ~
-  if ! [[ -e ~/builds ]]; then
-    mkdir builds
-  fi
+if ! [[ -e ~/builds/autojump ]]; then
+  [[ -e ~/builds ]] || mkdir ~/builds
+  cd ~/builds
 
   git clone https://github.com/wting/autojump && cd autojump
   ./install.py
-  cd ..; rm -rf autojump
 fi
