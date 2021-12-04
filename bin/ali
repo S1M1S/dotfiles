@@ -16,7 +16,7 @@ refresh() {
 }
 
 if [[ "$1" == "add" ]]; then
-  echo "alias $2" >> "$DF/.zsh_aliases"
+  echo "alias \"$2\"" >> "$DF/.zsh/020-aliases.zsh"
   echo "Added new alias: $2"
   refresh
 
