@@ -69,6 +69,7 @@ return require('packer').startup(function()
   -- Syntax highlighting
   use {
     'nvim-treesitter/nvim-treesitter',
+    config = [[require('config.treesitter')]],
     requires = {
       'nvim-treesitter/nvim-treesitter-refactor',
       'nvim-treesitter/nvim-treesitter-textobjects',
