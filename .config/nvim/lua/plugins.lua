@@ -124,9 +124,8 @@ return require('packer').startup(function()
 
   -- Markdown
   use {
-    'iamcco/markdown-preview.nvim',
+    'gabrielelana/vim-markdown',
     ft = 'markdown',
-    run = 'cd app && yarn install',
     config = [[require('config.markdown')]],
   }
 end)

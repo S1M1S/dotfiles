@@ -5,6 +5,9 @@ set runtimepath+=~/dotfiles/.config/nvim
 " Catch typos
 set spelllang=en_au,en_us
 
+" Set up DirChange so that nvim-tree changes directory
+set path=**
+
 " More natural defaults for opening splits
 set splitbelow
 set splitright
