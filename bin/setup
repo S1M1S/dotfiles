@@ -1,5 +1,11 @@
-#!/usr/bin/zsh
+#!/bin/zsh
+
+DBIN="$HOME/dotfiles/bin"
+
 cd ~
-~/dotfiles/bin/dot link
+. $DBIN/dot link
 git config --global user.email "samm0s@hotmail.com"
 git config --global user.name "Sam Ritchie"
+
+. $DBIN/dot get ruby
+. $DBIN/dot get neovim
