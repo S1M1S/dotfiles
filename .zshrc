@@ -1,6 +1,3 @@
-# Fix incorrect locale on SSH
-export LANG=en_AU.UTF-8
-
 # source local variables
 sources=(~/dotfiles/local/*.zsh(N))
 if (($#sources != 0)); then
