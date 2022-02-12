@@ -1,35 +1,37 @@
-#!/bin/bash
-DF="$HOME/dotfiles"
+#!/bin/zsh
+DF=$HOME/dotfiles
+ALIAS_FILE=$DF/zsh/020-aliases.zsh
 
 refresh() {
-  if [[ "$BASH_SUBSHELL" == "0" ]]; then
+  if [[ $BASH_SUBSHELL == 0 ]]; then
     printf '%s\n' "Must run in current context to refresh. Try '. ali refresh'." >&2
     exit 1
   fi
 
-  if ! [[ -v ZSHRC ]]; then
-    ZSHRC="$DF/.zshrc"
+  if [[ -v ZSHRC ]]; then
+    ZSHRC=$DF/.zshrc
   fi
 
-  source "$ZSHRC"
+  source $ZSHRC
   echo "Freshed up!"
 }
 
-if [[ "$1" == "add" ]]; then
-  echo "alias \"$2\"" >> "$DF/.zsh/020-aliases.zsh"
-  echo "Added new alias: $2"
-  refresh
+if [[ $1 == "add" ]]; then
+  echo alias $2=\"$3\" >> $ALIAS_FILE
+  echo "Added new alias: $2=\"$3\""
 
 elif [[ "$1" == "ed" || "$1" == "edit" ]]; then
   $EDITOR "$ZSH_CONFIG_ALIASES"
-  refresh
 
 elif [[ "$1" == "refresh" || "$1" == "ref" ]]; then
-  refresh
+  :
 
 else
   echo "USAGE:"
   echo ". ali add ALIAS"
   echo "  ali edit       ||   ali ed"
   echo ". ali refresh    || . ali ref"
+  exit 0
 fi
+
+refresh
