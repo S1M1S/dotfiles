@@ -70,10 +70,6 @@ return require('packer').startup(function()
   use {
     'nvim-treesitter/nvim-treesitter',
     config = [[require('config.treesitter')]],
-    requires = {
-      'nvim-treesitter/nvim-treesitter-refactor',
-      'nvim-treesitter/nvim-treesitter-textobjects',
-    },
     run = ':TSUpdate'
   }
   use { 'cespare/vim-toml', ft = { 'toml' } }

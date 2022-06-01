@@ -35,8 +35,8 @@ function get_ruby {
 
   . ali refresh
 
-  V3="$(rbenv install --list &> /dev/null | grep '^3')"
-  V2_7="$(rbenv install --list &> /dev/null | grep '^2\.7')"
+  V3="$(rbenv install --list &> /dev/null | grep '^3' | tail -1)"
+  V2_7="$(rbenv install --list &> /dev/null | grep '^2' | tail -1)"
 
   rbenv install "$V2_7" -s
   rbenv install "$V3" -s
@@ -45,8 +45,24 @@ function get_ruby {
   rbenv global "$V3"
 }
 
+function get_rust {
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+}
+
+function get_node {
+  brew install node
+}
+
+function get_python {
+  brew install python
+}
+
 function get_neovim {
   # TODO: install neovim here
+
+  if command -v brew &> /dev/null; then
+    brew install neovim
+  fi
 
   if command -v yay &> /dev/null; then
     yay -S --needed --noconfirm wl-clipboard
@@ -70,8 +86,29 @@ function get_neovim {
   wait
 }
 
-if [[ $1 = "ruby" ]]; then
+function get_brew {
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/samritchie/.zprofile
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+}
+
+function get_handy {
+  cargo install lsd
+  brew install fzf
+}
+
+if [[ $1 = "brew" ]]; then
+  get_brew
+elif [[ $1 = "ruby" ]]; then
   get_ruby
+elif [[ $1 = "rust" ]]; then
+  get_rust
+elif [[ $1 = "node" ]]; then
+  get_node
+elif [[ $1 = "python" ]]; then
+  get_python
 elif [[ $1 = "neovim" ]]; then
   get_neovim
+elif [[ $1 = "handy" ]]; then
+  get_handy
 fi
