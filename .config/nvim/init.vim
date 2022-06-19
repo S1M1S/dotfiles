@@ -93,6 +93,9 @@ nnoremap <silent> vv <C-w>v
 
 " Ctrl+w,n to create a new tab page
 nnoremap <silent> <C-w>n <CMD>tabnew<CR>
+nnoremap <silent> <localleader>t <CMD>tabnew<CR>
+nnoremap <silent> <localleader>h <CMD>tabprevious<CR>
+nnoremap <silent> <localleader>l <CMD>tabnext<CR>
 
 " press enter to remove highlighting
 nnoremap <silent> <CR> :nohlsearch<CR><CR>
