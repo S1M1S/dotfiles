@@ -12,6 +12,9 @@ zplug "plugins/rails",      from:oh-my-zsh
 zplug "plugins/bg-notify",  from:oh-my-zsh
 zplug "plugins/autojump",   from:oh-my-zsh
 
+zplug "plugins/docker",         from:oh-my-zsh
+zplug "plugins/docker-compose", from:oh-my-zsh
+
 zplug "arzzen/calc.plugin.zsh", from:github
 zplug "zpm-zsh/colorize",       from:github
 
