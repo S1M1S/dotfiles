@@ -71,13 +71,21 @@ function get_neovim {
   fi
 
   echo "Installing Ruby provider..."
-  gem install neovim &
+  if command -v gem &> /dev/null; then
+    gem install neovim &
+  fi
 
   echo "Installing Python provider..."
-  trysudo pip install pynvim &
+  if command -v pip3 &> /dev/null; then
+    trysudo pip3 install pynvim &
+  elif command -v pip3 &> /dev/null; then
+    trysudo pip install pynvim &
+  fi
 
   echo "Installing Node.js provider..."
-  npm install -g neovim &
+  if command -v npm &> /dev/null; then
+    npm install -g neovim &
+  fi
 
   echo "Installing packer..."
   git clone https://github.com/wbthomason/packer.nvim\
@@ -94,6 +102,7 @@ function get_brew {
 
 function get_handy {
   cargo install lsd
+  cargo install fd-find
   brew install fzf
 }
 
