@@ -20,18 +20,6 @@ return require('packer').startup(function()
     },
   }
 
-  -- Snippets
-  use {
-    'hrsh7th/nvim-compe',
-    config = [[require('config.compe')]],
-    event = 'InsertEnter *',
-    requires = {
-      'hrsh7th/vim-vsnip',
-      'hrsh7th/vim-vsnip-integ',
-      'rafamadriz/friendly-snippets',
-    }
-  }
-
   -- TPope plugins necessary for survival
   use {
     { 'tpope/vim-abolish', cmd = { 'S', 'Subvert', 'Abolish' } },
@@ -81,6 +69,15 @@ return require('packer').startup(function()
 --    'onsails/lspkind-nvim'
 --  }
 
+  -- Snippets
+  use { 'hrsh7th/nvim-cmp', }
+  use { 'hrsh7th/cmp-vsnip',
+    requires = { 'hrsh7th/vim-vsnip' }
+  }
+  use { 'hrsh7th/cmp-nvim-lsp' }
+  use { 'hrsh7th/cmp-buffer' }
+  use { 'hrsh7th/cmp-path' }
+  require('config.cmp')
   -- Git
   use {
     { 'tpope/vim-fugitive', cmd = { 'Git', 'Gstatus', 'Gblame', 'Gpush', 'Gpull' }, disable = true },
@@ -109,15 +106,14 @@ return require('packer').startup(function()
   }
 
   -- Cosmetics
-  use {
-    {
-      'famiu/feline.nvim',
-      config = [[require('config/feline').setup()]],
-      requires = { 'kyazdani42/nvim-web-devicons' },
-    },
-    { 'kyazdani42/nvim-tree.lua', config = [[require('config.tree')]], requires = { 'kyazdani42/nvim-web-devicons' } },
-    { 'projekt0n/github-nvim-theme', config = [[require('config.theme')]] },
-  }
+  -- use {
+      -- 'famiu/feline.nvim',
+      -- config = [[require('config/feline').setup()]],
+      -- requires = { 'kyazdani42/nvim-web-devicons' },
+  -- }
+  use { 'nvim-lualine/lualine.nvim', config = [[require('config.lualine')]] }
+  use { 'kyazdani42/nvim-tree.lua', config = [[require('config.tree')]], requires = { 'kyazdani42/nvim-web-devicons' } }
+  use { 'projekt0n/github-nvim-theme', config = [[require('config.theme')]] }
 
   -- Markdown
   use {

@@ -1,9 +1,9 @@
 theme_setup_func = require('github-theme').setup
-local reset_func = require('feline').reset_highlights
+-- local reset_func = require('feline').reset_highlights
 
 local set_theme = function(theme)
   theme_setup_func({ themeStyle = theme, transparent = true })
-  reset_func()
+  -- reset_func()
 end
 
 local set_theme_from_sunshine = function(chan_id, data, name)
