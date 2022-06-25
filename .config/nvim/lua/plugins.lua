@@ -93,7 +93,10 @@ return require('packer').startup(function()
   -- Search
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } },
+    requires = {
+      { 'nvim-lua/popup.nvim' },
+      { 'nvim-lua/plenary.nvim' },
+    },
     setup = [[require('config.telescope_setup')]],
     config = [[require('config.telescope')]],
     cmd = 'Telescope',
@@ -113,6 +116,7 @@ return require('packer').startup(function()
   -- }
   use { 'nvim-lualine/lualine.nvim', config = [[require('config.lualine')]] }
   use { 'kyazdani42/nvim-tree.lua', config = [[require('config.tree')]], requires = { 'kyazdani42/nvim-web-devicons' } }
+  use { 'alvarosevilla95/luatab.nvim', config = [[require('luatab').setup{}]], requires = { 'kyazdani42/nvim-web-devicons' } }
   use { 'projekt0n/github-nvim-theme', config = [[require('config.theme')]] }
 
   -- Markdown

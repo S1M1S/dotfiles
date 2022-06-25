@@ -97,6 +97,9 @@ nnoremap <silent> <localleader>t <CMD>tabnew<CR>
 nnoremap <silent> <localleader>h <CMD>tabprevious<CR>
 nnoremap <silent> <localleader>l <CMD>tabnext<CR>
 
+" Easily duplicate below lines
+nnoremap <silent> <localleader>dj yjkp
+
 " press enter to remove highlighting
 nnoremap <silent> <CR> :nohlsearch<CR><CR>
 
