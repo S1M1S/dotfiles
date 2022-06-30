@@ -1,0 +1,11 @@
+#!/bin/bash
+
+gem install solargraph yard
+solargraph download-core
+solargraph config
+yard gems
+solargraph scan -v
+solargraph bundle
+git clone https://gist.github.com/28b349566a223dfb439a337aea29713e.git
+mv ./28b349566a223dfb439a337aea29713e/rails.rb ./config/definitions.rb
+rm -rf ./28b349566a223dfb439a337aea29713e

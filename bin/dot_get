@@ -103,6 +103,8 @@ function get_brew {
 function get_handy {
   cargo install lsd
   cargo install fd-find
+  cargo install joshuto
+  cargo install ripgrep
   brew install fzf
 }
 

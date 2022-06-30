@@ -23,7 +23,7 @@ cmp.setup {
     end,
   },
   window = {
-    -- completion = cmp.config.window.bordered(),
+    completion = cmp.config.window.bordered(),
     -- documentation = cmp.config.window.bordered(),
   },
   mapping = cmp.mapping.preset.insert({
@@ -54,7 +54,7 @@ cmp.setup {
     end, { "i", "s" }),
   }),
   sources = cmp.config.sources({
-    -- { name = 'nvim_lsp' },
+    { name = 'nvim_lsp' },
     { name = 'vsnip' }, -- For vsnip users.
     -- { name = 'luasnip' }, -- For luasnip users.
     -- { name = 'ultisnips' }, -- For ultisnips users.
@@ -93,6 +93,11 @@ cmp.setup.cmdline(':', {
 
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+require('lspconfig').solargraph.setup{
+  capabilities = capabilities
+}
+
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
 -- require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
 --   capabilities = capabilities
