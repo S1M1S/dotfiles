@@ -60,14 +60,15 @@ return require('packer').startup(function()
     config = [[require('config.treesitter')]],
     run = ':TSUpdate'
   }
-  use { 'cespare/vim-toml', ft = { 'toml' } }
 
   -- LSP
---  use {
---    'neovim/nvim-lspconfig',
---    { 'kabouzeid/nvim-lspinstall', config = [[require('config.lspinstall')]] },
---    'onsails/lspkind-nvim'
---  }
+ use {
+   'neovim/nvim-lspconfig',
+    'williamboman/nvim-lsp-installer',
+   -- { 'kabouzeid/nvim-lspinstall', config = [[require('config.lspinstall')]] },
+   'onsails/lspkind-nvim',
+    config = [[require('config.lsp')]],
+ }
 
   -- Snippets
   use { 'hrsh7th/nvim-cmp', }
@@ -117,7 +118,7 @@ return require('packer').startup(function()
   use { 'nvim-lualine/lualine.nvim', config = [[require('config.lualine')]] }
   use { 'kyazdani42/nvim-tree.lua', config = [[require('config.tree')]], requires = { 'kyazdani42/nvim-web-devicons' } }
   use { 'alvarosevilla95/luatab.nvim', config = [[require('luatab').setup{}]], requires = { 'kyazdani42/nvim-web-devicons' } }
-  use { 'projekt0n/github-nvim-theme', config = [[require('config.theme')]] }
+  use { 'rafamadriz/neon', config = [[require('config.theme')]] }
 
   -- Markdown
   use {
