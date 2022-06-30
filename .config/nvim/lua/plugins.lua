@@ -62,19 +62,14 @@ return require('packer').startup(function()
   }
 
   -- LSP
- use {
-   'neovim/nvim-lspconfig',
-    'williamboman/nvim-lsp-installer',
-   -- { 'kabouzeid/nvim-lspinstall', config = [[require('config.lspinstall')]] },
-   'onsails/lspkind-nvim',
-    config = [[require('config.lsp')]],
- }
+  use { 'neovim/nvim-lspconfig', }
+  use { 'williamboman/nvim-lsp-installer', }
+  use { 'onsails/lspkind-nvim' }
+  require('config.lsp')
 
   -- Snippets
   use { 'hrsh7th/nvim-cmp', }
-  use { 'hrsh7th/cmp-vsnip',
-    requires = { 'hrsh7th/vim-vsnip' }
-  }
+  use { 'hrsh7th/cmp-vsnip', requires = { 'hrsh7th/vim-vsnip' } }
   use { 'hrsh7th/cmp-nvim-lsp' }
   use { 'hrsh7th/cmp-buffer' }
   use { 'hrsh7th/cmp-path' }
@@ -102,6 +97,7 @@ return require('packer').startup(function()
     config = [[require('config.telescope')]],
     cmd = 'Telescope',
   }
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use {
     'nvim-telescope/telescope-cheat.nvim',
     requires = { 'tami5/sql.nvim' },
