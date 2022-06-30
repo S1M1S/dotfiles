@@ -55,11 +55,8 @@ return require('packer').startup(function()
   }
 
   -- Syntax highlighting
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    config = [[require('config.treesitter')]],
-    run = ':TSUpdate'
-  }
+  use { 'nvim-treesitter/nvim-treesitter', config = [[require('config.treesitter')]], run = ':TSUpdate' }
+  use { 'rafamadriz/neon', config = [[require('config.theme')]] }
 
   -- LSP
   use { 'neovim/nvim-lspconfig', }
@@ -74,6 +71,7 @@ return require('packer').startup(function()
   use { 'hrsh7th/cmp-buffer' }
   use { 'hrsh7th/cmp-path' }
   require('config.cmp')
+
   -- Git
   use {
     { 'tpope/vim-fugitive', cmd = { 'Git', 'Gstatus', 'Gblame', 'Gpush', 'Gpull' }, disable = true },
@@ -105,21 +103,11 @@ return require('packer').startup(function()
     after = 'telescope.nvim',
   }
 
-  -- Cosmetics
-  -- use {
-      -- 'famiu/feline.nvim',
-      -- config = [[require('config/feline').setup()]],
-      -- requires = { 'kyazdani42/nvim-web-devicons' },
-  -- }
+  -- Lines
   use { 'nvim-lualine/lualine.nvim', config = [[require('config.lualine')]] }
   use { 'kyazdani42/nvim-tree.lua', config = [[require('config.tree')]], requires = { 'kyazdani42/nvim-web-devicons' } }
   use { 'alvarosevilla95/luatab.nvim', config = [[require('luatab').setup{}]], requires = { 'kyazdani42/nvim-web-devicons' } }
-  use { 'rafamadriz/neon', config = [[require('config.theme')]] }
 
   -- Markdown
-  use {
-    'gabrielelana/vim-markdown',
-    ft = 'markdown',
-    config = [[require('config.markdown')]],
-  }
+  use { 'gabrielelana/vim-markdown', ft = 'markdown', config = [[require('config.markdown')]], }
 end)
