@@ -55,7 +55,12 @@ return require('packer').startup(function()
   }
 
   -- Syntax highlighting
-  use { 'nvim-treesitter/nvim-treesitter', config = [[require('config.treesitter')]], run = ':TSUpdate' }
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use { 'nvim-treesitter/nvim-treesitter-context' }
+  use { 'nvim-treesitter/nvim-treesitter-textobjects' }
+  use { 'rrethy/nvim-treesitter-textsubjects' }
+  require('config.treesitter')
+
   use { 'rafamadriz/neon', config = [[require('config.theme')]] }
 
   -- LSP
