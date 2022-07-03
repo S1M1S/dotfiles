@@ -106,7 +106,8 @@ return require('packer').startup(function()
   -- Lines
   use { 'nvim-lualine/lualine.nvim', config = [[require('config.lualine')]] }
   use { 'kyazdani42/nvim-tree.lua', config = [[require('config.tree')]], requires = { 'kyazdani42/nvim-web-devicons' } }
-  use { 'alvarosevilla95/luatab.nvim', config = [[require('luatab').setup{}]], requires = { 'kyazdani42/nvim-web-devicons' } }
+  use { 'akinsho/bufferline.nvim', config = [[require('config.bufferline')]], requires = { 'kyazdani42/nvim-web-devicons' } }
+  use { 'moll/vim-bbye' }
 
   -- Markdown
   use { 'gabrielelana/vim-markdown', ft = 'markdown', config = [[require('config.markdown')]], }
