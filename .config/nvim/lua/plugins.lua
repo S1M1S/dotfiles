@@ -91,11 +91,9 @@ return require('packer').startup(function()
       { 'nvim-lua/popup.nvim' },
       { 'nvim-lua/plenary.nvim' },
     },
-    setup = [[require('config.telescope_setup')]],
-    config = [[require('config.telescope')]],
-    cmd = 'Telescope',
+    config = [[require('config.telescope')]]
   }
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
   use {
     'nvim-telescope/telescope-cheat.nvim',
     requires = { 'tami5/sql.nvim' },
