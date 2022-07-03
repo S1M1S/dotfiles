@@ -75,8 +75,11 @@ return require('packer').startup(function()
   use { 'hrsh7th/cmp-nvim-lsp' }
   use { 'hrsh7th/cmp-buffer' }
   use { 'hrsh7th/cmp-path' }
+  use { 'rafamadriz/friendly-snippets' }
   require('config.cmp')
 
+  -- let's see if autopairs are any good
+  use { "windwp/nvim-autopairs", config = function() require("nvim-autopairs").setup {} end }
   -- Git
   use {
     { 'tpope/vim-fugitive', cmd = { 'Git', 'Gstatus', 'Gblame', 'Gpush', 'Gpull' }, disable = true },
