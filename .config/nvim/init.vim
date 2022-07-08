@@ -33,6 +33,9 @@ set history=500
 set undolevels=1000
 set undofile
 
+" reduce updatetime to trigger plugins earlier after stopping typing
+set updatetime=750
+
 " Get the mouse working
 set mouse=a
 

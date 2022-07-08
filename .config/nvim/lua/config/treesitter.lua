@@ -1,19 +1,35 @@
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "json", "vim", "lua", "http", "dockerfile", "rust", "yaml", "css", "scss", "javascript", "markdown", "ruby", "toml" },
+  -- activate custom nvim-treesitter plugins
   highlight = {
     enable = true,              -- false will disable the whole extension
     additional_vim_regex_highlighting = false,
   },
-  -- indent = {
-    -- enable = true,
-  -- },
+  -- Highlights definition and usages of the current symbol under the cursor
+  refactor = {
+    highlight_definitions = {
+      enable = true,
+      clear_on_cursor_move = true,
+    },
+    -- Highlights the block from the current scope where the cursor is.
+    -- highlight_current_scope = {
+      -- enable = true,
+    -- },
+    -- Renames the symbol under the cursor within the current scope (and current file)
+    smart_rename = {
+      enable = true,
+      keymaps = {
+        smart_rename = "grr"
+      }
+    }
+  },
   textsubjects = {
     enable = true,
     prev_selection = ',', -- (Optional) keymap to select the previous selection
     keymaps = {
-      ['.'] = 'textsubjects-smart',
-      [';'] = 'textsubjects-container-outer',
-      ['i;'] = 'textsubjects-container-inner',
+      ['.'] = "textsubjects-smart",
+      [';'] = "textsubjects-container-outer",
+      ['i;'] = "textsubjects-container-inner",
     },
   },
   textobjects = {
@@ -50,6 +66,9 @@ require'nvim-treesitter.configs'.setup {
         ["[]"] = "@class.outer",
       },
     },
+  },
+  autotag = {
+    enable = true,
   },
 }
 

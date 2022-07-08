@@ -79,6 +79,7 @@ return require('packer').startup(function()
     { "windwp/nvim-autopairs", config = function() require("nvim-autopairs").setup {} end },
 
     -- Git
+
     { 'tpope/vim-fugitive', cmd = { 'Git', 'Gstatus', 'Gblame', 'Gpush', 'Gpull' }, disable = true },
     {
       'lewis6991/gitsigns.nvim',
@@ -107,6 +108,8 @@ return require('packer').startup(function()
       config = [[require('telescope').load_extension('cheat')]],
       after = 'telescope.nvim',
     },
+
+    use { 'lazytanuki/nvim-mapper', before = 'telescope.nvim' }
 
     -- Lines
     { 'nvim-lualine/lualine.nvim', config = [[require('config.lualine')]] },

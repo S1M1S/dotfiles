@@ -33,3 +33,8 @@ alias occ="sudo chmod +x /var/www/nc.bea0.xyz/occ && sudo -u www-data /var/www/n
 alias tree="ls --tree"
 alias explore="joshuto"
 alias ctags="/opt/homebrew/bin/ctags"
+
+# colorize docker log output
+docker_log() {
+  docker compose logs $1 --follow --tail 20 --no-color --no-log-prefix | ccze -m ansi
+}
