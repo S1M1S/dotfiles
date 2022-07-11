@@ -23,7 +23,7 @@ if [[ $1 == "add" ]]; then
 elif [[ "$1" == "ed" || "$1" == "edit" ]]; then
   $EDITOR "$ZSH_CONFIG_ALIASES"
 
-elif [[ "$1" == "refresh" || "$1" == "ref" ]]; then
+elif [[ "$1" == "refresh" || "$1" == "ref" || "$1" == "up" ]]; then
   :
 
 else
@@ -31,7 +31,6 @@ else
   echo ". ali add ALIAS"
   echo "  ali edit       ||   ali ed"
   echo ". ali refresh    || . ali ref"
-  exit 0
 fi
 
 refresh
