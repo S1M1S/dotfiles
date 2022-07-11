@@ -38,3 +38,4 @@ alias ctags="/opt/homebrew/bin/ctags"
 docker_log() {
   docker compose logs $1 --follow --tail 20 --no-color --no-log-prefix | ccze -m ansi
 }
+alias router_reboot="ssh admin@192.168.0.2 /sbin/reboot"
