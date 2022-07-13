@@ -21,10 +21,13 @@ if [[ $1 == "add" ]]; then
   echo "Added new alias: $2=\"$3\""
 
 elif [[ "$1" == "ed" || "$1" == "edit" ]]; then
-  $EDITOR "$ZSH_CONFIG_ALIASES"
+  $EDITOR "$ALIAS_FILE"
 
 elif [[ "$1" == "refresh" || "$1" == "ref" || "$1" == "up" ]]; then
   :
+
+elif [[ "$1" == "show" ]]; then
+  bat $ALIAS_FILE
 
 else
   echo "USAGE:"

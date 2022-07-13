@@ -19,23 +19,24 @@ if command -v pacman &> /dev/null; then
   alias pacbrowse="pacman -Qeq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
 fi
 
+# Alias for having a nice docker log
+docker_log() { docker compose logs $1 --follow --tail 20 --no-color --no-log-prefix | ccze -m ansi }
+
 # Instant aliases
+alias ali=". ali"
+alias dot=". dot"
+alias tmt=". tmt"
+
+# Instant alisases
 alias gaa="git add ." 
 alias gc="git commit"
 alias gpush="git push"
 alias gpull="git pull"
 alias gs="git status"
-alias ali=". ali"
-alias dot=". dot"
-alias tmt=". tmt"
 alias cpr="rsync -ah --info=progress2"
 alias occ="sudo chmod +x /var/www/nc.bea0.xyz/occ && sudo -u www-data /var/www/nc.bea0.xyz/occ"
 alias tree="ls --tree"
 alias explore="joshuto"
 alias ctags="/opt/homebrew/bin/ctags"
-
-# colorize docker log output
-docker_log() {
-  docker compose logs $1 --follow --tail 20 --no-color --no-log-prefix | ccze -m ansi
-}
 alias router_reboot="ssh -oHostKeyAlgorithms=+ssh-rsa admin@192.168.0.2 /sbin/reboot"
+alias now="date +"%Y%m%d-%H-%M""
