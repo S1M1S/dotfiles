@@ -22,6 +22,11 @@ fi
 # Alias for having a nice docker log
 docker_log() { docker compose logs $1 --follow --tail 20 --no-color --no-log-prefix | ccze -m ansi }
 
+# Alias for quickly bringing up and pulling down docker
+docker_go() { 
+  docker compose down && docker compose up -d && docker_log $1
+}
+
 # Instant aliases
 alias ali=". ali"
 alias dot=". dot"
