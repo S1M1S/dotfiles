@@ -1,4 +1,13 @@
+#Oh My ZSH stuff
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
+setopt autocd
+unsetopt beep extendedglob notify
+setopt INC_APPEND_HISTORY
 export ZPLUG_HOME="$HOME/.zplug"
+
 if ! [ -d "$ZPLUG_HOME" ]; then
   git clone https://github.com/zplug/zplug $ZPLUG_HOME
 fi
@@ -36,5 +45,3 @@ if ! zplug check; then
   fi
 fi
 
-# Then, source plugins and add commands to $PATH
-zplug load

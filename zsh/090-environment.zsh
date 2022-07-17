@@ -5,6 +5,9 @@ export DF_LOCAL="$DOTFILES/local"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
+# source zplug plugins and add commands to $PATH
+zplug load
+
 # set up paths
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
