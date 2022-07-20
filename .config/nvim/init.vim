@@ -95,15 +95,15 @@ inoremap jk <Esc>
 nnoremap <silent> vv <C-w>v
 
 " Easily duplicate below lines
-nnoremap <silent> <localleader>dj yjkp
+nnoremap <silent> <localleader>dd yjkp
 
 " press enter to remove highlighting
 nnoremap <silent> <CR> :nohlsearch<CR><CR>
 
 " Rust checking and running
-nnoremap <leader>cc :w<CR>:!cargo check<CR>
-nnoremap <leader>cr :w<CR>:!cargo run<CR>
-nnoremap <leader>ct :w<CR>:!cargo test<CR>
+" nnoremap <leader>cc :w<CR>:!cargo check<CR>
+" nnoremap <leader>cr :w<CR>:!cargo run<CR>
+" nnoremap <leader>ct :w<CR>:!cargo test<CR>
 
 " Yank entire file into system clipboard
 nnoremap <leader>ya gg"*yG<C-o>

@@ -12,4 +12,8 @@ map({'n'}, '<leader>date', 'i<c-r>=strftime("%Y-%m-%d %a %I:%M %p")<cr><esc>')
 -- option+w kicks you out of terminal
 map({'t'}, '∑', '<C-\\><C-N>')
 
+-- slightly quicker way to open a fold
 map({'n'}, 'zz', 'za')
+
+-- make it easier to close the quickfix list
+map({'n'}, '<leader>cc', '<cmd>cclose<cr>')
