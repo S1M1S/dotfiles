@@ -4,59 +4,52 @@ vim.cmd([[autocmd BufWritePost plugins.lua source <afile> | PackerCompile]])
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
 
-  -- Convenience plugins
   use {
-    { 'mattn/emmet-vim', keys = {{ 'i', '<C-y>' }} }, -- Emmet
-    { 'rstacruz/vim-hyperstyle', ft = { 'css' } },
+    'tpope/vim-sensible',
+
+    -- Convenience plugins
+    -- { 'mattn/emmet-vim', keys = {{ 'i', '<C-y>' }} }, -- Emmet
+    -- { 'rstacruz/vim-hyperstyle', ft = { 'css' } },
     {
-      'ggandor/lightspeed.nvim', -- Racing around docs with s and S
-      keys = {
-        { 'n', 's' },
-        { 'n', 'S' },
-        { 'n', 't' },
-        { 'n', 'T' },
-        { 'n', 'f' },
-        { 'n', 'F' },
-      },
+      'ggandor/leap.nvim', -- Racing around docs with s and S
+      config = [[require('leap').set_default_keymaps()]],
     },
 
     -- TPope plugins necessary for survival
-    { 'tpope/vim-abolish', cmd = { 'S', 'Subvert', 'Abolish' } },
-    { 'tpope/vim-commentary', keys = 'gcc', cmd = { 'Commentary' } },
+    -- { 'tpope/vim-abolish', cmd = { 'S', 'Subvert', 'Abolish' } },
+    'tpope/vim-commentary',
     { 'tpope/vim-dispatch', cmd = { 'Dispatch', 'Make', 'Focus', 'Start' } },
     { 'tpope/vim-endwise', ft = { 'rb', 'erb', 'sh', 'zsh', 'lua', 'vim' } },
-    { 'tpope/vim-eunuch', cmd = { 'Delete', 'Move', 'Rename', 'Chmod', 'Mkdir', 'Clocate', 'SudoWrite', 'SudoEdit' } },
-    { 'tpope/vim-repeat', keys = '.' },
-    'tpope/vim-sensible',
+    'tpope/vim-repeat',
     'tpope/vim-surround',
-    'tpope/vim-unimpaired',
-    { 'tpope/vim-ragtag', ft = { 'html', 'erb' } },
+    'tpope/vim-unimpaired', -- this is the one that lets me put an empty line up above
+    { 'tpope/vim-ragtag', ft = { 'html', 'eruby' } },
     { 'tpope/vim-rails', config = [[require('config.rails')]] },
     'tpope/vim-bundler',
     'lambdalisue/suda.vim',
 
     -- ALE for linting and fixing
-    {
-      'w0rp/ale',
-      ft = {
-        'bash',
-        'html',
-        'javascript',
-        'json',
-        'lua',
-        'markdown',
-        'ruby',
-        'sh',
-        'vim',
-        'zsh',
-      },
-      config = [[vim.cmd('ALEEnable')]],
-    },
+    -- {
+    --   'dense-analysis/ale',
+    --   ft = {
+    --     'bash',
+    --     'html',
+    --     'javascript',
+    --     'json',
+    --     'lua',
+    --     'markdown',
+    --     'ruby',
+    --     'sh',
+    --     'vim',
+    --     'zsh',
+    --   },
+    --   config = [[vim.cmd('ALEEnable')]],
+    -- },
 
     -- Syntax highlighting
     { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
-    'nvim-treesitter/nvim-treesitter-context',
-    'nvim-treesitter/nvim-treesitter-textobjects',
+    { 'nvim-treesitter/nvim-treesitter-context' },
+    { 'nvim-treesitter/nvim-treesitter-textobjects' },
     { 'rrethy/nvim-treesitter-textsubjects', config = [[require('config.treesitter')]] },
 
     { 'rafamadriz/neon', config = [[require('config.theme')]] },
@@ -67,19 +60,25 @@ return require('packer').startup(function()
     { 'onsails/lspkind-nvim', config = [[require('config.lsp')]] },
 
     -- Snippets
-    'L3MON4D3/LuaSnip',
-    'saadparwaiz1/cmp_luasnip',
+    { 
+      'L3MON4D3/LuaSnip',
+      wants = "friendly-snippets",
+      requires = {
+        'rafamadriz/friendly-snippets',
+        'saadparwaiz1/cmp_luasnip',
+      },
+      config = [[require('config.luasnip')]],
+    },
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
-    'rafamadriz/friendly-snippets',
     { 'hrsh7th/nvim-cmp', config = [[require('config.cmp')]] },
 
     -- let's see if autopairs are any good
-    { "windwp/nvim-autopairs", config = function() require("nvim-autopairs").setup {} end },
+    -- { "windwp/nvim-autopairs", config = function() require("nvim-autopairs").setup {} end },
 
     -- Git
-    { 'tpope/vim-fugitive', cmd = { 'Git', 'Gstatus', 'Gblame', 'Gpush', 'Gpull' }, disable = true },
+    { 'tpope/vim-fugitive' },
     {
       'lewis6991/gitsigns.nvim',
       requires = { 'nvim-lua/plenary.nvim' },

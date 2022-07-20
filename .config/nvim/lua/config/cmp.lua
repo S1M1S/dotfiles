@@ -24,27 +24,25 @@ M.methods.feedkeys = feedkeys
 
 ---checks if emmet_ls is available and active in the buffer
 ---@return boolean true if available, false otherwise
-local is_emmet_active = function()
-  local clients = vim.lsp.buf_get_clients()
+-- local is_emmet_active = function()
+--   local clients = vim.lsp.buf_get_clients()
 
-  for _, client in pairs(clients) do
-    if client.name == "emmet_ls" then
-      return true
-    end
-  end
-  return false
-end
-M.methods.is_emmet_active = is_emmet_active
+--   for _, client in pairs(clients) do
+--     if client.name == "emmet_ls" then
+--       return true
+--     end
+--   end
+--   return false
+-- end
+-- M.methods.is_emmet_active = is_emmet_active
 
 ---when inside a snippet, seeks to the nearest luasnip field if possible, and checks if it is jumpable
 ---@param dir number 1 for forward, -1 for backward; defaults to 1
 ---@return boolean true if a jumpable luasnip field is found while inside a snippet
-local function jumpable(dir)
-  local luasnip_ok, luasnip = pcall(require, "luasnip")
-  if not luasnip_ok then
-    return
-  end
 
+local luasnip = require('luasnip')
+
+local function jumpable(dir)
   local win_get_cursor = vim.api.nvim_win_get_cursor
   local get_current_buf = vim.api.nvim_get_current_buf
 
@@ -145,7 +143,7 @@ local function jumpable(dir)
 end
 M.methods.jumpable = jumpable
 
-local cmp = require'cmp'
+local cmp = require('cmp')
 
 cmp.setup {
   confirm_opts = {
@@ -190,10 +188,10 @@ cmp.setup {
         luasnip.expand()
       elseif jumpable() then
         luasnip.jump(1)
-      elseif check_backspace() then
-        fallback()
-      elseif is_emmet_active() then
-        return vim.fn["cmp#complete"]()
+      -- elseif check_backspace() then
+      --   fallback()
+      -- elseif is_emmet_active() then
+      --   return vim.fn["cmp#complete"]()
       else
         fallback()
       end
@@ -322,5 +320,3 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline' }
   })
 })
-
-require("luasnip.loaders.from_vscode").lazy_load()

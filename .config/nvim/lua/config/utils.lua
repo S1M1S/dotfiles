@@ -1,6 +1,6 @@
 local cmd = vim.cmd
 local o_s = vim.o
-local map_key = vim.api.nvim_set_keymap
+local map_key = vim.keymap.set
 
 local function opt(o, v, scopes)
   scopes = scopes or {o_s}

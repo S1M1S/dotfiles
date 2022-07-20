@@ -1,4 +1,4 @@
-map = require('config.utils').map
+local map = require('config.utils').map
 
 -- shortcuts to quit out of nvim
 map({'i', 'n'}, '<f4>', '<esc>:wq<cr>')
