@@ -24,7 +24,19 @@ docker_log() { docker compose logs $1 --follow --tail 20 --no-color --no-log-pre
 
 # Alias for quickly bringing up and pulling down docker
 docker_go() { 
-  docker compose down && docker compose up -d && docker_log $1
+  if [[ -z $1 ]]; then
+    FILE=""
+  else
+    FILE="--file=$1"
+  fi
+
+  eval "docker compose ${FILE} down"
+  eval "docker compose ${FILE} up -d"
+
+  if [[ -z $2 ]]; then
+  else
+    docker_log $2
+  fi
 }
 
 # Instant aliases
