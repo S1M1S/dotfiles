@@ -2,3 +2,4 @@
 /.config/goneovim/sessions/**
 /.config/nvim/plugin/packer_compiled*
 /.config/nvim/Session.vim
+Session.vim
