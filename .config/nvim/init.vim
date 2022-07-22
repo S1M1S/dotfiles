@@ -16,6 +16,9 @@ set splitright
 set number
 set relativenumber
 
+" set cursor line highlight
+set cursorline
+
 " Turn on syntax highlighting
 syntax on
 
