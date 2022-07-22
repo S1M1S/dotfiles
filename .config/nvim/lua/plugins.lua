@@ -115,8 +115,6 @@ return require('packer').startup(function()
       after = 'telescope.nvim',
     },
 
-    { 'lazytanuki/nvim-mapper', before = 'telescope.nvim' },
-
     -- Lines
     { 'nvim-lualine/lualine.nvim', config = [[require('config.lualine')]] },
     { 'kyazdani42/nvim-tree.lua', config = [[require('config.tree')]], requires = { 'kyazdani42/nvim-web-devicons' } },
