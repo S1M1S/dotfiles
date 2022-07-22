@@ -79,10 +79,10 @@ let mapleader=" "
 let maplocalleader=","
 
 " Set up movement shortcuts
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
+" nnoremap <C-h> <C-w>h
+" nnoremap <C-l> <C-w>l
+" nnoremap <C-j> <C-w>j
+" nnoremap <C-k> <C-w>k
 
 " Easily write
 nnoremap <leader>w :w<CR>
@@ -95,7 +95,7 @@ nnoremap <silent> <F8> :set spell!<CR>
 " inoremap jk <Esc>
 
 " vv to generate new vertical split
-nnoremap <silent> vv <C-w>v
+" nnoremap <silent> vv <C-w>v
 
 " Easily duplicate below lines
 nnoremap <silent> <localleader>dd yjkp

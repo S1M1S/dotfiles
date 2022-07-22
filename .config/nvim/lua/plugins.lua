@@ -15,15 +15,22 @@ return require('packer').startup(function()
       config = [[require('leap').set_default_keymaps()]],
     },
     {
+      -- more convenient escape sequence, no lag
       'max397574/better-escape.nvim',
       config = function() require('better_escape').setup {
         mapping = "jk",
       } end,
     },
+    {
+      -- really nice splits
+      'beauwilliams/focus.nvim',
+      config = [[require('config.focus')]],
+    },
+    'iron-e/nvim-cartographer', -- better mapping
 
       -- TPope plugins necessary for survival
       -- { 'tpope/vim-abolish', cmd = { 'S', 'Subvert', 'Abolish' } },
-      'tpope/vim-commentary',
+    'tpope/vim-commentary',
     { 'tpope/vim-dispatch', cmd = { 'Dispatch', 'Make', 'Focus', 'Start' } },
     { 'tpope/vim-endwise', ft = { 'rb', 'erb', 'sh', 'zsh', 'lua', 'vim' } },
     'tpope/vim-repeat',
