@@ -1,7 +1,7 @@
 -- Reload this file on write
 vim.cmd([[autocmd BufWritePost plugins.lua source <afile> | PackerCompile]])
 
-return require('packer').startup(function()
+return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use {
@@ -41,23 +41,27 @@ return require('packer').startup(function()
     'tpope/vim-bundler',
     'lambdalisue/suda.vim',
 
-    -- ALE for linting and fixing
+    -- ALE for fixing
     { 'dense-analysis/ale', config = [[require('config.ale')]] },
 
     -- Syntax highlighting
     { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
-    { 'nvim-treesitter/nvim-treesitter-context' },
-    { 'nvim-treesitter/nvim-treesitter-textobjects' },
-    { 'rrethy/nvim-treesitter-textsubjects', config = [[require('config.treesitter')]] },
+    'nvim-treesitter/nvim-treesitter-context',
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    'nvim-treesitter/nvim-treesitter-refactor', -- smart rename
+    { 'rrethy/nvim-treesitter-textsubjects', config = [[require('config.treesitter')]] }, -- visual mode dot dot power
 
     -- { 'rafamadriz/neon', config = [[require('config.theme')]] },
     { 'sainnhe/everforest', config = [[require('config.theme')]] },
-    'rrethy/vim-illuminate',
+    'rrethy/vim-illuminate', -- lsp powered symbol illuminator
 
     -- LSP
     { 'neovim/nvim-lspconfig', },
     { 'williamboman/nvim-lsp-installer', },
     { 'onsails/lspkind-nvim', config = [[require('config.lsp')]] },
+
+    -- DAP for debugging
+    -- { 'mfussenegger/nvim-dap', config = [[require('config.dap')]] },
 
     -- Snippets
     {

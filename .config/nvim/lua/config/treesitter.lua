@@ -11,10 +11,10 @@ require'nvim-treesitter.configs'.setup {
   },
   -- Highlights definition and usages of the current symbol under the cursor
   refactor = {
-    highlight_definitions = {
-      enable = true,
-      clear_on_cursor_move = true,
-    },
+    -- highlight_definitions = {
+    --   enable = true,
+    --   clear_on_cursor_move = true,
+    -- },
     -- Highlights the block from the current scope where the cursor is.
     -- highlight_current_scope = {
       -- enable = true,
