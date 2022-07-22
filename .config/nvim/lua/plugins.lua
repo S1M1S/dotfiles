@@ -37,7 +37,9 @@ return require('packer').startup(function()
     { 'nvim-treesitter/nvim-treesitter-textobjects' },
     { 'rrethy/nvim-treesitter-textsubjects', config = [[require('config.treesitter')]] },
 
-    { 'rafamadriz/neon', config = [[require('config.theme')]] },
+    -- { 'rafamadriz/neon', config = [[require('config.theme')]] },
+    { 'sainnhe/everforest', config = [[require('config.theme')]] },
+    'rrethy/vim-illuminate',
 
     -- LSP
     { 'neovim/nvim-lspconfig', },

@@ -1,6 +1,24 @@
 local map = require('config.utils').map
 local silent = {silent = true}
 
+local group_separator = function(group, hls, count)
+  local fmt = string.format
+  local padding = require("bufferline.constants").padding
+  local space_end = function(hl_groups) return { { highlight = hl_groups.fill.hl, text = padding } } end
+  local bg_hl = hls.fill.hl
+  local name, display_name = group.name, group.display_name
+  local sep_grp, label_grp = hls[fmt("%s_separator", name)], hls[fmt("%s_label", name)]
+  local sep_hl = sep_grp and sep_grp.hl or hls.group_separator.hl
+  local label_hl = label_grp and label_grp.hl or hls.group_label.hl
+  local block = "█"
+  local indicator = {
+    { text = block, highlight = sep_hl },
+    { text = display_name, highlight = label_hl },
+    { text = block, highlight = sep_hl },
+  }
+  return { sep_start = indicator, sep_end = space_end(hls) }
+end
+
 require('bufferline').setup {
   options = {
     mode = "buffers", -- set to "tabs" to only show tabpages instead
@@ -50,7 +68,29 @@ require('bufferline').setup {
     -- enforce_regular_tabs = false | true,
     -- always_show_bufferline = true | false,
     sort_by = 'insert_after_current',
-  }
+    groups = {
+      options = {
+        toggle_hidden_on_enter = true -- when you re-enter a hidden group this options re-opens that group so the buffer is visible
+      },
+      items = {
+        {
+          name = " shell",
+          auto_close = true,  -- whether or not close this group if it doesn't contain the current buffer
+          matcher = function(buf)
+            return buf.name:match('zsh')
+          end,
+          separator = { style = group_separator },
+        },
+        {
+          name = "", -- Mandatory
+          matcher = function(buf) -- Mandatory
+            return buf.name:match('%_test') or buf.name:match('%_spec')
+          end,
+          separator = { style = group_separator },
+        },
+      },
+    },
+  },
 }
 
 map('n', '<s-l>', [[:BufferLineCycleNext<cr>]])

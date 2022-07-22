@@ -15,5 +15,9 @@ map({'t'}, '∑', '<C-\\><C-N>')
 -- slightly quicker way to open a fold
 map({'n'}, 'zz', 'za')
 
+-- remap jumping forward and backward a page to just a half page
+map({'n'}, '<c-j>', '<c-d>')
+map({'n'}, '<c-k>', '<c-u>')
+
 -- make it easier to close the quickfix list
 map({'n'}, '<leader>cc', '<cmd>cclose<cr>')
