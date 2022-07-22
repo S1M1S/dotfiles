@@ -16,6 +16,11 @@ telescope.setup {
       "--smart-case",
       "--hidden",
     },
+    mappings = {
+      i = {
+        ["<esc>"] = require('telescope.actions').close,
+      },
+    },
   },
 }
 
