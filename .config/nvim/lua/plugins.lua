@@ -29,22 +29,7 @@ return require('packer').startup(function()
     'lambdalisue/suda.vim',
 
     -- ALE for linting and fixing
-    -- {
-    --   'dense-analysis/ale',
-    --   ft = {
-    --     'bash',
-    --     'html',
-    --     'javascript',
-    --     'json',
-    --     'lua',
-    --     'markdown',
-    --     'ruby',
-    --     'sh',
-    --     'vim',
-    --     'zsh',
-    --   },
-    --   config = [[vim.cmd('ALEEnable')]],
-    -- },
+    { 'dense-analysis/ale', config = [[require('config.ale')]] },
 
     -- Syntax highlighting
     { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
@@ -60,7 +45,7 @@ return require('packer').startup(function()
     { 'onsails/lspkind-nvim', config = [[require('config.lsp')]] },
 
     -- Snippets
-    { 
+    {
       'L3MON4D3/LuaSnip',
       wants = "friendly-snippets",
       requires = {
@@ -69,6 +54,18 @@ return require('packer').startup(function()
       },
       config = [[require('config.luasnip')]],
     },
+    -- set up github copilot - see the github page for copilot.lua
+    { 'github/copilot.vim', run = ':Copilot', disable = true },
+    {
+      'zbirenbaum/copilot.lua',
+      event = {'VimEnter'},
+      config = function()
+        vim.defer_fn(function()
+          require('copilot').setup()
+        end, 100)
+      end,
+    },
+    { 'zbirenbaum/copilot-cmp', module = 'copilot_cmp' },
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
