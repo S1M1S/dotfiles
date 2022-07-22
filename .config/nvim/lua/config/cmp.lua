@@ -171,16 +171,16 @@ cmp.setup {
   sources = cmp.config.sources {
     { name = 'copilot' },
     { name = 'nvim_lsp' },
-    { name = 'path' },
+    -- { name = 'path' },
     { name = 'luasnip' }, -- For luasnip users.
     { name = 'buffer' },
-    { name = 'treesitter' },
+    -- { name = 'treesitter' },
   },
   mapping = cmp.mapping.preset.insert {
-    ["<C-k>"] = cmp.mapping.select_prev_item(),
-    ["<C-j>"] = cmp.mapping.select_next_item(),
-    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+    -- ["<C-k>"] = cmp.mapping.select_prev_item(),
+    -- ["<C-j>"] = cmp.mapping.select_next_item(),
+    -- ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+    -- ["<C-f>"] = cmp.mapping.scroll_docs(4),
     -- TODO: potentially fix emmet nonsense
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -302,6 +302,9 @@ cmp.setup {
       return vim_item
     end,
   },
+  performance = {
+    throttle = 100,
+  }
 }
 
 -- Set configuration for specific filetype.
