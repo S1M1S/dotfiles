@@ -37,7 +37,7 @@ local on_attach = function(client, bufnr)
   map('n', '<leader>lca', vim.lsp.buf.code_action, bufopts)
   map('n', '<leader>lrr', vim.lsp.buf.references, bufopts)
   map('n', '<leader>lrn', vim.lsp.buf.rename, bufopts)
-  map('i', '<leader>lsh', vim.lsp.buf.signature_help, bufopts)
+  map('n', '<leader>lsh', vim.lsp.buf.signature_help, bufopts)
 
   -- start up vim illuminate
   require 'illuminate'.on_attach(client)
