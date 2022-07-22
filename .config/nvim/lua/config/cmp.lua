@@ -182,7 +182,7 @@ cmp.setup {
     -- ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     -- ["<C-f>"] = cmp.mapping.scroll_docs(4),
     -- TODO: potentially fix emmet nonsense
-    ["<Tab>"] = cmp.mapping(function(fallback)
+    ["<tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expandable() then
@@ -196,11 +196,8 @@ cmp.setup {
       else
         fallback()
       end
-    end, {
-      "i",
-      "s",
-    }),
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
+    end, { "i", "s", }),
+    ["<s-tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif jumpable(-1) then
@@ -208,13 +205,10 @@ cmp.setup {
       else
         fallback()
       end
-    end, {
-      "i",
-      "s",
-    }),
-    ["<C-Space>"] = cmp.mapping.complete(),
-    ["<C-e>"] = cmp.mapping.abort(),
-    -- ["<CR>"] = cmp.mapping.confirm({ select = true }),
+    end, { "i", "s", }),
+    -- ["<C-Space>"] = cmp.mapping.complete(),
+    -- ["<C-e>"] = cmp.mapping.abort(),
+    ["<cr>"] = cmp.mapping.confirm({ select = true }),
     -- ["<CR>"] = cmp.mapping(function(fallback)
     --   if cmp.visible() and cmp.confirm(cmp.confirm_opts) then
     --     if jumpable() then
@@ -302,9 +296,9 @@ cmp.setup {
       return vim_item
     end,
   },
-  performance = {
-    throttle = 100,
-  }
+  -- performance = {
+  --   throttle = 100,
+  -- }
 }
 
 -- Set configuration for specific filetype.
