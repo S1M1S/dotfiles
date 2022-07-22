@@ -92,7 +92,7 @@ nnoremap <leader>s :mks!<CR>
 nnoremap <silent> <F8> :set spell!<CR>
 
 " No escape
-inoremap jk <Esc>
+" inoremap jk <Esc>
 
 " vv to generate new vertical split
 nnoremap <silent> vv <C-w>v

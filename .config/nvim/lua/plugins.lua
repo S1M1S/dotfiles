@@ -14,10 +14,16 @@ return require('packer').startup(function()
       'ggandor/leap.nvim', -- Racing around docs with s and S
       config = [[require('leap').set_default_keymaps()]],
     },
+    {
+      'max397574/better-escape.nvim',
+      config = function() require('better_escape').setup {
+        mapping = "jk",
+      } end,
+    },
 
-    -- TPope plugins necessary for survival
-    -- { 'tpope/vim-abolish', cmd = { 'S', 'Subvert', 'Abolish' } },
-    'tpope/vim-commentary',
+      -- TPope plugins necessary for survival
+      -- { 'tpope/vim-abolish', cmd = { 'S', 'Subvert', 'Abolish' } },
+      'tpope/vim-commentary',
     { 'tpope/vim-dispatch', cmd = { 'Dispatch', 'Make', 'Focus', 'Start' } },
     { 'tpope/vim-endwise', ft = { 'rb', 'erb', 'sh', 'zsh', 'lua', 'vim' } },
     'tpope/vim-repeat',
@@ -115,7 +121,8 @@ return require('packer').startup(function()
     { 'nvim-lualine/lualine.nvim', config = [[require('config.lualine')]] },
     { 'kyazdani42/nvim-tree.lua', config = [[require('config.tree')]], requires = { 'kyazdani42/nvim-web-devicons' } },
     { 'akinsho/bufferline.nvim', config = [[require('config.bufferline')]], requires = { 'kyazdani42/nvim-web-devicons' } },
-    'moll/vim-bbye',
+    'moll/vim-bbye', -- close buffers without losing layout
+    'stevearc/dressing.nvim', -- prettier popups
 
     -- Markdown
     { 'gabrielelana/vim-markdown', ft = 'markdown', config = [[require('config.markdown')]] },
