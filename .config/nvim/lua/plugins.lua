@@ -61,7 +61,10 @@ return require('packer').startup(function()
       event = {'VimEnter'},
       config = function()
         vim.defer_fn(function()
-          require('copilot').setup()
+          require('copilot').setup({
+            enabled = true,
+            method = "getCompletionsCycling",
+          })
         end, 100)
       end,
     },

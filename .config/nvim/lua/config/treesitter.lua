@@ -1,5 +1,9 @@
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "json", "vim", "lua", "http", "dockerfile", "rust", "yaml", "css", "scss", "javascript", "markdown", "ruby", "toml" },
+  -- use treesitter for indentation
+  indent = {
+    enable = true,
+  },
   -- activate custom nvim-treesitter plugins
   highlight = {
     enable = true,              -- false will disable the whole extension

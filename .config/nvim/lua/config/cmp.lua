@@ -169,6 +169,7 @@ cmp.setup {
     documentation = cmp.config.window.bordered(),
   },
   sources = cmp.config.sources {
+    { name = 'copilot' },
     { name = 'nvim_lsp' },
     { name = 'path' },
     { name = 'luasnip' }, -- For luasnip users.
@@ -188,8 +189,8 @@ cmp.setup {
         luasnip.expand()
       elseif jumpable() then
         luasnip.jump(1)
-      -- elseif check_backspace() then
-      --   fallback()
+      elseif check_backspace() then
+        fallback()
       -- elseif is_emmet_active() then
       --   return vim.fn["cmp#complete"]()
       else
@@ -213,22 +214,23 @@ cmp.setup {
     }),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.abort(),
-    ["<CR>"] = cmp.mapping(function(fallback)
-      if cmp.visible() and cmp.confirm(cmp.confirm_opts) then
-        if jumpable() then
-          luasnip.jump(1)
-        end
-        return
-      end
+    -- ["<CR>"] = cmp.mapping.confirm({ select = true }),
+    -- ["<CR>"] = cmp.mapping(function(fallback)
+    --   if cmp.visible() and cmp.confirm(cmp.confirm_opts) then
+    --     if jumpable() then
+    --       luasnip.jump(1)
+    --     end
+    --     return
+    --   end
 
-      if jumpable() then
-        if not luasnip.jump(1) then
-          fallback()
-        end
-      else
-        fallback()
-      end
-    end),
+    --   if jumpable() then
+    --     if not luasnip.jump(1) then
+    --       fallback()
+    --     end
+    --   else
+    --     fallback()
+    --   end
+    -- end),
   },
   formatting = {
     fields = { "kind", "abbr", "menu" },
@@ -262,12 +264,14 @@ cmp.setup {
           Unit = "塞",
           Value = " ",
           Variable = " ",
+          Copilot = " ",
         },
         source_names = {
           nvim_lsp = "(LSP)",
           emoji = "(Emoji)",
           path = "(Path)",
           calc = "(Calc)",
+          copilot = "(Copilot)",
           cmp_tabnine = "(Tabnine)",
           vsnip = "(Snippet)",
           luasnip = "(Snippet)",
@@ -286,9 +290,15 @@ cmp.setup {
       if max_width ~= 0 and #vim_item.abbr > max_width then
         vim_item.abbr = string.sub(vim_item.abbr, 1, max_width - 1) .. "…"
       end
+
+      if entry.source.name == 'copilot' then
+        vim_item.kind = 'Copilot'
+      end
+
       vim_item.kind = fmt.kind_icons[vim_item.kind]
       vim_item.menu = fmt.source_names[entry.source.name]
       vim_item.dup = fmt.duplicates[entry.source.name] or fmt.duplicates_default
+
       return vim_item
     end,
   },
