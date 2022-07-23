@@ -19,5 +19,9 @@ map_old({'n'}, 'zz', 'za')
 -- make it easier to close the quickfix list
 map_old({'n'}, '<leader>cc', '<cmd>cclose<cr>')
 
+-- swap full page jump for half page jump
+map.n.nore.silent['<c-b>'] = '<c-u>'
+map.n.nore.silent['<c-f>'] = '<c-d>'
+
 -- ctrl+r during visual mode for an amazing replace gui
 map.v.nore.silent['<c-r>'] = [["hy:%s/<C-r>h//gc<left><left><left>]]

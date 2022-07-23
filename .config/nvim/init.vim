@@ -120,10 +120,8 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 " source ~/dotfiles/.config/nvim/plugins.vim
 lua require('plugins')
 lua require('mappings')
+if exists("g:neovide")
+    lua require('config.neovide')
+endif
 
 set termguicolors
-
-set guifont=VictorMono\ Nerd\ Font:h16
-let g:neovide_cursor_vfx_mode = "railgun"
-let g:neovide_window_floating_blur = 0
-let g:neovide_cursor_vfx_particle_density = 3
