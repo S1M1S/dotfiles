@@ -2,138 +2,279 @@
 vim.cmd([[autocmd BufWritePost plugins.lua source <afile> | PackerCompile]])
 
 return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
-
   use {
-    'tpope/vim-sensible',
+    'wbthomason/packer.nvim',
+    'lewis6991/impatient.nvim',
+    'nathom/filetype.nvim',
+    'nvim-lua/plenary.nvim',
+    'iron-e/nvim-cartographer', -- mapping convenience function
+  }
 
-    -- Convenience plugins
-    -- { 'mattn/emmet-vim', keys = {{ 'i', '<C-y>' }} }, -- Emmet
-    -- { 'rstacruz/vim-hyperstyle', ft = { 'css' } },
-    {
-      'ggandor/leap.nvim', -- Racing around docs with s and S
-      config = [[require('leap').set_default_keymaps()]],
+  -- set up theme
+  use {
+    'sainnhe/everforest',
+    config = function()
+      require('config.theme')
+    end,
+  }
+
+  -- set up dashboard
+  use {
+    'glepnir/dashboard-nvim',
+    config = function()
+      require('config.dashboard')
+    end,
+  }
+
+  -- automatic saving and loading of sessions
+  use {
+    'rmagatti/auto-session',
+    config = function()
+      require('config.auto-session')
+    end,
+  }
+
+  -- statusline
+  use {
+    'nvim-lualine/lualine.nvim',
+    config = function()
+      require('config.lualine')
+    end,
+  }
+
+  -- bufferline/tabline
+  use {
+    'akinsho/bufferline.nvim',
+    config = function()
+      require('config.bufferline')
+    end,
+    requires = {
+      'kyazdani42/nvim-web-devicons',
+      'moll/vim-bbye',
     },
-    {
-      -- more convenient escape sequence, no lag
-      'max397574/better-escape.nvim',
-      config = function() require('better_escape').setup {
+  }
+
+  -- prettier popups
+  use 'stevearc/dressing.nvim'
+
+  -- notification plugin
+  use {
+    'rcarriga/nvim-notify',
+    config = function()
+      vim.notify = require('notify')
+    end,
+  }
+
+  -- file explorer
+  use {
+    'kyazdani42/nvim-tree.lua',
+    config = function()
+      require('config.tree')
+    end,
+    cmd = {
+      'NvimTreeClipboard',
+      'NvimTreeClose',
+      'NvimTreeFindFile',
+      'NvimTreeOpen',
+      'NvimTreeRefresh',
+      'NvimTreeToggle',
+    },
+    event = 'VimEnter',
+  }
+
+  -- auto-completion
+  use {
+    'hrsh7th/nvim-cmp',
+    config = function()
+      require('config.cmp')
+    end,
+    event = 'InsertEnter',
+    requires = {
+      {
+        'L3MON4D3/LuaSnip',
+        config = function()
+          require('config.luasnip')
+        end,
+        requires = {
+          'rafamadriz/friendly-snippets',
+        },
+      },
+      { 'hrsh7th/cmp-nvim-lsp',     after = 'nvim-cmp', },
+      { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp', },
+      { 'hrsh7th/cmp-buffer',       after = 'nvim-cmp', },
+      { 'hrsh7th/cmp-path',         after = 'nvim-cmp', },
+      -- set up github copilot - see the github page for copilot.lua
+      {
+        'zbirenbaum/copilot-cmp',
+        module = 'copilot_cmp',
+        after = 'nvim-cmp',
+        requires = {
+          {
+            'zbirenbaum/copilot.lua',
+            config = function()
+              vim.defer_fn(function()
+                require('copilot').setup()
+              end, 100)
+            end,
+            event = 'VimEnter',
+            requires = {
+              { 'github/copilot.vim', run = ':Copilot', disable = true },
+            },
+          },
+        },
+      },
+    },
+  }
+
+  -- lsp
+  use {
+    'neovim/nvim-lspconfig',
+    config = function()
+      require('config.lsp')
+    end,
+    event = 'BufWinEnter',
+    after = 'cmp-nvim-lsp', -- cmp make capabilities referenced in this config
+    requires = {
+      'williamboman/nvim-lsp-installer',
+      'onsails/lspkind-nvim',
+      'rrethy/vim-illuminate',
+    },
+  }
+
+  -- file auto fixing
+  use {
+    'dense-analysis/ale',
+    config = function()
+      require('config.ale')
+    end,
+  }
+
+  -- git commands
+  use 'tpope/vim-fugitive'
+
+  -- git ui
+  use  {
+    'TimUntersberger/neogit',
+    config = function()
+      require('config.neogit')
+    end,
+    keys = '<leader>g',
+    cmd = 'Neogit',
+  }
+
+  -- git signs
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('config.gitsigns')
+    end,
+    event = 'BufWinEnter',
+  }
+
+  -- file traversal
+  use {
+    'ggandor/leap.nvim', -- Racing around docs with s and S
+    config = function()
+      require('leap').set_default_keymaps()
+    end,
+  }
+
+  -- split improvements
+  use {
+    'beauwilliams/focus.nvim',
+    config = function()
+      require('config.focus')
+    end,
+  }
+
+  -- escape sequence without lag
+  use {
+    'max397574/better-escape.nvim',
+    config = function()
+      -- TODO: fix when recording macros
+      require('better_escape').setup {
         mapping = "jk",
-      } end,
+      }
+    end,
+  }
+
+  use 'tpope/vim-endwise'    -- inserts end
+  use 'tpope/vim-repeat'     -- enable dot repeat
+  use 'tpope/vim-surround'   -- change surrounding
+  use 'tpope/vim-unimpaired' -- insert lines above/below
+
+  -- html tag inserter
+  use {
+    'tpope/vim-ragtag',
+    ft = {
+      'html',
+      'eruby',
     },
-    {
-      -- really nice splits
-      'beauwilliams/focus.nvim',
-      config = [[require('config.focus')]],
+  }
+
+  -- rails helper functions
+  use {
+    'tpope/vim-rails',
+    config = function()
+      require('config.rails')
+    end,
+    requires = {
+      'tpope/vim-bundler',
     },
-    'iron-e/nvim-cartographer', -- better mapping
+  }
 
-      -- TPope plugins necessary for survival
-      -- { 'tpope/vim-abolish', cmd = { 'S', 'Subvert', 'Abolish' } },
-    'tpope/vim-commentary',
-    { 'tpope/vim-dispatch', cmd = { 'Dispatch', 'Make', 'Focus', 'Start' } },
-    { 'tpope/vim-endwise', ft = { 'rb', 'erb', 'sh', 'zsh', 'lua', 'vim' } },
-    'tpope/vim-repeat',
-    'tpope/vim-surround',
-    'tpope/vim-unimpaired', -- this is the one that lets me put an empty line up above
-    { 'tpope/vim-ragtag', ft = { 'html', 'eruby' } },
-    { 'tpope/vim-rails', config = [[require('config.rails')]] },
-    'tpope/vim-bundler',
-    'lambdalisue/suda.vim',
+  -- provides suda command for sudo writing files
+  use 'lambdalisue/suda.vim'
 
-    -- ALE for fixing
-    { 'dense-analysis/ale', config = [[require('config.ale')]] },
+  -- markdown preview
+  use {
+    'gabrielelana/vim-markdown',
+    ft = 'markdown',
+    config = function()
+      require('config.markdown')
+    end,
+  }
 
-    -- Syntax highlighting
-    { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
-    'nvim-treesitter/nvim-treesitter-context',
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    'nvim-treesitter/nvim-treesitter-refactor', -- smart rename
-    { 'rrethy/nvim-treesitter-textsubjects', config = [[require('config.treesitter')]] }, -- visual mode dot dot power
+  -- DAP for debugging
+  -- { 'mfussenegger/nvim-dap', config = [[require('config.dap')]] },
 
-    -- { 'rafamadriz/neon', config = [[require('config.theme')]] },
-    { 'sainnhe/everforest', config = [[require('config.theme')]] },
-    'rrethy/vim-illuminate', -- lsp powered symbol illuminator
-
-    -- LSP
-    { 'neovim/nvim-lspconfig', },
-    { 'williamboman/nvim-lsp-installer', },
-    { 'onsails/lspkind-nvim', config = [[require('config.lsp')]] },
-
-    -- DAP for debugging
-    -- { 'mfussenegger/nvim-dap', config = [[require('config.dap')]] },
-
-    -- Snippets
-    {
-      'L3MON4D3/LuaSnip',
-      wants = "friendly-snippets",
-      requires = {
-        'rafamadriz/friendly-snippets',
-        'saadparwaiz1/cmp_luasnip',
+  -- file navigation and searching
+  use {
+    'nvim-telescope/telescope.nvim',
+    config = [[require('config.telescope')]],
+    event = 'BufWinEnter',
+    requires = {
+      'nvim-lua/popup.nvim',
+      'nvim-lua/plenary.nvim',
+      {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        run = 'make',
       },
-      config = [[require('config.luasnip')]],
     },
-    -- set up github copilot - see the github page for copilot.lua
-    { 'github/copilot.vim', run = ':Copilot', disable = true },
-    {
-      'zbirenbaum/copilot.lua',
-      event = {'VimEnter'},
-      config = function()
-        vim.defer_fn(function()
-          require('copilot').setup({
-            enabled = true,
-            method = "getCompletionsCycling",
-          })
-        end, 100)
-      end,
-    },
-    { 'zbirenbaum/copilot-cmp', module = 'copilot_cmp' },
-    'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/cmp-buffer',
-    'hrsh7th/cmp-path',
-    { 'hrsh7th/nvim-cmp', config = [[require('config.cmp')]] },
+  }
 
-    -- let's see if autopairs are any good
-    -- { "windwp/nvim-autopairs", config = function() require("nvim-autopairs").setup {} end },
-
-    -- Git
-    { 'tpope/vim-fugitive' },
-    {
-      'lewis6991/gitsigns.nvim',
-      requires = { 'nvim-lua/plenary.nvim' },
-      config = [[require('config.gitsigns')]],
-      event = 'BufEnter',
+  -- lang/syntax stuff
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    config = function()
+      require('config.treesitter')
+    end,
+    requires = {
+      'nvim-treesitter/nvim-treesitter-context',
+      'windwp/nvim-ts-autotag',
+      'rrethy/nvim-treesitter-textsubjects',
+      'nvim-treesitter/nvim-treesitter-refactor',
+      'nvim-treesitter/nvim-treesitter-textobjects',
+      'JoosepAlviste/nvim-ts-context-commentstring',
     },
-    { 'TimUntersberger/neogit', keys = '<leader>g', cmd = 'Neogit', config = [[require('config.neogit')]] },
+  }
 
-    -- Search
-    {
-      'nvim-telescope/telescope.nvim',
-      requires = {
-        { 'nvim-lua/popup.nvim' },
-        { 'nvim-lua/plenary.nvim' },
-      },
-      config = [[require('config.telescope')]]
-    },
-    {
-      'nvim-telescope/telescope-fzf-native.nvim',
-      run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
-    },
-    {
-      'nvim-telescope/telescope-cheat.nvim',
-      requires = { 'tami5/sql.nvim' },
-      config = [[require('telescope').load_extension('cheat')]],
-      after = 'telescope.nvim',
-    },
-
-    -- Lines
-    { 'nvim-lualine/lualine.nvim', config = [[require('config.lualine')]] },
-    { 'kyazdani42/nvim-tree.lua', config = [[require('config.tree')]], requires = { 'kyazdani42/nvim-web-devicons' } },
-    { 'akinsho/bufferline.nvim', config = [[require('config.bufferline')]], requires = { 'kyazdani42/nvim-web-devicons' } },
-    'moll/vim-bbye', -- close buffers without losing layout
-    'stevearc/dressing.nvim', -- prettier popups
-
-    -- Markdown
-    { 'gabrielelana/vim-markdown', ft = 'markdown', config = [[require('config.markdown')]] },
+  -- commenting
+  use {
+    'numToStr/comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end,
   }
 end)

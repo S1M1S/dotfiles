@@ -1,5 +1,7 @@
 set runtimepath+=~/dotfiles/.config/nvim
 
+lua require('impatient')
+
 " ================ General =====================
 
 " Catch typos
@@ -86,7 +88,7 @@ let maplocalleader=","
 
 " Easily write
 nnoremap <leader>w :w<CR>
-nnoremap <leader>s :mks!<CR>
+" nnoremap <leader>s :mks!<CR>
 
 " Turn spell checking on and off
 nnoremap <silent> <F8> :set spell!<CR>

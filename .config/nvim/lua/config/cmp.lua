@@ -208,7 +208,7 @@ cmp.setup {
     end, { "i", "s", }),
     -- ["<C-Space>"] = cmp.mapping.complete(),
     -- ["<C-e>"] = cmp.mapping.abort(),
-    ["<cr>"] = cmp.mapping.confirm({ select = true }),
+    ["<c-e>"] = cmp.mapping.confirm({ select = true }),
     -- ["<CR>"] = cmp.mapping(function(fallback)
     --   if cmp.visible() and cmp.confirm(cmp.confirm_opts) then
     --     if jumpable() then
