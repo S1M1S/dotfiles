@@ -193,7 +193,7 @@ return require('packer').startup(function(use)
     config = function()
       -- TODO: fix when recording macros
       require('better_escape').setup {
-        mapping = "jk",
+        mapping = 'jk',
       }
     end,
   }
