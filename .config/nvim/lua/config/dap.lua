@@ -20,17 +20,13 @@ dap.configurations.ruby = {
   {
     type =  "ruby",
     request =  "launch",
-    name =  "RSpec LocalFile",
-    program =  "rspec",
-    programArgs = { "${relativeFile}" },
-    useBundler =  true
+    name =  "RSpec (Active File)",
+    "program": "rspec",
+    "programArgs": [
+        "-I",
+        "${workspaceFolder}",
+        "${file}"
+    ],
+    "useBundler": false
   },
-  {
-    type =  "ruby",
-    request =  "launch",
-    name =  "RSpec Selected Line",
-    program =  "rspec",
-    programArgs = { "${relativeFile}:${lineNumber}" },
-    useBundler =  true
-  }
 }
