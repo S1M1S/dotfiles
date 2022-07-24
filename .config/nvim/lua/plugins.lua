@@ -237,10 +237,13 @@ return require('packer').startup(function(use)
 
   -- DAP for debugging
   use {
-    'mfussenegger/nvim-dap',
+    'rcarriga/nvim-dap-ui',
     config = function()
       require('config.dap')
     end,
+    requires = {
+      'mfussenegger/nvim-dap',
+    },
   }
 
   -- file navigation and searching
