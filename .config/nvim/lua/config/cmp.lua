@@ -9,33 +9,6 @@ local check_backspace = function()
 end
 M.methods.check_backspace = check_backspace
 
-local function T(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-
----wraps vim.fn.feedkeys while replacing key codes with escape codes
----Ex: feedkeys("<CR>", "n") becomes feedkeys("^M", "n")
----@param key string
----@param mode string
-local function feedkeys(key, mode)
-  vim.fn.feedkeys(T(key), mode)
-end
-M.methods.feedkeys = feedkeys
-
----checks if emmet_ls is available and active in the buffer
----@return boolean true if available, false otherwise
--- local is_emmet_active = function()
---   local clients = vim.lsp.buf_get_clients()
-
---   for _, client in pairs(clients) do
---     if client.name == "emmet_ls" then
---       return true
---     end
---   end
---   return false
--- end
--- M.methods.is_emmet_active = is_emmet_active
-
 ---when inside a snippet, seeks to the nearest luasnip field if possible, and checks if it is jumpable
 ---@param dir number 1 for forward, -1 for backward; defaults to 1
 ---@return boolean true if a jumpable luasnip field is found while inside a snippet
@@ -209,6 +182,7 @@ cmp.setup {
     -- ["<C-Space>"] = cmp.mapping.complete(),
     -- ["<C-e>"] = cmp.mapping.abort(),
     ["<c-e>"] = cmp.mapping.confirm({ select = true }),
+    [".."] = cmp.mapping.confirm({ select = true }),
     -- ["<CR>"] = cmp.mapping(function(fallback)
     --   if cmp.visible() and cmp.confirm(cmp.confirm_opts) then
     --     if jumpable() then
