@@ -2,10 +2,9 @@ local dap = require('dap')
 
 dap.adapters.ruby = {
   type = 'server',
-  port = '${port}',
+  port = '3002',
   executable = {
-    command = './bin/readapt',
-    args = { 'socket', '--port=${port}' },
+    command = './bin/docker-readapt',
   }
 }
 
